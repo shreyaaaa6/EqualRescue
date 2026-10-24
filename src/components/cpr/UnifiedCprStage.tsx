@@ -224,31 +224,39 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
                     </g>
                   </g>
 
-                  {/* Rescuer: Kneeling beside patient with proper posture */}
+                  {/* Rescuer: Kneeling/Sitting on Floor beside patient in true CPR posture */}
                   <g className="rescuer-posture-figure">
                     {/* Vertical Alignment Line: Shoulders directly above hands */}
-                    <line x1="225" y1="35" x2="225" y2="173" stroke="#e11d48" strokeWidth="1.8" strokeDasharray="4 3" />
+                    <line x1="225" y1="65" x2="225" y2="173" stroke="#e11d48" strokeWidth="1.8" strokeDasharray="4 3" />
 
-                    {/* Knees & Lower Legs on floor beside chest */}
-                    <path d="M 255 222 L 320 222 L 325 218 L 280 214 Z" fill="#334155" />
-                    <ellipse cx="258" cy="220" rx="14" ry="6" fill="#1e293b" />
-                    <path d="M 250 218 L 268 220 L 258 152 L 238 150 Z" fill="#1e293b" stroke="#0f172a" strokeWidth="1" />
+                    {/* Both Knees and Lower Legs flat on floor beside chest */}
+                    {/* Shins resting along floor */}
+                    <path d="M 238 222 L 332 222 L 338 215 L 255 214 Z" fill="#334155" />
+                    {/* Knees planted on floor */}
+                    <ellipse cx="240" cy="218" rx="14" ry="7" fill="#1e293b" />
+                    {/* Foot flat on floor */}
+                    <ellipse cx="335" cy="219" rx="8" ry="4" fill="#0f172a" />
 
-                    {/* Rescuer Upper Body (Hinged at hips) */}
-                    <path d="M 238 150 L 258 152 L 236 75 L 212 77 Z" fill="#475569" stroke="#334155" strokeWidth="1" />
-                    {/* Head tilted focused on patient */}
-                    <circle cx="232" cy="46" r="15" fill="#fde047" stroke="#ca8a04" strokeWidth="1.2" />
-                    <path d="M 220 42 C 220 30, 246 32, 246 42 C 242 38, 228 38, 220 42 Z" fill="#1e293b" />
+                    {/* Thighs: Angled sitting back toward heels/buttocks */}
+                    <path d="M 232 216 L 248 221 L 302 176 L 286 168 Z" fill="#1e293b" stroke="#0f172a" strokeWidth="1" />
 
-                    {/* Shoulders at (225, 75) */}
-                    <circle cx="225" cy="75" r="10" fill="#334155" />
+                    {/* Rescuer Upper Body (Hinged at hips, leaning forward over sternum) */}
+                    {/* Torso */}
+                    <path d="M 288 172 L 298 164 L 232 106 L 216 114 Z" fill="#475569" stroke="#334155" strokeWidth="1" />
+                    
+                    {/* Head: tilted looking down at patient's chest */}
+                    <circle cx="228" cy="80" r="14" fill="#fde047" stroke="#ca8a04" strokeWidth="1.2" />
+                    <path d="M 218 76 C 218 64, 242 66, 242 76 C 238 72, 226 72, 218 76 Z" fill="#1e293b" />
 
-                    {/* Locked Straight Arms (No elbow bend) */}
-                    <line x1="221" y1="75" x2="221" y2="172" stroke="#94a3b8" strokeWidth="8" strokeLinecap="round" />
-                    <line x1="229" y1="75" x2="229" y2="172" stroke="#cbd5e1" strokeWidth="8" strokeLinecap="round" />
+                    {/* Shoulder Joint at (225, 112) — directly over sternum (225, 173) */}
+                    <circle cx="225" cy="112" r="9" fill="#334155" />
+
+                    {/* Locked Straight Arms (Proportional length from shoulders to sternum) */}
+                    <line x1="221" y1="112" x2="221" y2="172" stroke="#94a3b8" strokeWidth="8" strokeLinecap="round" />
+                    <line x1="229" y1="112" x2="229" y2="172" stroke="#cbd5e1" strokeWidth="8" strokeLinecap="round" />
 
                     {/* Elbow Lock Ring Marker */}
-                    <circle cx="225" cy="122" r="5" fill="#ffffff" stroke="#e11d48" strokeWidth="2" />
+                    <circle cx="225" cy="142" r="4.5" fill="#ffffff" stroke="#e11d48" strokeWidth="1.8" />
 
                     {/* Hands on Sternum */}
                     <ellipse cx="225" cy="173" rx="14" ry="7" fill="#fde047" stroke="#b45309" strokeWidth="1.5" />
@@ -256,22 +264,22 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
                   </g>
 
                   {/* Posture Callout Pills */}
-                  <g transform="translate(140, 16)">
-                    <rect x="0" y="0" width="170" height="26" rx="6" fill="#fff1f2" stroke="#fecdd3" strokeWidth="1.5" />
-                    <text x="85" y="17" textAnchor="middle" fill="#9f1239" fontSize="9.5" fontWeight="800">
+                  <g transform="translate(130, 16)">
+                    <rect x="0" y="0" width="185" height="26" rx="6" fill="#fff1f2" stroke="#fecdd3" strokeWidth="1.5" />
+                    <text x="92" y="17" textAnchor="middle" fill="#9f1239" fontSize="9.5" fontWeight="800">
                       SHOULDERS OVER HANDS
                     </text>
                   </g>
-                  <g transform="translate(245, 110)">
+                  <g transform="translate(245, 128)">
                     <rect x="0" y="0" width="130" height="24" rx="5" fill="#f0fdf4" stroke="#86efac" strokeWidth="1.2" />
                     <text x="65" y="16" textAnchor="middle" fill="#166534" fontSize="9" fontWeight="700">
                       ✓ Lock Elbows Straight
                     </text>
                   </g>
-                  <g transform="translate(340, 204)">
-                    <rect x="0" y="0" width="130" height="24" rx="5" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1.2" />
-                    <text x="65" y="16" textAnchor="middle" fill="#334155" fontSize="9" fontWeight="700">
-                      ✓ Kneel Beside Chest
+                  <g transform="translate(345, 198)">
+                    <rect x="0" y="0" width="155" height="24" rx="5" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1.2" />
+                    <text x="77" y="16" textAnchor="middle" fill="#334155" fontSize="9" fontWeight="700">
+                      ✓ Kneeling Beside Chest
                     </text>
                   </g>
                 </svg>
@@ -304,7 +312,7 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
                   <strong>Keep arms straight</strong> with shoulders directly above your hands.
                 </span>
               </div>
-              <div className="instruction-card-horizontal" role="listitem">
+              <div className="instruction-card-horizontal card-span-full" role="listitem">
                 <span className="step-num-bubble">5</span>
                 <span className="instruction-text">
                   <strong>Push over ordinary clothes</strong> — do not delay to remove clothing or bra.
@@ -388,27 +396,31 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
                   </g>
                 </g>
 
-                {/* Rescuer Figure: Kneeling beside patient */}
+                {/* Rescuer Figure: Kneeling and sitting on heels on floor beside patient */}
                 <g className="rescuer-active-figure">
-                  {/* Knees and lower legs grounded on floor beside chest */}
-                  <path d="M 255 222 L 320 222 L 325 218 L 280 214 Z" fill="#334155" />
-                  <ellipse cx="258" cy="220" rx="14" ry="6" fill="#1e293b" />
-                  <path d="M 250 218 L 268 220 L 258 152 L 238 150 Z" fill="#1e293b" stroke="#0f172a" strokeWidth="1" />
+                  {/* Both Knees and Lower Legs grounded horizontally on floor */}
+                  <path d="M 238 222 L 332 222 L 338 215 L 255 214 Z" fill="#334155" />
+                  <ellipse cx="240" cy="218" rx="14" ry="7" fill="#1e293b" />
+                  <ellipse cx="335" cy="219" rx="8" ry="4" fill="#0f172a" />
 
-                  {/* Upper Torso + Locked Straight Arms (Pivots from hips as rigid unit) */}
+                  {/* Thighs: angled sitting back over heels/calves */}
+                  <path d="M 232 216 L 248 221 L 302 176 L 286 168 Z" fill="#1e293b" stroke="#0f172a" strokeWidth="1" />
+
+                  {/* Upper Torso + Locked Straight Arms (Pivots from hip hinge) */}
                   <g className="cpr-rescuer-thrust-group">
-                    {/* Torso */}
-                    <path d="M 238 150 L 258 152 L 236 75 L 212 77 Z" fill="#475569" stroke="#334155" strokeWidth="1" />
-                    {/* Head */}
-                    <circle cx="232" cy="46" r="15" fill="#fde047" stroke="#ca8a04" strokeWidth="1.2" />
-                    <path d="M 220 42 C 220 30, 246 32, 246 42 C 242 38, 228 38, 220 42 Z" fill="#1e293b" />
+                    {/* Torso leaning forward from hips to shoulders */}
+                    <path d="M 288 172 L 298 164 L 232 106 L 216 114 Z" fill="#475569" stroke="#334155" strokeWidth="1" />
+                    
+                    {/* Head looking down focused on sternum */}
+                    <circle cx="228" cy="80" r="14" fill="#fde047" stroke="#ca8a04" strokeWidth="1.2" />
+                    <path d="M 218 76 C 218 64, 242 66, 242 76 C 238 72, 226 72, 218 76 Z" fill="#1e293b" />
 
-                    {/* Shoulder Joint at (225, 75) */}
-                    <circle cx="225" cy="75" r="10" fill="#334155" />
+                    {/* Shoulder Joint at (225, 112) */}
+                    <circle cx="225" cy="112" r="9" fill="#334155" />
 
                     {/* Locked Straight Arms extending down to sternum */}
-                    <line x1="221" y1="75" x2="221" y2="172" stroke="#94a3b8" strokeWidth="8" strokeLinecap="round" />
-                    <line x1="229" y1="75" x2="229" y2="172" stroke="#cbd5e1" strokeWidth="8" strokeLinecap="round" />
+                    <line x1="221" y1="112" x2="221" y2="172" stroke="#94a3b8" strokeWidth="8" strokeLinecap="round" />
+                    <line x1="229" y1="112" x2="229" y2="172" stroke="#cbd5e1" strokeWidth="8" strokeLinecap="round" />
 
                     {/* Hands clasped firmly on sternum (stay anchored) */}
                     <ellipse cx="225" cy="173" rx="14" ry="7" fill="#fde047" stroke="#b45309" strokeWidth="1.5" />
