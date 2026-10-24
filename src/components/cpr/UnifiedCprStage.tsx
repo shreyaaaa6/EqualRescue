@@ -169,53 +169,111 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
                 </svg>
               </div>
             ) : (
-              /* Side Biomechanics SVG */
+              /* Side Biomechanics SVG: True Anatomical CPR Posture */
               <div className="animation-graphic-wrapper">
                 <svg
                   viewBox="0 0 640 280"
-                  className="cpr-anatomical-svg"
+                  className="cpr-anatomical-svg cpr-posture-side-view"
                   aria-label="Side biomechanics: Rescuer kneeling beside woman on firm floor with locked elbows and shoulders over hands"
                 >
-                  {/* Floor */}
-                  <rect x="0" y="230" width="640" height="50" fill="#334155" />
-                  <line x1="0" y1="230" x2="640" y2="230" stroke="#64748b" strokeWidth="2" />
-                  <text x="30" y="258" fill="#cbd5e1" fontSize="11" fontWeight="600">
-                    FIRM FLAT SURFACE (Floor — never on a soft bed)
+                  <defs>
+                    <linearGradient id="floorGradSide" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#1e293b" />
+                      <stop offset="100%" stopColor="#0f172a" />
+                    </linearGradient>
+                    <linearGradient id="shirtGradSide" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stopColor="#38bdf8" />
+                      <stop offset="100%" stopColor="#0284c7" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* Surface: Firm Flat Floor */}
+                  <rect x="0" y="222" width="640" height="58" fill="url(#floorGradSide)" />
+                  <line x1="0" y1="222" x2="640" y2="222" stroke="#475569" strokeWidth="2" />
+                  <text x="24" y="252" fill="#94a3b8" fontSize="11" fontWeight="600" letterSpacing="0.04em">
+                    FIRM FLAT SURFACE (Floor — never on a soft mattress)
                   </text>
 
-                  {/* Victim on Back */}
-                  <circle cx="110" cy="205" r="20" fill="#fbcfe8" stroke="#f472b6" strokeWidth="1.5" />
-                  <path d="M 88 200 C 86 185, 115 180, 130 190 C 132 205, 125 220, 96 222 Z" fill="#475569" />
-                  <rect x="130" y="200" width="22" height="15" rx="4" fill="#fbcfe8" />
-                  <path d="M 360 215 L 520 220 L 530 228 L 360 228 Z" fill="#475569" />
-                  <ellipse cx="535" cy="226" rx="12" ry="6" fill="#1e293b" />
-                  <ellipse cx="330" cy="218" rx="34" ry="14" fill="#475569" />
+                  {/* Patient: Adult woman lying flat on her back (supine) */}
+                  <g className="patient-supine-figure">
+                    {/* Head tilted back gently to open airway */}
+                    <path d="M 68 206 C 62 188, 84 178, 102 182 C 114 185, 120 216, 86 220 Z" fill="#475569" />
+                    <circle cx="102" cy="198" r="18" fill="#fed7aa" stroke="#fb923c" strokeWidth="1.2" />
+                    {/* Airway profile */}
+                    <path d="M 114 193 Q 120 196 116 202 Q 120 206 114 210" fill="none" stroke="#ea580c" strokeWidth="1.2" strokeLinecap="round" />
+                    {/* Neck */}
+                    <rect x="116" y="196" width="20" height="16" rx="3" fill="#fed7aa" />
 
-                  {/* Clothed chest */}
-                  <path d="M 152 218 C 155 185, 230 175, 280 186 C 305 192, 330 206, 335 218 Z" fill="#0284c7" />
-                  <rect x="228" y="178" width="36" height="8" rx="4" fill="#f43f5e" />
+                    {/* Legs & Trousers lying flat along floor */}
+                    <path d="M 276 208 L 475 214 L 485 222 L 270 222 Z" fill="#1e293b" stroke="#334155" strokeWidth="1" />
+                    <ellipse cx="490" cy="220" rx="10" ry="4" fill="#0f172a" />
 
-                  {/* Rescuer Posture */}
-                  <line x1="246" y1="25" x2="246" y2="178" stroke="#e11d48" strokeWidth="1.5" strokeDasharray="4 3" />
-                  <rect x="180" y="15" width="132" height="20" rx="4" fill="#fff1f2" stroke="#fecdd3" />
-                  <text x="246" y="29" textAnchor="middle" fill="#9f1239" fontSize="9.5" fontWeight="bold">
-                    SHOULDERS OVER HANDS
-                  </text>
+                    {/* Clothed Torso (Everyday shirt) with clear natural contours */}
+                    <path d="M 132 218 C 136 186, 178 172, 225 174 C 255 175, 275 192, 280 218 Z" fill="url(#shirtGradSide)" stroke="#0369a1" strokeWidth="1.2" />
+                    {/* Collar */}
+                    <path d="M 134 198 Q 144 206 150 198" fill="none" stroke="#bae6fd" strokeWidth="2" strokeLinecap="round" />
 
-                  {/* Rescuer Head & Torso */}
-                  <circle cx="246" cy="55" r="15" fill="#fde047" stroke="#ca8a04" strokeWidth="1.5" />
-                  <path d="M 230 70 L 262 70 L 290 140 L 260 145 Z" fill="#475569" />
-                  <path d="M 260 145 L 305 180 L 315 230 L 290 230 L 275 190 L 245 150 Z" fill="#1e293b" />
+                    {/* Lower Sternum Target */}
+                    <g transform="translate(225, 173)">
+                      <ellipse cx="0" cy="0" rx="18" ry="7" fill="#fee2e2" stroke="#dc2626" strokeWidth="1.8" />
+                      <line x1="-12" y1="0" x2="12" y2="0" stroke="#dc2626" strokeWidth="1.5" />
+                      <line x1="0" y1="-5" x2="0" y2="5" stroke="#dc2626" strokeWidth="1.5" />
+                      <text x="0" y="24" textAnchor="middle" fill="#991b1b" fontSize="9" fontWeight="800">
+                        LOWER STERNUM
+                      </text>
+                    </g>
+                  </g>
 
-                  {/* Rescuer Straight Arms */}
-                  <line x1="242" y1="74" x2="244" y2="178" stroke="#cbd5e1" strokeWidth="10" strokeLinecap="round" />
-                  <line x1="250" y1="74" x2="248" y2="178" stroke="#94a3b8" strokeWidth="8" strokeLinecap="round" />
-                  <circle cx="245" cy="120" r="4" fill="#e11d48" />
-                  <text x="258" y="124" fill="#0f172a" fontSize="9.5" fontWeight="700">Lock Elbows Straight</text>
+                  {/* Rescuer: Kneeling beside patient with proper posture */}
+                  <g className="rescuer-posture-figure">
+                    {/* Vertical Alignment Line: Shoulders directly above hands */}
+                    <line x1="225" y1="35" x2="225" y2="173" stroke="#e11d48" strokeWidth="1.8" strokeDasharray="4 3" />
 
-                  {/* Hands on Sternum */}
-                  <circle cx="246" cy="178" r="11" fill="#fde047" stroke="#b45309" strokeWidth="1.5" />
-                  <text x="246" y="182" textAnchor="middle" fill="#78350f" fontSize="7.5" fontWeight="bold">HEEL</text>
+                    {/* Knees & Lower Legs on floor beside chest */}
+                    <path d="M 255 222 L 320 222 L 325 218 L 280 214 Z" fill="#334155" />
+                    <ellipse cx="258" cy="220" rx="14" ry="6" fill="#1e293b" />
+                    <path d="M 250 218 L 268 220 L 258 152 L 238 150 Z" fill="#1e293b" stroke="#0f172a" strokeWidth="1" />
+
+                    {/* Rescuer Upper Body (Hinged at hips) */}
+                    <path d="M 238 150 L 258 152 L 236 75 L 212 77 Z" fill="#475569" stroke="#334155" strokeWidth="1" />
+                    {/* Head tilted focused on patient */}
+                    <circle cx="232" cy="46" r="15" fill="#fde047" stroke="#ca8a04" strokeWidth="1.2" />
+                    <path d="M 220 42 C 220 30, 246 32, 246 42 C 242 38, 228 38, 220 42 Z" fill="#1e293b" />
+
+                    {/* Shoulders at (225, 75) */}
+                    <circle cx="225" cy="75" r="10" fill="#334155" />
+
+                    {/* Locked Straight Arms (No elbow bend) */}
+                    <line x1="221" y1="75" x2="221" y2="172" stroke="#94a3b8" strokeWidth="8" strokeLinecap="round" />
+                    <line x1="229" y1="75" x2="229" y2="172" stroke="#cbd5e1" strokeWidth="8" strokeLinecap="round" />
+
+                    {/* Elbow Lock Ring Marker */}
+                    <circle cx="225" cy="122" r="5" fill="#ffffff" stroke="#e11d48" strokeWidth="2" />
+
+                    {/* Hands on Sternum */}
+                    <ellipse cx="225" cy="173" rx="14" ry="7" fill="#fde047" stroke="#b45309" strokeWidth="1.5" />
+                    <text x="225" y="176" textAnchor="middle" fill="#78350f" fontSize="7.5" fontWeight="800">HEEL</text>
+                  </g>
+
+                  {/* Posture Callout Pills */}
+                  <g transform="translate(140, 16)">
+                    <rect x="0" y="0" width="170" height="26" rx="6" fill="#fff1f2" stroke="#fecdd3" strokeWidth="1.5" />
+                    <text x="85" y="17" textAnchor="middle" fill="#9f1239" fontSize="9.5" fontWeight="800">
+                      SHOULDERS OVER HANDS
+                    </text>
+                  </g>
+                  <g transform="translate(245, 110)">
+                    <rect x="0" y="0" width="130" height="24" rx="5" fill="#f0fdf4" stroke="#86efac" strokeWidth="1.2" />
+                    <text x="65" y="16" textAnchor="middle" fill="#166534" fontSize="9" fontWeight="700">
+                      ✓ Lock Elbows Straight
+                    </text>
+                  </g>
+                  <g transform="translate(340, 204)">
+                    <rect x="0" y="0" width="130" height="24" rx="5" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1.2" />
+                    <text x="65" y="16" textAnchor="middle" fill="#334155" fontSize="9" fontWeight="700">
+                      ✓ Kneel Beside Chest
+                    </text>
+                  </g>
                 </svg>
               </div>
             )}
@@ -284,62 +342,124 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
               <svg
                 viewBox="0 0 640 280"
                 className={`cpr-anatomical-svg ${isRunning ? 'compressing' : 'at-rest'} ${pulseActive && isRunning ? 'beat-strike' : ''}`}
-                aria-label={`Chest compression animation. Current compression ${compressionCount} of 30.`}
+                aria-label={`Realistic chest compression demonstration. Current compression ${compressionCount} of 30.`}
               >
-                {/* Floor */}
-                <rect x="0" y="230" width="640" height="50" fill="#334155" />
-                <line x1="0" y1="230" x2="640" y2="230" stroke="#64748b" strokeWidth="2" />
+                <defs>
+                  <linearGradient id="floorGradActive" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#1e293b" />
+                    <stop offset="100%" stopColor="#0f172a" />
+                  </linearGradient>
+                  <linearGradient id="shirtGradActive" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#38bdf8" />
+                    <stop offset="100%" stopColor="#0284c7" />
+                  </linearGradient>
+                </defs>
 
-                {/* Victim on Back */}
-                <circle cx="110" cy="205" r="20" fill="#fbcfe8" stroke="#f472b6" strokeWidth="1.5" />
-                <path d="M 88 200 C 86 185, 115 180, 130 190 C 132 205, 125 220, 96 222 Z" fill="#475569" />
-                <rect x="130" y="200" width="22" height="15" rx="4" fill="#fbcfe8" />
-                <path d="M 360 215 L 520 220 L 530 228 L 360 228 Z" fill="#475569" />
-                <ellipse cx="535" cy="226" rx="12" ry="6" fill="#1e293b" />
-                <ellipse cx="330" cy="218" rx="34" ry="14" fill="#475569" />
+                {/* Surface: Firm Flat Floor */}
+                <rect x="0" y="222" width="640" height="58" fill="url(#floorGradActive)" />
+                <line x1="0" y1="222" x2="640" y2="222" stroke="#475569" strokeWidth="2" />
+                <text x="24" y="252" fill="#94a3b8" fontSize="11" fontWeight="600" letterSpacing="0.04em">
+                  FIRM FLAT SURFACE (Floor)
+                </text>
 
-                {/* Chest compression displacement */}
-                <g className="victim-chest-group">
-                  <path d="M 152 218 C 155 185, 230 175, 280 186 C 305 192, 330 206, 335 218 Z" fill="#0284c7" />
-                  <rect x="228" y="178" width="36" height="8" rx="4" fill="#f43f5e" />
+                {/* Patient Supine Body */}
+                <g className="patient-supine-figure">
+                  {/* Head tilted back gently with open airway */}
+                  <path d="M 68 206 C 62 188, 84 178, 102 182 C 114 185, 120 216, 86 220 Z" fill="#475569" />
+                  <circle cx="102" cy="198" r="18" fill="#fed7aa" stroke="#fb923c" strokeWidth="1.2" />
+                  <path d="M 114 193 Q 120 196 116 202 Q 120 206 114 210" fill="none" stroke="#ea580c" strokeWidth="1.2" strokeLinecap="round" />
+                  <rect x="116" y="196" width="20" height="16" rx="3" fill="#fed7aa" />
 
-                  {/* 5-6 cm Depth and recoil markers */}
-                  <g transform="translate(150, 105)">
-                    <line x1="0" y1="75" x2="45" y2="75" stroke="#059669" strokeWidth="2" strokeDasharray="3 2" />
-                    <text x="-5" y="73" textAnchor="end" fill="#059669" fontSize="10" fontWeight="bold">Full Recoil</text>
+                  {/* Legs & Trousers lying flat */}
+                  <path d="M 276 208 L 430 214 L 438 222 L 270 222 Z" fill="#1e293b" stroke="#334155" strokeWidth="1" />
+                  <ellipse cx="442" cy="220" rx="9" ry="4" fill="#0f172a" />
 
-                    <line x1="0" y1="96" x2="45" y2="96" stroke="#dc2626" strokeWidth="2" />
-                    <text x="-5" y="100" textAnchor="end" fill="#dc2626" fontSize="10" fontWeight="bold">5–6 cm Depth</text>
-
-                    <line x1="45" y1="75" x2="45" y2="96" stroke="#0f172a" strokeWidth="1.5" />
-                    <polygon points="41,80 49,80 45,74" fill="#0f172a" />
-                    <polygon points="41,91 49,91 45,97" fill="#0f172a" />
+                  {/* Chest Wall that deflects 5-6 cm (10px) smoothly on each compression */}
+                  <g className="cpr-chest-compression-group">
+                    <path d="M 132 218 C 136 186, 178 172, 225 174 C 255 175, 275 192, 280 218 Z" fill="url(#shirtGradActive)" stroke="#0369a1" strokeWidth="1.2" />
+                    <path d="M 134 198 Q 144 206 150 198" fill="none" stroke="#bae6fd" strokeWidth="2" strokeLinecap="round" />
+                    
+                    {/* Sternum Target Crosshair */}
+                    <g transform="translate(225, 173)">
+                      <ellipse cx="0" cy="0" rx="16" ry="6" fill="#fee2e2" stroke="#dc2626" strokeWidth="1.5" />
+                      <line x1="-10" y1="0" x2="10" y2="0" stroke="#dc2626" strokeWidth="1.5" />
+                      <line x1="0" y1="-4" x2="0" y2="4" stroke="#dc2626" strokeWidth="1.5" />
+                    </g>
                   </g>
                 </g>
 
-                {/* Rescuer with straight arms & shoulders over hands */}
-                <g className="rescuer-figure-group">
-                  <line x1="246" y1="25" x2="246" y2="178" stroke="#e11d48" strokeWidth="1.5" strokeDasharray="4 3" />
-                  <circle cx="246" cy="55" r="15" fill="#fde047" stroke="#ca8a04" strokeWidth="1.5" />
-                  <path d="M 230 70 L 262 70 L 290 140 L 260 145 Z" fill="#475569" />
-                  <path d="M 260 145 L 305 180 L 315 230 L 290 230 L 275 190 L 245 150 Z" fill="#1e293b" />
+                {/* Rescuer Figure: Kneeling beside patient */}
+                <g className="rescuer-active-figure">
+                  {/* Knees and lower legs grounded on floor beside chest */}
+                  <path d="M 255 222 L 320 222 L 325 218 L 280 214 Z" fill="#334155" />
+                  <ellipse cx="258" cy="220" rx="14" ry="6" fill="#1e293b" />
+                  <path d="M 250 218 L 268 220 L 258 152 L 238 150 Z" fill="#1e293b" stroke="#0f172a" strokeWidth="1" />
 
-                  {/* Animated Arms thrusting downward */}
-                  <g className="rescuer-arms">
-                    <line x1="242" y1="74" x2="244" y2="178" stroke="#cbd5e1" strokeWidth="10" strokeLinecap="round" />
-                    <line x1="250" y1="74" x2="248" y2="178" stroke="#94a3b8" strokeWidth="8" strokeLinecap="round" />
-                    <circle cx="246" cy="178" r="11" fill="#fde047" stroke="#b45309" strokeWidth="1.5" />
-                    <text x="246" y="182" textAnchor="middle" fill="#78350f" fontSize="7.5" fontWeight="bold">HEEL</text>
+                  {/* Upper Torso + Locked Straight Arms (Pivots from hips as rigid unit) */}
+                  <g className="cpr-rescuer-thrust-group">
+                    {/* Torso */}
+                    <path d="M 238 150 L 258 152 L 236 75 L 212 77 Z" fill="#475569" stroke="#334155" strokeWidth="1" />
+                    {/* Head */}
+                    <circle cx="232" cy="46" r="15" fill="#fde047" stroke="#ca8a04" strokeWidth="1.2" />
+                    <path d="M 220 42 C 220 30, 246 32, 246 42 C 242 38, 228 38, 220 42 Z" fill="#1e293b" />
+
+                    {/* Shoulder Joint at (225, 75) */}
+                    <circle cx="225" cy="75" r="10" fill="#334155" />
+
+                    {/* Locked Straight Arms extending down to sternum */}
+                    <line x1="221" y1="75" x2="221" y2="172" stroke="#94a3b8" strokeWidth="8" strokeLinecap="round" />
+                    <line x1="229" y1="75" x2="229" y2="172" stroke="#cbd5e1" strokeWidth="8" strokeLinecap="round" />
+
+                    {/* Hands clasped firmly on sternum (stay anchored) */}
+                    <ellipse cx="225" cy="173" rx="14" ry="7" fill="#fde047" stroke="#b45309" strokeWidth="1.5" />
+                    <text x="225" y="176" textAnchor="middle" fill="#78350f" fontSize="7.5" fontWeight="800">HEEL</text>
                   </g>
                 </g>
 
-                {/* Live Count overlay on SVG */}
-                <g transform="translate(460, 25)">
-                  <rect x="0" y="0" width="155" height="54" rx="8" fill="#ffffff" stroke="#e2e8f0" />
-                  <text x="77" y="22" textAnchor="middle" fill="#0f172a" fontSize="13" fontWeight="bold">
-                    Compressions {countDisplay}
+                {/* Clinical CPR Telemetry Box on Right */}
+                <g transform="translate(450, 18)">
+                  <rect x="0" y="0" width="175" height="185" rx="10" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.2" />
+                  
+                  {/* Header */}
+                  <rect x="0" y="0" width="175" height="32" rx="10" fill="#0f172a" />
+                  <text x="87" y="21" textAnchor="middle" fill="#ffffff" fontSize="11" fontWeight="800" letterSpacing="0.04em">
+                    CPR DEPTH & RECOIL
                   </text>
-                  <text x="77" y="40" textAnchor="middle" fill="#059669" fontSize="10.5" fontWeight="700">
+
+                  {/* Big compression count */}
+                  <text x="87" y="58" textAnchor="middle" fill="#e11d48" fontSize="22" fontWeight="800" fontFamily="monospace">
+                    {countDisplay}
+                  </text>
+                  <text x="87" y="74" textAnchor="middle" fill="#64748b" fontSize="9.5" fontWeight="700">
+                    COMPRESSIONS IN CYCLE
+                  </text>
+
+                  {/* Depth Target Visual Gauge */}
+                  <g transform="translate(18, 88)">
+                    {/* Gauge track */}
+                    <rect x="0" y="0" width="138" height="34" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
+                    {/* Target 5-6 cm green bar */}
+                    <rect x="85" y="4" width="48" height="26" rx="4" fill="#dcfce7" stroke="#86efac" />
+                    <text x="109" y="16" textAnchor="middle" fill="#15803d" fontSize="7.5" fontWeight="800">TARGET</text>
+                    <text x="109" y="25" textAnchor="middle" fill="#166534" fontSize="7.5" fontWeight="700">5–6 cm</text>
+
+                    {/* Dynamic Moving Needle / Plunger Indicator */}
+                    <g className="depth-gauge-needle" transform="translate(15, 0)">
+                      <circle cx="0" cy="17" r="8" fill="#e11d48" />
+                      <line x1="0" y1="4" x2="0" y2="30" stroke="#ffffff" strokeWidth="2" />
+                    </g>
+                  </g>
+
+                  {/* Recoil status */}
+                  <g transform="translate(18, 132)">
+                    <rect x="0" y="0" width="138" height="20" rx="4" fill="#f0fdf4" stroke="#bbf7d0" />
+                    <text x="69" y="14" textAnchor="middle" fill="#166534" fontSize="8.5" fontWeight="700">
+                      ✓ 100% Full Recoil Each Beat
+                    </text>
+                  </g>
+
+                  {/* BPM badge */}
+                  <text x="87" y="172" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="800">
                     Target: {bpm} BPM (100–120)
                   </text>
                 </g>
