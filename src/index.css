@@ -5009,3 +5009,36 @@ body {
   text-align: center;
 }
 
+/* Women-Centred Insight Card */
+.advice-women-note-box {
+  background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+  border: 1px solid #fecdd3;
+  border-left: 5px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: 1.125rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.women-note-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.women-note-title {
+  font-size: 0.875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+}
+
+.women-note-text {
+  font-size: 0.9375rem;
+  color: #881337;
+  line-height: 1.45;
+  font-weight: 500;
+}
+

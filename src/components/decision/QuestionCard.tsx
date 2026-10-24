@@ -17,7 +17,8 @@ import {
   Wind,
   Brain,
   MessageSquare,
-  AlertTriangle
+  AlertTriangle,
+  Sparkles
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -125,6 +126,17 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           <h2 className="advice-title">{advice.title}</h2>
           <p className="advice-desc">{advice.description}</p>
         </div>
+
+        {/* Women-Centred Clinical & Legal Insight Card */}
+        {advice.womenSpecificNote && (
+          <aside className="advice-women-note-box" aria-label="Women's Health Insight">
+            <div className="women-note-header">
+              <Sparkles size={16} className="text-rose-600 flex-shrink-0" />
+              <span className="women-note-title">Women's Health & Bystander Insight</span>
+            </div>
+            <p className="women-note-text">{advice.womenSpecificNote}</p>
+          </aside>
+        )}
 
         {/* Action Steps & Do's */}
         <div className="advice-checklist">

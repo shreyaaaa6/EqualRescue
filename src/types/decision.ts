@@ -8,6 +8,7 @@ export interface DecisionAdvice {
   dispatcherScript?: string;
   isSafeState: boolean;
   requiresCprRedirect?: boolean;
+  womenSpecificNote?: string;
 }
 
 export interface DecisionOption {
