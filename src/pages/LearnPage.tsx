@@ -71,8 +71,8 @@ export const LearnPage: React.FC = () => {
         <div className="video-frame-wrapper">
           {!videoError ? (
             <iframe
-              src="https://www.youtube-nocookie.com/embed/M4ACYp75hpQ?rel=0&modestbranding=1"
-              title="Official AHA Hands-Only CPR Video"
+              src="https://www.youtube-nocookie.com/embed/DUaxt8OlT3o?rel=0&modestbranding=1"
+              title="AHA Hands-Only CPR for Women"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               onError={() => setVideoError(true)}
