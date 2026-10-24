@@ -98,6 +98,28 @@ export function useCprStateMachine({ initialBpm = 110 }: UseCprStateMachineOptio
     }
   }, [getAudioContext]);
 
+  // Play gentle chime on breath step
+  const playBreathChime = useCallback(() => {
+    if (isMutedRef.current) return;
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    try {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+      osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.18); // A5
+      gain.gain.setValueAtTime(0.25, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.45);
+    } catch {
+      // Audio fallback handling
+    }
+  }, [getAudioContext]);
+
   // Stopwatch controls
   const startStopwatch = useCallback(() => {
     startTimeRef.current = Date.now();
@@ -185,6 +207,7 @@ export function useCprStateMachine({ initialBpm = 110 }: UseCprStateMachineOptio
   }, [playClick]);
 
   // Transition from 30 compressions to rescue breaths (1/2 -> 2/2)
+  // Give sufficient clinical time (4500ms per breath, 9 seconds total) so rescuer can follow along calmly
   const transitionToBreaths = useCallback(() => {
     if (compressionTimeoutRef.current !== null) {
       window.clearTimeout(compressionTimeoutRef.current);
@@ -195,8 +218,9 @@ export function useCprStateMachine({ initialBpm = 110 }: UseCprStateMachineOptio
     phaseRef.current = 'breaths';
     setBreathStep(1);
     breathStepRef.current = 1;
+    playBreathChime();
 
-    // Breath 1 lasts 2000ms
+    // Breath 1 lasts 4500ms (sufficient time to pinch nose, seal mouth, blow 1s, watch chest rise)
     if (breathTimeoutRef.current !== null) {
       window.clearTimeout(breathTimeoutRef.current);
     }
@@ -207,16 +231,17 @@ export function useCprStateMachine({ initialBpm = 110 }: UseCprStateMachineOptio
       // Advance to Breath 2 (2/2)
       setBreathStep(2);
       breathStepRef.current = 2;
+      playBreathChime();
 
-      // Breath 2 lasts 2000ms
+      // Breath 2 lasts 4500ms
       breathTimeoutRef.current = window.setTimeout(() => {
         if (isPausedRef.current || phaseRef.current !== 'breaths') return;
 
         // Both breaths complete! Immediately start next compression set
         transitionToCompressionsRef.current();
-      }, 2000);
-    }, 2000);
-  }, []);
+      }, 4500);
+    }, 4500);
+  }, [playBreathChime]);
 
   // Transition from rescue breaths back to compressions set
   const transitionToCompressions = useCallback(() => {
@@ -306,25 +331,26 @@ export function useCprStateMachine({ initialBpm = 110 }: UseCprStateMachineOptio
     if (phaseRef.current === 'compressions') {
       scheduleNextCompressionRef.current();
     } else if (phaseRef.current === 'breaths') {
-      // Resume breath sequence
+      // Resume breath sequence with sufficient time
       if (breathStepRef.current === 1) {
         breathTimeoutRef.current = window.setTimeout(() => {
           if (isPausedRef.current || phaseRef.current !== 'breaths') return;
           setBreathStep(2);
           breathStepRef.current = 2;
+          playBreathChime();
           breathTimeoutRef.current = window.setTimeout(() => {
             if (isPausedRef.current || phaseRef.current !== 'breaths') return;
             transitionToCompressionsRef.current();
-          }, 2000);
-        }, 1500);
+          }, 4500);
+        }, 3000);
       } else {
         breathTimeoutRef.current = window.setTimeout(() => {
           if (isPausedRef.current || phaseRef.current !== 'breaths') return;
           transitionToCompressionsRef.current();
-        }, 1500);
+        }, 3000);
       }
     }
-  }, [resumeStopwatch]);
+  }, [resumeStopwatch, playBreathChime]);
 
   // Master Toggle Play/Pause
   const togglePlay = useCallback(() => {

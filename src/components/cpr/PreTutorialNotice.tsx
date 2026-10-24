@@ -1,14 +1,13 @@
 import React from 'react';
-import { ShieldAlert, PhoneCall, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ShieldAlert, PhoneCall, CheckCircle2 } from 'lucide-react';
 
 interface PreTutorialNoticeProps {
   onAcknowledge: () => void;
-  onEmergencyBypass: () => void;
+  onEmergencyBypass?: () => void;
 }
 
 export const PreTutorialNotice: React.FC<PreTutorialNoticeProps> = ({
   onAcknowledge,
-  onEmergencyBypass,
 }) => {
   return (
     <section className="pre-tutorial-notice-card" aria-label="Pre-Tutorial Safety Notice">
@@ -31,7 +30,7 @@ export const PreTutorialNotice: React.FC<PreTutorialNoticeProps> = ({
         </blockquote>
 
         <p className="notice-context-sub">
-          This educational guide provides real-time rhythm and anatomical visual support. Acknowledging this safety notice will never block your access to the CPR metronome in an actual emergency.
+          This educational guide provides real-time rhythm and anatomical visual support. Acknowledging this safety notice ensures you are prepared to save a life calmly and correctly.
         </p>
       </div>
 
@@ -44,16 +43,6 @@ export const PreTutorialNotice: React.FC<PreTutorialNoticeProps> = ({
         >
           <CheckCircle2 size={20} />
           <span>I understand — Start Tutorial</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={onEmergencyBypass}
-          className="btn-notice-bypass"
-          title="Skip straight to live rhythm and timer without tutorial delay"
-        >
-          <span>Immediate Emergency? Skip straight to Metronome</span>
-          <ArrowRight size={16} />
         </button>
       </div>
     </section>

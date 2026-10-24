@@ -71,14 +71,10 @@ export const CprScreen: React.FC = () => {
         )}
       </div>
 
-      {/* Pre-Tutorial Notice Banner (Can be acknowledged or bypassed, never a barrier) */}
+      {/* Pre-Tutorial Notice Banner (Prominent safety notice with emergency 112 option) */}
       {!noticeDismissed ? (
         <PreTutorialNotice
           onAcknowledge={() => setNoticeDismissed(true)}
-          onEmergencyBypass={() => {
-            setNoticeDismissed(true);
-            beginCpr();
-          }}
         />
       ) : (
         <aside className="notice-acknowledged-chip" aria-label="Pre-Tutorial Notice Status">
