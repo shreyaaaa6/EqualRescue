@@ -1,81 +1,401 @@
 {
-  "initialNodeId": "responsiveness",
+  "initialNodeId": "consciousness_check",
   "nodes": {
-    "responsiveness": {
-      "id": "responsiveness",
-      "title": "Responsiveness Check",
-      "question": "Does the person respond when you firmly tap their shoulders and shout?",
-      "hint": "Firmly tap both shoulders and ask loudly: 'Are you okay? Can you hear me?'",
+    "consciousness_check": {
+      "id": "consciousness_check",
+      "title": "Consciousness Assessment",
+      "question": "Is the person conscious and responding to you?",
+      "hint": "Shout loudly 'Can you hear me? Are you okay?' and firmly tap both collarbones or shoulders. Do not hesitate to check responsiveness immediately.",
       "stepNumber": 1,
       "totalSteps": 2,
       "options": [
         {
-          "id": "responsive_yes",
-          "label": "Yes, they respond or move",
-          "description": "The person talks, groans, blinks, or moves intentionally.",
-          "advice": {
-            "title": "Stay With Them & Keep Monitoring",
-            "actionBadge": "No CPR Needed Right Now",
-            "description": "The person is responsive. Keep them calm and comfortable while ensuring professional help is en route.",
-            "isSafeState": true,
-            "points": [
-              "Call 112 immediately if they are in pain, confused, or had a sudden collapse.",
-              "Do not leave the person unattended.",
-              "Help them into a comfortable position (usually sitting or lying down comfortably).",
-              "Check their breathing continuously. If they stop responding at any moment, start CPR immediately."
-            ]
-          }
+          "id": "opt_unconscious",
+          "label": "No, completely unconscious / unresponsive",
+          "description": "Limp, eyes closed, no reaction. In women, sudden collapse requires prompt action without hesitation.",
+          "nextNodeId": "unconscious_assessment"
         },
         {
-          "id": "responsive_no",
-          "label": "No, they are completely unresponsive",
-          "description": "No eye opening, no sound, no movement whatsoever.",
-          "nextNodeId": "breathing"
+          "id": "opt_conscious",
+          "label": "Yes, awake and responding, but in distress",
+          "description": "They can speak, nod, or move. Note: women often experience subtle or atypical warning signs.",
+          "nextNodeId": "conscious_symptoms"
         },
         {
-          "id": "responsive_unsure",
-          "label": "Not sure / Weak response",
-          "description": "They are barely reacting, limp, or you cannot tell clearly.",
-          "nextNodeId": "breathing"
+          "id": "opt_unsure_conscious",
+          "label": "Not sure / In and out of consciousness",
+          "description": "Drifting off, eyes rolling back, confused, dizzy, or groaning.",
+          "nextNodeId": "altered_consciousness_assessment"
         }
       ]
     },
-    "breathing": {
-      "id": "breathing",
-      "title": "Breathing Check",
-      "question": "Are they breathing normally? (Watch chest, listen, and feel)",
-      "hint": "Look for normal, rhythmic chest rise. Gasping, snoring, or irregular choking sounds (agonal breathing) is NOT normal breathing.",
+    "unconscious_assessment": {
+      "id": "unconscious_assessment",
+      "title": "Unconscious Assessment",
+      "question": "What do you observe about their breathing or body movement?",
+      "hint": "Look closely at their chest and body. Look for rhythmic breathing vs gasping or violent jerking.",
       "stepNumber": 2,
       "totalSteps": 2,
       "options": [
         {
-          "id": "breathing_normal",
-          "label": "Yes, breathing normally and continuously",
-          "description": "Chest rises and falls smoothly and regularly at a normal pace.",
+          "id": "opt_shaking_convulsing",
+          "label": "Body is shaking violently / stiffening / convulsing",
+          "description": "Jerking limbs, jaw clenched, unresponsive to touch.",
           "advice": {
-            "title": "Place in Recovery Position & Monitor Airway",
-            "actionBadge": "Maintain Open Airway",
-            "description": "Since they are breathing normally, maintain their airway and watch them closely.",
-            "isSafeState": true,
+            "title": "Active Seizure / Convulsion (Epileptic Fit)",
+            "conditionType": "seizure",
+            "actionBadge": "Seizure First Aid",
+            "description": "The person is having a seizure. Do not panic; most seizures resolve naturally within 2 to 3 minutes. Your primary mission is protecting them from physical trauma.",
+            "isSafeState": false,
             "points": [
-              "Roll them gently onto their side into the Recovery Position so their airway stays clear.",
-              "Tilt the chin up slightly to prevent tongue obstruction.",
-              "Call 112 if not already done, and report their condition.",
-              "Keep checking breathing every 30 seconds. If breathing stops or turns into gasping, start CPR immediately."
-            ]
+              "Cushion their head with something soft (a folded jacket, dupatta, pillow, or hands) to prevent head injury.",
+              "Clear away all hard, sharp, or dangerous objects around them.",
+              "Loosen tight clothing around their neck (collars, scarves, dupattas) to aid airflow.",
+              "Time the seizure: note the exact minute the shaking began.",
+              "Once shaking stops completely, roll them gently onto their side into the Recovery Position to keep airway open (Left side if pregnant).",
+              "Call 112 immediately if: seizure lasts > 5 minutes, it is their first seizure, they have breathing trouble afterwards, or they are pregnant or injured."
+            ],
+            "donts": [
+              "DO NOT physically restrain or pin down their arms or legs.",
+              "DO NOT put anything in their mouth (they cannot swallow their tongue; forcing objects breaks teeth or causes choking).",
+              "DO NOT give water, medicine, or food until they are 100% awake and talking."
+            ],
+            "womenSpecificNote": "Pregnancy Alert (Eclampsia): In pregnant women (especially past 20 weeks), sudden seizures can indicate Eclampsia, a critical complication of high blood pressure. If the woman is pregnant, inform the 112 dispatcher immediately.",
+            "dispatcherScript": "Adult having an active seizure/convulsions. Head cushioned and area cleared. Seizure has lasted approximately [X] minutes. [State if pregnant]. Address: [Location]."
           }
         },
         {
-          "id": "breathing_abnormal",
-          "label": "No breath, or only irregular gasping / choking sounds",
-          "description": "Agonal gasps are a sign of cardiac arrest. Compressions are needed immediately.",
-          "isEmergencyRedirect": true
+          "id": "opt_unconscious_no_breath",
+          "label": "No breathing, or only occasional gasping / choking sounds",
+          "description": "Agonal gasps are a sign of cardiac arrest. Compressions must start immediately.",
+          "isEmergencyRedirect": false,
+          "advice": {
+            "title": "Suspected Cardiac Arrest (Immediate Action)",
+            "conditionType": "cardiac",
+            "actionBadge": "Start CPR Immediately",
+            "description": "The person is in cardiac arrest. Their heart has stopped pumping blood to the brain. Hands-Only chest compressions must start right now.",
+            "isSafeState": false,
+            "requiresCprRedirect": true,
+            "points": [
+              "Call 112 immediately on speakerphone or point at a bystander to call.",
+              "Send someone immediately to locate the nearest Automated External Defibrillator (AED).",
+              "Hand Placement: Place the heel of one hand in the center of the breastbone, right between the breasts. Interlock your other hand on top. Hand placement is identical for women and men.",
+              "Do NOT delay compressions to remove clothing or bras. You can push directly through normal clothing, sarees, or tops. Only open or cut clothing when the AED arrives.",
+              "Good Samaritan laws in India (Supreme Court Guidelines) and worldwide strictly protect you from civil and criminal liability when attempting to save a life.",
+              "Push hard and fast: 2 inches (5 cm) deep at 110 beats per minute. Switch to our interactive CPR Screen for rhythm & timer.",
+              "If visibly pregnant (over 20 weeks): Tilt her pelvis slightly to the left (by placing a folded coat under her right hip) to improve venous blood return during compressions."
+            ],
+            "donts": [
+              "DO NOT hesitate to touch the chest in an emergency. A heart in arrest cannot wait.",
+              "DO NOT waste time checking for a pulse (untrained pulse checks waste critical minutes).",
+              "DO NOT wait to see if gasping stops. Gasping is NOT breathing; it is cardiac arrest."
+            ],
+            "womenSpecificNote": "Closing the Bystander Gender Gap: Circulation research shows women in public are 14% less likely to receive bystander CPR than men because bystanders fear touching a woman's chest or facing legal accusations. You are legally protected and saving a life. Act immediately.",
+            "dispatcherScript": "Adult collapsed, unresponsive, and not breathing normally. Starting CPR chest compressions. Send an ambulance and AED to [Location]."
+          }
         },
         {
-          "id": "breathing_unsure",
-          "label": "Not sure / Cannot feel normal breath",
-          "description": "When in doubt during an emergency, clinical guidelines recommend starting CPR without delay.",
-          "isEmergencyRedirect": true
+          "id": "opt_unconscious_normal_breath",
+          "label": "Yes, breathing smoothly, normally, and regularly",
+          "description": "Chest rises and falls rhythmically at a normal pace.",
+          "advice": {
+            "title": "Unconscious but Breathing (Airway Protection)",
+            "conditionType": "recovery",
+            "actionBadge": "Roll into Recovery Position",
+            "description": "The person is unresponsive but breathing regularly. Your priority is keeping their airway open and preventing tongue or fluid obstruction.",
+            "isSafeState": true,
+            "points": [
+              "Gently roll them onto their side into the Recovery Position with the top knee bent to prop them up.",
+              "PREGNANCY POSITION: If the woman is visibly pregnant, ALWAYS place her on her LEFT side. This prevents the heavy uterus from pressing on the inferior vena cava and aorta.",
+              "Tilt her chin gently upward to ensure the tongue does not block the airway.",
+              "Call 112 and report an unconscious person who is breathing.",
+              "Stay with her and check breathing every 30 seconds. If breathing stops or turns into gasping, roll onto back and start CPR immediately."
+            ],
+            "donts": [
+              "DO NOT leave them lying flat on their back (tongue or fluids can block the airway).",
+              "DO NOT shake them violently or slap their face to wake them up."
+            ],
+            "womenSpecificNote": "Left Lateral Tilt in Pregnancy: Lying flat on the back during pregnancy can compress the inferior vena cava, causing sudden blood pressure drops and fainting (Supine Hypotensive Syndrome). The left side is always the safest recovery posture.",
+            "dispatcherScript": "Adult unconscious but breathing normally. Patient placed in recovery position [specify left side if pregnant]. Address: [Location]."
+          }
+        }
+      ]
+    },
+    "conscious_symptoms": {
+      "id": "conscious_symptoms",
+      "title": "Symptom Identification",
+      "question": "What primary distress is the person experiencing?",
+      "hint": "Select the symptom that best describes what you observe. Note: women often experience atypical signs.",
+      "stepNumber": 2,
+      "totalSteps": 2,
+      "options": [
+        {
+          "id": "opt_choking",
+          "label": "Choking (clutching throat, silent, unable to speak or cough)",
+          "description": "Object or food completely obstructing the airway.",
+          "advice": {
+            "title": "Severe Choking (Complete Airway Obstruction)",
+            "conditionType": "choking",
+            "actionBadge": "Choking First Aid",
+            "description": "The person cannot breathe, speak, or cough. Their airway is completely obstructed and brain oxygen is rapidly depleting.",
+            "isSafeState": false,
+            "points": [
+              "Ask: 'Are you choking?' If she nods and cannot speak, reassure her you will help.",
+              "Stand slightly behind her. Support her chest with one hand and lean her well forward.",
+              "Give up to 5 sharp back blows with the heel of your hand right between the shoulder blades.",
+              "Standard Heimlich: Place a fist just above her navel, grasp with other hand, and pull sharply inwards and upwards.",
+              "PREGNANCY MODIFICATION: If the woman is visibly pregnant, do NOT perform abdominal thrusts. Deliver CHEST THRUSTS instead (place your fist in the center of the breastbone, between breasts, and pull straight back).",
+              "Alternate 5 back blows and 5 thrusts until the object clears.",
+              "If she loses consciousness: lower her gently to the floor, call 112, and start chest compressions immediately."
+            ],
+            "donts": [
+              "DO NOT slap her back while she is upright (it can lodge the object deeper).",
+              "DO NOT do blind finger sweeps inside the mouth.",
+              "DO NOT give water to drink while choking."
+            ],
+            "womenSpecificNote": "Chest Thrusts for Pregnant Women: If a woman is visibly pregnant, abdominal thrusts can harm the fetus and placenta. Always perform chest thrusts at the middle of the breastbone.",
+            "dispatcherScript": "Adult choking, airway obstructed, unable to speak. Performing back blows and chest/abdominal thrusts. Address: [Location]."
+          }
+        },
+        {
+          "id": "opt_heart_attack",
+          "label": "Heart Attack Warning (Chest ache, or women's signs: jaw/neck/back pain, nausea, sudden breathlessness)",
+          "description": "In women, heart attacks often present with severe fatigue, back/jaw ache, or nausea rather than only crushing chest pain.",
+          "advice": {
+            "title": "Suspected Heart Attack in Women (Atypical & Classic Presentation)",
+            "conditionType": "heart_attack",
+            "actionBadge": "Urgent Medical Emergency",
+            "description": "A heart attack occurs when blood supply to heart muscle is blocked. The person is CONSCIOUS. Women often experience atypical warning signs that are dangerously dismissed as acid reflux, gas, or anxiety.",
+            "isSafeState": false,
+            "points": [
+              "Recognize Women's Atypical Symptoms: Sudden extreme shortness of breath, unexplained profound exhaustion, nausea/vomiting, lightheadedness, and pain radiating to the jaw, neck, shoulder blades, or upper stomach.",
+              "Call 112 immediately. State: 'Suspected heart attack with atypical symptoms'.",
+              "Help her sit down comfortably on the floor, leaning back against a wall with knees bent (relieves strain on the heart).",
+              "Loosen tight clothing around her neck, chest, and waist.",
+              "If she has prescribed heart medicine (e.g., Sorbitrate or Nitroglycerin), help her take it.",
+              "If not allergic and not advised against it, ask if she has Aspirin (300 mg to chew slowly).",
+              "Keep her calm and quiet. If she suddenly loses consciousness and stops breathing, start CPR immediately."
+            ],
+            "donts": [
+              "DO NOT dismiss symptoms as 'just anxiety', 'indigestion', or 'gas'.",
+              "DO NOT let her walk, drive, or exert physical effort.",
+              "DO NOT give food or drink other than emergency aspirin."
+            ],
+            "womenSpecificNote": "Cardiovascular Health Fact: Heart disease is the leading cause of death in women globally. Women are 50% more likely than men to receive an initial misdiagnosis because their symptoms (back pain, extreme fatigue, nausea) differ from the classic male 'chest clutch'. Never ignore these signs.",
+            "dispatcherScript": "Suspected acute heart attack with atypical presentation (jaw/back ache, shortness of breath, nausea). Patient is conscious and seated. Address: [Location]."
+          }
+        },
+        {
+          "id": "opt_stroke",
+          "label": "Face drooping, one arm weak, or slurred / garbled speech",
+          "description": "Sudden onset of neurological symptoms (F.A.S.T. signs).",
+          "advice": {
+            "title": "Suspected Stroke (F.A.S.T. Assessment)",
+            "conditionType": "stroke",
+            "actionBadge": "Time-Critical Brain Emergency",
+            "description": "A stroke occurs when blood flow to brain tissue is interrupted. Every minute saved preserves brain cells ('Time is Brain').",
+            "isSafeState": false,
+            "points": [
+              "Perform the F.A.S.T. check right now:",
+              "F — Face: Ask her to smile. Does one side of the mouth or face droop?",
+              "A — Arms: Ask her to raise both arms. Does one arm drift downward or feel numb?",
+              "S — Speech: Ask her to repeat a simple sentence. Is speech slurred or strange?",
+              "T — Time: Call 112 immediately. Note the EXACT time symptoms began (vital for hospital clot-busting medication).",
+              "Keep her resting comfortably on her side (left side if pregnant) with head slightly propped up."
+            ],
+            "donts": [
+              "DO NOT give Aspirin (if the stroke is caused by bleeding in the brain, aspirin can be fatal).",
+              "DO NOT give food, water, or medicine (swallowing muscles may be impaired, causing choking).",
+              "DO NOT wait to see if symptoms go away; brain damage progresses rapidly."
+            ],
+            "womenSpecificNote": "Stroke in Women: Women face unique stroke risks, including high blood pressure during pregnancy (preeclampsia), hormonal contraceptive use, and migraine with aura. Women are also more likely to present with sudden confusion or general weakness.",
+            "dispatcherScript": "Suspected acute stroke. F.A.S.T. positive with facial droop and speech difficulty. First noticed at [Exact Time]. Address: [Location]."
+          }
+        },
+        {
+          "id": "opt_fainting",
+          "label": "Fainted / Dizzy / Pale, but waking back up (Vasovagal Syncope)",
+          "description": "Common during menstruation, anemia, sudden standing, heat, or early pregnancy.",
+          "advice": {
+            "title": "Fainting / Syncope (Temporary Blackout)",
+            "conditionType": "fainting",
+            "actionBadge": "First Aid & Recovery",
+            "description": "Fainting is a temporary drop in blood flow to the brain, commonly triggered by dehydration, anemia, postural changes, emotional stress, or early pregnancy.",
+            "isSafeState": true,
+            "points": [
+              "Keep her lying flat on her back on a cool, safe surface (or on her left side if visibly pregnant).",
+              "Elevate her legs 12 inches (30 cm) above heart level (propped on a bag or chair) to encourage blood flow back to the brain.",
+              "Loosen restrictive collars, waistbands, or tight clothing.",
+              "Ensure plenty of fresh air (ask crowds to step back to give her privacy).",
+              "Once fully alert, allow her to sit up slowly. Give water or electrolyte drink only when completely awake.",
+              "Call 112 if: she hit her head during the fall, does not regain consciousness within 1 minute, has chest pain, or is pregnant."
+            ],
+            "donts": [
+              "DO NOT let her stand up quickly (she will faint again).",
+              "DO NOT splash water on her face or slap her.",
+              "DO NOT put anything in her mouth while groggy."
+            ],
+            "womenSpecificNote": "Why Women Faint More Frequently: Women naturally have lower baseline blood pressure and are more prone to vasovagal syncope, especially during heavy menstrual cycles (iron deficiency anemia), dehydration, or pregnancy. Elevating the legs quickly restores blood flow to the brain.",
+            "dispatcherScript": "Person fainted, now conscious and alert. Legs elevated. [State if pregnant or head injury occurred]. Address: [Location]."
+          }
+        },
+        {
+          "id": "opt_anaphylaxis",
+          "label": "Severe allergic reaction (swollen lips/tongue, hives, wheezing)",
+          "description": "Reaction to food, medication, or insect sting.",
+          "advice": {
+            "title": "Severe Allergic Reaction (Anaphylaxis)",
+            "conditionType": "allergy",
+            "actionBadge": "Critical Airway Emergency",
+            "description": "Anaphylaxis is a severe, life-threatening allergic reaction that constricts airways and causes blood pressure to crash within minutes.",
+            "isSafeState": false,
+            "points": [
+              "Call 112 immediately. State that the person is having severe anaphylaxis.",
+              "Ask if she has an Epinephrine Auto-Injector (EpiPen). Help her locate and use it in the outer mid-thigh.",
+              "Keep her lying flat with legs raised, UNLESS breathing is difficult (if struggling to breathe, allow her to sit up slightly to ease airflow).",
+              "Stay with her. A second dose of epinephrine may be needed after 5–15 minutes if symptoms do not improve."
+            ],
+            "donts": [
+              "DO NOT make her stand or walk (sudden posture changes can cause a fatal drop in blood pressure).",
+              "DO NOT delay using an auto-injector if available."
+            ],
+            "womenSpecificNote": "Auto-Injector Safety in Pregnancy: Epinephrine is life-saving and safe to administer in severe anaphylaxis even during pregnancy, because maternal oxygenation is vital for both mother and child.",
+            "dispatcherScript": "Severe anaphylactic allergic reaction with airway swelling and breathing difficulty. [EpiPen administered / not available]. Address: [Location]."
+          }
+        }
+      ]
+    },
+    "altered_consciousness_assessment": {
+      "id": "altered_consciousness_assessment",
+      "title": "Altered State & Physical Clues",
+      "question": "What clues or symptoms do you notice about their condition?",
+      "hint": "Check for sweating, diabetes medical tags, falls or head bumps, extreme heat, or suspected toxins.",
+      "stepNumber": 2,
+      "totalSteps": 2,
+      "options": [
+        {
+          "id": "opt_diabetic_hypo",
+          "label": "Cold sweating, pale, trembling, or known diabetic",
+          "description": "May be confused, slurring words, hungry, or wearing a medical alert band.",
+          "advice": {
+            "title": "Severe Low Blood Sugar (Diabetic Hypoglycemia)",
+            "conditionType": "fainting",
+            "actionBadge": "Diabetic First Aid",
+            "description": "The person's blood sugar has dropped dangerously low. The brain is starved of glucose and emergency sugar is needed if they can swallow safely.",
+            "isSafeState": false,
+            "points": [
+              "Check swallowing ability: ONLY if she is awake enough to swallow safely without choking, immediately give 15–20g of fast-acting sugar (fruit juice, sugary soda, 4 glucose tablets, or 2 teaspoons of honey/sugar).",
+              "Wait 10–15 minutes for sugar to absorb. If she improves and becomes fully alert, follow up with a complex snack (biscuits, bread, or a normal meal).",
+              "If she is too drowsy to swallow, do NOT force anything into her mouth.",
+              "Call 112 immediately if: she cannot swallow, slips into deep unconsciousness, or shows no improvement after 10 minutes."
+            ],
+            "donts": [
+              "DO NOT force liquids or food down the throat of an unresponsive or semi-conscious person (causes fatal choking/aspiration).",
+              "DO NOT administer insulin (insulin drops blood sugar further and can be fatal in hypoglycemia)."
+            ],
+            "womenSpecificNote": "Hormonal & Gestational Factors: Women with gestational diabetes or fluctuating estrogen levels can experience rapid glucose drops. Prompt fast-acting sugar is safe and vital.",
+            "dispatcherScript": "Diabetic emergency / severe hypoglycemia with altered mental state and cold sweats. [State if sugar was given or unable to swallow]. Address: [Location]."
+          }
+        },
+        {
+          "id": "opt_head_trauma",
+          "label": "Recent fall, hit to the head, or visible head/neck injury",
+          "description": "Dazed, nausea, vomiting, confusion, or bleeding from a head bump.",
+          "advice": {
+            "title": "Head Injury & Suspected Brain Concussion",
+            "conditionType": "recovery",
+            "actionBadge": "Spinal & Trauma Caution",
+            "description": "A hard blow or fall can cause internal brain swelling or bleeding, alongside potential neck/spinal trauma.",
+            "isSafeState": false,
+            "points": [
+              "Keep their head, neck, and spine completely still. Gently hold their head on both sides to prevent twisting.",
+              "Do NOT move them unless they are in immediate physical danger (fire, traffic).",
+              "If she vomits and is lying down, roll her whole body as one single aligned unit ('log roll') onto her side while supporting head/neck straight.",
+              "Apply a cold pack wrapped in cloth gently to swelling (do not press hard on suspected skull fractures).",
+              "Call 112 immediately for any loss of consciousness, repeated vomiting, or fluid from ears/nose."
+            ],
+            "donts": [
+              "DO NOT twist, bend, or hyperextend their neck.",
+              "DO NOT remove a helmet unless breathing is blocked and you are trained.",
+              "DO NOT give Aspirin or Ibuprofen (they thin blood and worsen internal brain bleeding)."
+            ],
+            "womenSpecificNote": "Protecting the Patient: Ensure privacy if crowds are gathering. Keep her warm and reassure her calmly while waiting for medical help.",
+            "dispatcherScript": "Head injury following impact/fall. Patient has fluctuating consciousness, dizziness, and nausea. Head/neck stabilized. Address: [Location]."
+          }
+        },
+        {
+          "id": "opt_heatstroke_exhaustion",
+          "label": "Extreme heat exposure, hot dry skin, delirious or staggering",
+          "description": "High temperature, strenuous sun exposure, flushed face, incoherent speech.",
+          "advice": {
+            "title": "Heatstroke & Critical Hyperthermia",
+            "conditionType": "allergy",
+            "actionBadge": "Severe Heat Emergency",
+            "description": "Heatstroke occurs when the body can no longer regulate its internal temperature (>40°C / 104°F), risking rapid organ failure.",
+            "isSafeState": false,
+            "points": [
+              "Call 112 immediately. Inform dispatcher of suspected heatstroke.",
+              "Move her into cool shade or air conditioning right away.",
+              "Active cooling: loosen and remove heavy clothing/dupattas. Sponge skin with cool water and fan her vigorously.",
+              "Place cool wet cloths or ice packs on areas with major blood vessels: neck, armpits, and groin.",
+              "Give small sips of cool water ONLY if she is alert enough to swallow. Do NOT force fluids if she is drifting off."
+            ],
+            "donts": [
+              "DO NOT immerse an incoherent or elderly person in an ice bath (can trigger circulatory shock).",
+              "DO NOT give fever-reducing tablets like paracetamol (they are ineffective for environmental heatstroke)."
+            ],
+            "womenSpecificNote": "Heat Sensitivity: Pregnant women and women experiencing hormonal fluctuations have reduced heat dissipation efficiency and higher risk of sudden heat exhaustion.",
+            "dispatcherScript": "Suspected acute heatstroke. Patient semi-conscious and delirious with hot skin after heat exposure. Actively cooling in shade. Address: [Location]."
+          }
+        },
+        {
+          "id": "opt_intoxication_overdose",
+          "label": "Slow shallow breathing, pinpoint pupils, or suspected poisoning",
+          "description": "Vomiting risk, clammy skin, empty medicine bottles or toxins nearby.",
+          "advice": {
+            "title": "Suspected Poisoning / Overdose / Severe Intoxication",
+            "conditionType": "recovery",
+            "actionBadge": "Toxicology Emergency",
+            "description": "Toxins and central nervous system depressants slow respiration and threaten airway reflexes.",
+            "isSafeState": false,
+            "points": [
+              "Call 112 immediately. Note any medication bottles, chemical containers, or substances nearby.",
+              "If Naloxone (Narcan) is available and an opioid overdose is suspected, administer nasal spray into one nostril immediately.",
+              "Place her in the Recovery Position on her side so vomit does not choke her airway (left side if pregnant).",
+              "Monitor breathing continuously. If breathing drops below 8 breaths per minute or stops, start chest compressions immediately."
+            ],
+            "donts": [
+              "DO NOT induce vomiting (it can chemically burn the esophagus or flood the lungs).",
+              "DO NOT give coffee, lemon juice, or force them into cold showers."
+            ],
+            "womenSpecificNote": "Compassionate Emergency Care: Ensure patient dignity and privacy from onlookers. Immediate medical intervention is the only priority.",
+            "dispatcherScript": "Suspected poisoning/overdose with fluctuating consciousness. Patient placed in recovery position, breathing monitored. Address: [Location]."
+          }
+        },
+        {
+          "id": "opt_post_seizure_recovery",
+          "label": "Recently stopped shaking / slowly waking from a seizure",
+          "description": "Exhausted, confused, groggy, snoring breathing (post-ictal state).",
+          "advice": {
+            "title": "Post-Seizure Recovery Phase (Post-Ictal State)",
+            "conditionType": "seizure",
+            "actionBadge": "Post-Seizure Care",
+            "description": "After a seizure, the brain takes 5 to 30 minutes to reset. Groggy responses, deep breathing, and temporary confusion are normal.",
+            "isSafeState": true,
+            "points": [
+              "Keep her resting on her side in the Recovery Position (left side if pregnant).",
+              "Reassure her gently as awareness returns: 'You had a seizure, you are safe, I am here with you.'",
+              "Allow her to rest quietly without crowds or bright lights.",
+              "Check that she is breathing freely and stay until she is fully oriented (knows who and where she is).",
+              "Call 112 if she enters another seizure without regaining consciousness, or remains deeply confused > 30 minutes."
+            ],
+            "donts": [
+              "DO NOT leave her unattended while still sleepy or unsteady.",
+              "DO NOT give food, drink, or oral medication until speech and swallowing are completely normal."
+            ],
+            "womenSpecificNote": "Catamenial & Hormonal Seizures: Many women with epilepsy experience seizure clusters linked to menstrual cycle hormonal shifts (catamenial epilepsy). Provide calm reassurance and privacy.",
+            "dispatcherScript": "Patient in post-ictal recovery after an observed seizure. Conscious but groggy. Resting in recovery position. Address: [Location]."
+          }
         }
       ]
     }
