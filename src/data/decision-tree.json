@@ -1,0 +1,83 @@
+{
+  "initialNodeId": "responsiveness",
+  "nodes": {
+    "responsiveness": {
+      "id": "responsiveness",
+      "title": "Responsiveness Check",
+      "question": "Does the person respond when you firmly tap their shoulders and shout?",
+      "hint": "Firmly tap both shoulders and ask loudly: 'Are you okay? Can you hear me?'",
+      "stepNumber": 1,
+      "totalSteps": 2,
+      "options": [
+        {
+          "id": "responsive_yes",
+          "label": "Yes, they respond or move",
+          "description": "The person talks, groans, blinks, or moves intentionally.",
+          "advice": {
+            "title": "Stay With Them & Keep Monitoring",
+            "actionBadge": "No CPR Needed Right Now",
+            "description": "The person is responsive. Keep them calm and comfortable while ensuring professional help is en route.",
+            "isSafeState": true,
+            "points": [
+              "Call 112 immediately if they are in pain, confused, or had a sudden collapse.",
+              "Do not leave the person unattended.",
+              "Help them into a comfortable position (usually sitting or lying down comfortably).",
+              "Check their breathing continuously. If they stop responding at any moment, start CPR immediately."
+            ]
+          }
+        },
+        {
+          "id": "responsive_no",
+          "label": "No, they are completely unresponsive",
+          "description": "No eye opening, no sound, no movement whatsoever.",
+          "nextNodeId": "breathing"
+        },
+        {
+          "id": "responsive_unsure",
+          "label": "Not sure / Weak response",
+          "description": "They are barely reacting, limp, or you cannot tell clearly.",
+          "nextNodeId": "breathing"
+        }
+      ]
+    },
+    "breathing": {
+      "id": "breathing",
+      "title": "Breathing Check",
+      "question": "Are they breathing normally? (Watch chest, listen, and feel)",
+      "hint": "Look for normal, rhythmic chest rise. Gasping, snoring, or irregular choking sounds (agonal breathing) is NOT normal breathing.",
+      "stepNumber": 2,
+      "totalSteps": 2,
+      "options": [
+        {
+          "id": "breathing_normal",
+          "label": "Yes, breathing normally and continuously",
+          "description": "Chest rises and falls smoothly and regularly at a normal pace.",
+          "advice": {
+            "title": "Place in Recovery Position & Monitor Airway",
+            "actionBadge": "Maintain Open Airway",
+            "description": "Since they are breathing normally, maintain their airway and watch them closely.",
+            "isSafeState": true,
+            "points": [
+              "Roll them gently onto their side into the Recovery Position so their airway stays clear.",
+              "Tilt the chin up slightly to prevent tongue obstruction.",
+              "Call 112 if not already done, and report their condition.",
+              "Keep checking breathing every 30 seconds. If breathing stops or turns into gasping, start CPR immediately."
+            ]
+          }
+        },
+        {
+          "id": "breathing_abnormal",
+          "label": "No breath, or only irregular gasping / choking sounds",
+          "description": "Agonal gasps are a sign of cardiac arrest. Compressions are needed immediately.",
+          "isEmergencyRedirect": true
+        },
+        {
+          "id": "breathing_unsure",
+          "label": "Not sure / Cannot feel normal breath",
+          "description": "When in doubt during an emergency, clinical guidelines recommend starting CPR without delay.",
+          "isEmergencyRedirect": true
+        }
+      ]
+    }
+  }
+}

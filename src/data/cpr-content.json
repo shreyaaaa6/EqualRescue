@@ -1,0 +1,57 @@
+{
+  "general": {
+    "targetBpm": 110,
+    "bpmRange": "100–120",
+    "compressionDepth": "At least 2 inches (5 cm), no more than 2.4 inches (6 cm)",
+    "recoilAdvice": "Allow full chest recoil between every push; avoid leaning on the chest.",
+    "ratioHandsOnly": "Continuous uninterrupted chest compressions (no mouth-to-mouth required for untrained bystanders)."
+  },
+  "steps": [
+    {
+      "step": 1,
+      "title": "Hand Placement Between the Breasts",
+      "keyAction": "Center of the chest, interlock fingers",
+      "illustrationKey": "placement",
+      "description": "Place the heel of one hand in the center of the breastbone (between the breasts / nipple line). Place your other hand on top and interlock fingers.",
+      "detailPoints": [
+        "Position yourself directly over the victim's chest with arms straight and elbows locked.",
+        "Push strictly on the breastbone (sternum). CPR on a woman is anatomically identical to CPR on a man.",
+        "Do not hesitate due to modesty or fear of touching the chest—you are saving a life."
+      ]
+    },
+    {
+      "step": 2,
+      "title": "Push Hard and Fast to the Beat",
+      "keyAction": "Push down 2 inches (5 cm) at 110 BPM",
+      "illustrationKey": "push",
+      "description": "Push hard and fast straight down. Match your compression tempo to the 110 BPM metronome beeps.",
+      "detailPoints": [
+        "Depth: Push down firmly at least 2 inches (5 cm).",
+        "Use your upper body weight, pivoting at your hips, to avoid arm fatigue.",
+        "Allow complete chest recoil between each compression so the heart can refill with blood."
+      ]
+    },
+    {
+      "step": 3,
+      "title": "Keep Going Until Help or AED Arrives",
+      "keyAction": "Continuous uninterrupted compressions",
+      "illustrationKey": "recoil",
+      "description": "Do not stop compressions unless the victim starts clearly moving, breathing normally, or emergency personnel take over.",
+      "detailPoints": [
+        "If another bystander is present, switch rescuers every 2 minutes without stopping compressions for more than 5 seconds.",
+        "When an AED arrives, turn it on immediately and follow its loud voice prompts.",
+        "If AED prompts you to apply pads, expose chest, attach pads as shown on AED diagrams, and follow spoken commands."
+      ]
+    }
+  ],
+  "aedInstructions": {
+    "title": "Automated External Defibrillator (AED)",
+    "alertMessage": "Send someone to fetch an AED immediately. Do not leave the victim alone if you are the sole rescuer.",
+    "steps": [
+      "Turn on the AED unit as soon as it arrives.",
+      "Follow the voice instructions. Peel off backing and stick pads onto bare chest as pictured.",
+      "Stand clear when the AED analyzes rhythm or delivers a shock.",
+      "Resume chest compressions immediately after shock or if advised 'no shock needed'."
+    ]
+  }
+}
