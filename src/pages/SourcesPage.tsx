@@ -74,7 +74,7 @@ export const SourcesPage: React.FC = () => {
       <header className="sources-header">
         <h1 className="sources-title">Clinical Sources & Safety</h1>
         <p className="sources-sub">
-          EqualRescue is an educational emergency guidance prototype anchored in peer-reviewed resuscitation science and statutory Good Samaritan frameworks.
+          PulseHer is an educational emergency guidance prototype anchored in peer-reviewed resuscitation science and statutory Good Samaritan frameworks.
         </p>
       </header>
 

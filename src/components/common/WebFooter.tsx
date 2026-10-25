@@ -6,7 +6,7 @@ export const WebFooter: React.FC = () => {
     <footer className="site-footer-calm" role="contentinfo">
       <div className="footer-inner">
         <p className="footer-meta-text">
-          <strong>EqualRescue</strong> is an educational emergency guidance prototype designed to eliminate bystander hesitation and close the CPR gender survival gap. Always call 112 immediately in life-threatening emergencies and follow dispatcher instructions.
+          <strong>PulseHer</strong> is an educational emergency guidance prototype designed to eliminate bystander hesitation and close the CPR gender survival gap. Always call 112 immediately in life-threatening emergencies and follow dispatcher instructions.
         </p>
 
         <nav className="footer-nav-row" aria-label="Footer Navigation">
@@ -18,7 +18,7 @@ export const WebFooter: React.FC = () => {
         </nav>
 
         <p className="footer-meta-text" style={{ color: 'var(--text-tertiary)' }}>
-          © 2026 EqualRescue. Aligned with AHA 2020 Adult BLS standards & India Good Samaritan legal frameworks.
+          © 2026 PulseHer. Aligned with AHA 2020 Adult BLS standards & India Good Samaritan legal frameworks.
         </p>
       </div>
     </footer>

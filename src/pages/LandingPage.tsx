@@ -38,6 +38,23 @@ export const LandingPage: React.FC = () => {
             <ArrowRight size={20} strokeWidth={2} />
           </div>
         </Link>
+
+        {/* Educational Door: Learn */}
+        <Link to="/learn" className="door-card-learn" id="door-learn-btn" aria-label="Learn how to perform CPR on women with confidence">
+          <div className="door-content">
+            <div className="door-title-row">
+              <span className="door-tag-badge">Advance Preparation</span>
+              <h2>Learn</h2>
+            </div>
+            <p>Learn how to perform CPR on women with confidence.</p>
+          </div>
+          <div className="door-cta-badge">
+            <span className="door-cta-label">Start Learning</span>
+            <div className="door-arrow-circle" aria-hidden="true">
+              <ArrowRight size={18} strokeWidth={2.5} />
+            </div>
+          </div>
+        </Link>
       </section>
 
       {/* Why Bystander CPR is Delayed for Women Card Section */}
@@ -85,12 +102,11 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* One single line of reassurance and quiet link to Learn */}
+      {/* One single line of reassurance */}
       <div className="landing-reassurance-row">
         <ShieldCheck size={18} strokeWidth={2} className="flex-shrink-0" style={{ color: 'var(--brand-plum)' }} />
         <p>
-          Push through clothing in the center of the breastbone. Good Samaritan laws provide full legal protection.{' '}
-          <Link to="/learn">Learn why hesitation happens &rarr;</Link>
+          Push through clothing in the center of the breastbone. Good Samaritan laws provide full legal protection.
         </p>
       </div>
     </div>

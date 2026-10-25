@@ -15,13 +15,13 @@ export const EmergencyCallBar: React.FC = () => {
   };
 
   return (
-    <aside className="emergency-call-bar" aria-label="EqualRescue Header">
+    <aside className="emergency-call-bar" aria-label="PulseHer Header">
       <div className="emergency-call-content">
-        <Link to="/" className="emergency-call-brand" title="EqualRescue Home">
+        <Link to="/" className="emergency-call-brand" title="PulseHer Home">
           <div className="logo-badge">
             <HeartPulse size={18} strokeWidth={2.5} />
           </div>
-          <span className="brand-text">Equal<span>Rescue</span></span>
+          <span className="brand-text">Pulse<span>Her</span></span>
         </Link>
 
         <div className="emergency-call-actions">

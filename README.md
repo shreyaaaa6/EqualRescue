@@ -1,8 +1,8 @@
-# EqualRescue
+# PulseHer
 
 > **Clear steps. Faster action. CPR guidance with women in mind.**
 
-EqualRescue is a lightweight, login-free, women-centred emergency guidance website and Progressive Web App (PWA) designed to eliminate bystander hesitation during an adult cardiac arrest and help close the bystander CPR gender gap.
+PulseHer is a lightweight, login-free, women-centred emergency guidance website and Progressive Web App (PWA) designed to eliminate bystander hesitation during an adult cardiac arrest and help close the bystander CPR gender gap.
 
 ---
 
@@ -72,4 +72,4 @@ npm run build
 
 ## ⚠️ Safety Disclaimer
 
-EqualRescue is an educational guidance prototype, not a clinical protocol or diagnostic tool. It does not replace emergency dispatchers, certified CPR training, or an Automated External Defibrillator (AED). In any real emergency, always call **112** immediately and follow the dispatcher's instructions.
+PulseHer is an educational guidance prototype, not a clinical protocol or diagnostic tool. It does not replace emergency dispatchers, certified CPR training, or an Automated External Defibrillator (AED). In any real emergency, always call **112** immediately and follow the dispatcher's instructions.
