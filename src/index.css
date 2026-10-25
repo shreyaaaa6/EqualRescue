@@ -1,40 +1,96 @@
+/* ============================================================
+   EQUALRESCUE DESIGN SYSTEM: "CALM AUTHORITY"
+   Two Modes: Calm Mode (Home, Learn, Sources) & Emergency Mode (Decide, CPR)
+   ============================================================ */
+
 :root {
-  /* Color Palette - Emergency & Women-Centred Reassurance */
-  --color-emergency: #dc2626;
-  --color-emergency-hover: #b91c1c;
-  --color-emergency-bg: #fef2f2;
-  
-  --color-primary: #9f1239;
-  --color-primary-light: #e11d48;
-  --color-primary-soft: #ffe4e6;
-  --color-primary-bg: #fff1f2;
+  /* Surface & Backgrounds (Calm Mode) */
+  --bg-calm: #faf9f6;            /* Warm off-white, editorial feel */
+  --bg-surface: #ffffff;         /* Crisp card background */
+  --bg-subtle: #f4f1ea;          /* Light warm neutral surface */
+  --border-subtle: #e7e3da;      /* Soft borders */
+  --border-strong: #d3ccc0;      /* Clear visible boundaries */
+  --border-focus: #18181b;       /* High-contrast accessible focus ring */
 
-  --color-amber: #d97706;
-  --color-amber-bg: #fef3c7;
-  
-  --color-slate-900: #0f172a;
-  --color-slate-800: #1e293b;
-  --color-slate-700: #334155;
-  --color-slate-600: #475569;
-  --color-slate-500: #64748b;
-  --color-slate-200: #e2e8f0;
-  --color-slate-100: #f1f5f9;
-  --color-slate-50: #f8fafc;
-  
-  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-family-display: 'Outfit', 'Inter', -apple-system, sans-serif;
+  /* Text & Inks (WCAG AAA compliant: > 7:1 contrast on calm backgrounds) */
+  --text-primary: #18181b;       /* Deep zinc / ink */
+  --text-secondary: #444a54;     /* Muted readable body (7.4:1 on #faf9f6) */
+  --text-tertiary: #646b77;      /* Metadata & captions */
 
+  /* Brand Palette (Plum / Deep Rose) */
+  --brand-plum: #701a35;         /* Deep plum brand color */
+  --brand-plum-hover: #541327;
+  --brand-plum-subtle: #fcf2f4;  /* Ultra-soft brand tint */
+  --brand-plum-border: #f8d0d8;
+
+  /* ONE Urgent Accent (Rescue Coral-Red) */
+  /* Used ONLY for urgent actions (Call 112, Start CPR) and critical Don'ts */
+  --urgent-red: #dc2626;
+  --urgent-red-hover: #b91c1c;
+  --urgent-red-subtle: #fef2f2;
+  --urgent-red-border: #fca5a5;
+  --urgent-red-text: #991b1b;
+
+  /* Emergency Dark Mode (CPR Screen) */
+  --bg-dark: #07090e;            /* Deep dark emergency void */
+  --surface-dark: #111622;       /* Elevated dark container */
+  --surface-dark-elevated: #1a2133;
+  --border-dark: #232c42;
+  --text-dark: #f8fafc;          /* Bright readable white */
+  --text-dark-muted: #94a3b8;    /* Muted dark text */
+
+  /* Auxiliary */
+  --success-green: #15803d;
+  --success-subtle: #f0fdf4;
+  --success-border: #bbf7d0;
+
+  --amber-warning: #b45309;
+  --amber-subtle: #fffbeb;
+  --amber-border: #fde68a;
+
+  /* Typography Scale */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.25rem;    /* 36px */
+  --text-5xl: 3rem;       /* 48px */
+  --text-timer: 4rem;     /* 64px tabular */
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+
+  /* Radii */
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-full: 9999px;
 
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-emergency: 0 4px 20px -2px rgba(220, 38, 38, 0.4);
+  /* Touch Target & Shadows */
+  --touch-min: 56px;
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-card: 0 4px 16px -2px rgba(24, 24, 27, 0.06), 0 2px 6px -1px rgba(24, 24, 27, 0.03);
+  --shadow-urgent: 0 6px 20px -2px rgba(220, 38, 38, 0.35);
 }
+
+/* ============================================================
+   BASE RESET & ACCESSIBILITY
+   ============================================================ */
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -42,16 +98,36 @@
   padding: 0;
 }
 
-body {
-  font-family: var(--font-family-sans);
-  background-color: var(--color-slate-50);
-  color: var(--color-slate-800);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
+html, body {
+  min-height: 100%;
 }
 
-/* App Shell Layout */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-calm);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 3px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+button, a, input {
+  font-family: inherit;
+}
+
+/* Tabular numerals for high-precision timers */
+.tabular-timer {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+}
+
+/* App Shell */
 .app-shell {
   display: flex;
   flex-direction: column;
@@ -62,22 +138,33 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 1rem 3rem 1rem;
-  max-width: 900px;
+  padding: var(--space-6) var(--space-4) var(--space-12) var(--space-4);
+  max-width: 720px;
   width: 100%;
   margin: 0 auto;
 }
 
-/* Emergency Call Bar (Sticky Top) */
+/* Expansive layout for CPR 2-column tutorial */
+.main-content:has(.cpr-unified-page-container) {
+  max-width: 1200px;
+}
+
+/* ============================================================
+   SLIM TOP HEADER & EMERGENCY CALL 112
+   ============================================================ */
+
 .emergency-call-bar {
-  background-color: var(--color-slate-900);
-  color: white;
-  padding: 0.5rem 1rem;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--shadow-md);
-  border-bottom: 2px solid var(--color-emergency);
+  padding: var(--space-3) var(--space-4);
+}
+
+.app-shell.cpr-mode-active .emergency-call-bar {
+  background-color: var(--surface-dark);
+  border-bottom-color: var(--border-dark);
 }
 
 .emergency-call-content {
@@ -86,2916 +173,1804 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: var(--space-4);
 }
 
 .emergency-call-brand {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: var(--space-2);
   text-decoration: none;
 }
 
-.logo-icon-sm {
-  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+.logo-badge {
   width: 32px;
   height: 32px;
   border-radius: var(--radius-sm);
+  background-color: var(--brand-plum);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(225, 29, 72, 0.4);
+  color: white;
+  flex-shrink: 0;
 }
 
-.brand-name-top {
-  font-family: var(--font-family-display);
-  font-size: 1.25rem;
+.brand-text {
+  font-family: var(--font-sans);
   font-weight: 800;
-  color: white;
+  font-size: var(--text-lg);
+  color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 
-.brand-name-top span {
+.app-shell.cpr-mode-active .brand-text {
+  color: var(--text-dark);
+}
+
+.brand-text span {
+  color: var(--brand-plum);
+}
+
+.app-shell.cpr-mode-active .brand-text span {
   color: #fda4af;
 }
 
+/* Urgent 112 Call Button */
 .emergency-call-actions {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
-.btn-call-112 {
+.btn-call-112-urgent {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background-color: var(--color-emergency);
+  gap: var(--space-2);
+  background-color: var(--urgent-red);
   color: white;
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.9375rem;
-  padding: 0.4rem 1rem;
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-emergency);
-  transition: all 0.2s ease;
+  min-height: 40px;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
+  transition: background-color 0.15s ease, transform 0.15s ease;
 }
 
-.btn-call-112:hover {
-  background-color: var(--color-emergency-hover);
+.btn-call-112-urgent:hover {
+  background-color: var(--urgent-red-hover);
   transform: translateY(-1px);
 }
 
-.btn-copy-number {
+.btn-copy-112 {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  background-color: var(--color-slate-800);
-  color: var(--color-slate-200);
-  border: 1px solid var(--color-slate-700);
-  padding: 0.35rem 0.65rem;
+  gap: var(--space-1);
+  background-color: var(--bg-subtle);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-sm);
-  font-size: 0.8125rem;
+  font-size: var(--text-xs);
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  min-height: 40px;
+  transition: all 0.15s ease;
 }
 
-.btn-copy-number:hover {
-  background-color: var(--color-slate-700);
-  color: white;
+.app-shell.cpr-mode-active .btn-copy-112 {
+  background-color: var(--surface-dark-elevated);
+  border-color: var(--border-dark);
+  color: var(--text-dark-muted);
 }
 
-/* Web Navbar */
-.web-navbar {
-  background-color: white;
-  border-bottom: 1px solid var(--color-slate-200);
-  padding: 0.75rem 1rem;
+.btn-copy-112:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
 }
 
-.navbar-content {
+/* ============================================================
+   DISMISSIBLE FIRST-LOAD ADVISORY
+   ============================================================ */
+
+.advisory-banner {
+  background-color: var(--brand-plum-subtle);
+  border-bottom: 1px solid var(--brand-plum-border);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--brand-plum);
+}
+
+.advisory-content {
   max-width: 900px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-3);
 }
 
-.brand-logo {
+.advisory-text {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
+  gap: var(--space-2);
+  line-height: 1.4;
 }
 
-.logo-icon {
-  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
-  width: 36px;
-  height: 36px;
+.btn-dismiss-advisory {
+  background: none;
+  border: none;
+  color: var(--brand-plum);
+  cursor: pointer;
+  padding: var(--space-1);
   border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.15s;
 }
 
-.brand-name {
-  font-family: var(--font-family-display);
-  font-size: 1.25rem;
+.btn-dismiss-advisory:hover {
+  opacity: 1;
+}
+
+/* ============================================================
+   CALM MODE: LANDING PAGE (/)
+   ============================================================ */
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-top: var(--space-4);
+}
+
+.hero-editorial {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.hero-headline {
+  font-size: var(--text-3xl);
   font-weight: 800;
-  color: var(--color-slate-900);
-  letter-spacing: -0.02em;
-}
-
-.brand-name span {
-  color: var(--color-primary);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.nav-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-slate-600);
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-sm);
-  transition: all 0.15s;
-}
-
-.nav-link:hover, .nav-link.active {
-  color: var(--color-primary);
-  background-color: var(--color-primary-bg);
-}
-
-.nav-link-cpr {
-  font-weight: 600;
-  color: var(--color-primary);
-}
-
-/* Safety Banner */
-.safety-disclaimer-banner {
-  background-color: var(--color-primary-bg);
-  border-bottom: 1px solid var(--color-primary-soft);
-  padding: 0.4rem 1rem;
-  font-size: 0.75rem;
-  color: var(--color-primary);
-  text-align: center;
-}
-
-.safety-content {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-}
-
-/* Page Containers */
-.page-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  width: 100%;
-}
-
-/* Hero Section */
-.hero-section {
-  text-align: center;
-  padding: 1.5rem 0 0.5rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.badge-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background-color: var(--color-primary-soft);
-  color: var(--color-primary);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-full);
-}
-
-.hero-title {
-  font-family: var(--font-family-display);
-  font-size: 2.25rem;
   line-height: 1.15;
-  font-weight: 800;
-  color: var(--color-slate-900);
   letter-spacing: -0.03em;
+  color: var(--text-primary);
 }
 
-.hero-accent {
-  color: var(--color-primary);
-}
-
-.hero-subtitle {
-  font-size: 1.0625rem;
-  color: var(--color-slate-600);
+.hero-support {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: 1.5;
   max-width: 580px;
 }
 
 /* The Two Front Doors Grid */
-.doors-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  margin-top: 0.5rem;
-}
-
-@media (min-width: 640px) {
-  .doors-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.action-card {
+.doors-stack {
   display: flex;
   flex-direction: column;
-  text-decoration: none;
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 1.75rem 1.5rem;
-  border: 2px solid var(--color-slate-200);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
+  gap: var(--space-4);
 }
 
-.action-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.card-decide:hover {
-  border-color: #f59e0b;
-}
-
-.card-cpr {
-  border-color: #fecdd3;
-  background: linear-gradient(180deg, #ffffff 0%, var(--color-primary-bg) 100%);
-}
-
-.card-cpr:hover {
-  border-color: var(--color-primary-light);
-  box-shadow: var(--shadow-emergency);
-}
-
-.card-header {
+/* Primary Dominant Door: Start CPR Now */
+.door-card-primary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.icon-wrapper {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.urgency-tag {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-full);
-  background-color: var(--color-slate-100);
-  color: var(--color-slate-600);
-}
-
-.tag-emergency {
-  background-color: #fee2e2;
-  color: #b91c1c;
-}
-
-.card-title {
-  font-family: var(--font-family-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-  margin-bottom: 0.5rem;
-}
-
-.card-description {
-  font-size: 0.9375rem;
-  color: var(--color-slate-600);
-  margin-bottom: 1.5rem;
-  flex: 1;
-}
-
-.card-action-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  font-size: 0.9375rem;
-  color: var(--color-slate-900);
-}
-
-.card-cpr .card-action-link {
-  color: var(--color-primary);
-}
-
-/* Reassurance Strip (Horizontal Awareness Grid) */
-.reassurance-strip {
-  background: white;
-  border: 1px solid var(--color-slate-200);
-  border-radius: var(--radius-xl);
-  padding: 1.75rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  box-shadow: var(--shadow-sm);
-  margin-top: 1.5rem;
-}
-
-.reassurance-header-row {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-}
-
-.reassurance-header-row h3 {
-  font-family: var(--font-family-display);
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--color-slate-900);
-  margin: 0;
-}
-
-.awareness-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.15rem;
-}
-
-@media (max-width: 860px) {
-  .awareness-cards-grid {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-  }
-}
-
-.reassurance-item {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 0.9rem;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: var(--radius-lg);
-  padding: 1.15rem 1.25rem;
-  transition: all 0.15s ease;
-}
-
-.reassurance-item:hover {
-  border-color: #cbd5e1;
-  background: #ffffff;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
-}
-
-.reassurance-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-md);
-  background: #ffe4e6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.reassurance-item strong {
-  display: block;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-  margin-bottom: 0.35rem;
-  line-height: 1.3;
-}
-
-.reassurance-item p {
-  font-size: 0.84rem;
-  color: var(--color-slate-600);
-  line-height: 1.45;
-  margin: 0;
-}
-
-/* Common Card Box & Questions */
-.card-box {
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 2rem 1.75rem;
-  border: 1px solid var(--color-slate-200);
-  box-shadow: var(--shadow-sm);
-}
-
-.step-indicator {
-  display: inline-block;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
-}
-
-.question-title {
-  font-family: var(--font-family-display);
-  font-size: 1.625rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-  line-height: 1.25;
-  margin-bottom: 0.5rem;
-}
-
-.question-hint {
-  font-size: 0.9375rem;
-  color: var(--color-slate-600);
-  margin-bottom: 1.75rem;
-}
-
-.options-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-}
-
-.option-button {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.75rem;
-  padding: 1.125rem 1.25rem;
-  border-radius: var(--radius-md);
-  border: 2px solid var(--color-slate-200);
-  background: white;
-  font-size: 1.0625rem;
-  font-weight: 600;
-  color: var(--color-slate-800);
-  cursor: pointer;
-  transition: all 0.15s ease;
-  text-align: left;
-}
-
-.option-button:hover {
-  border-color: var(--color-primary);
-  background-color: var(--color-primary-bg);
-  transform: translateX(3px);
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
   text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-slate-600);
-  transition: color 0.15s;
-}
-
-.back-link:hover {
-  color: var(--color-primary);
-}
-
-/* CPR Page Styles */
-.aed-banner {
-  background: #fef3c7;
-  border: 1px solid #fde68a;
-  border-radius: var(--radius-md);
-  padding: 1rem 1.25rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  color: #92400e;
-  font-size: 0.875rem;
-}
-
-.aed-banner strong {
-  display: block;
-  font-size: 0.9375rem;
-  margin-bottom: 0.15rem;
-}
-
-.cpr-main-panel {
-  background: white;
+  background-color: var(--urgent-red);
+  color: white;
+  padding: var(--space-6) var(--space-5);
   border-radius: var(--radius-xl);
-  padding: 2.25rem 1.5rem;
-  border: 1px solid var(--color-slate-200);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.75rem;
+  min-height: 100px;
+  box-shadow: var(--shadow-urgent);
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.timer-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.timer-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--color-slate-500);
-  letter-spacing: 0.05em;
-}
-
-.timer-digits {
-  font-family: var(--font-family-display);
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--color-slate-900);
-  line-height: 1;
-}
-
-.beat-circle-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.beat-circle {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-emergency);
-  position: relative;
-}
-
-.bpm-number {
-  font-family: var(--font-family-display);
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.bpm-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  opacity: 0.9;
-}
-
-.btn-primary-action {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--color-primary);
-  color: white;
-  border: none;
-  font-size: 1.0625rem;
-  font-weight: 700;
-  padding: 0.875rem 1.75rem;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  box-shadow: var(--shadow-emergency);
-  transition: all 0.2s ease;
-}
-
-.btn-primary-action:hover {
-  background-color: var(--color-primary-light);
+.door-card-primary:hover {
+  background-color: var(--urgent-red-hover);
   transform: translateY(-2px);
 }
 
-.cpr-instructions-summary {
-  width: 100%;
-  max-width: 500px;
-  text-align: left;
-  background: var(--color-slate-50);
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
-}
-
-.cpr-instructions-summary h3 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: var(--color-slate-900);
-}
-
-.cpr-instructions-summary ol {
-  padding-left: 1.25rem;
-  font-size: 0.875rem;
-  color: var(--color-slate-700);
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-/* Learn & Sources Pages */
-.section-heading {
-  text-align: left;
-  margin-bottom: 0.5rem;
-}
-
-.page-title {
-  font-family: var(--font-family-display);
-  font-size: 2rem;
+.door-card-primary .door-content h2 {
+  font-size: var(--text-2xl);
   font-weight: 800;
-  color: var(--color-slate-900);
-  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-1);
 }
 
-.page-subtitle {
-  font-size: 1rem;
-  color: var(--color-slate-600);
+.door-card-primary .door-content p {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.35;
 }
 
-.video-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-slate-200);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-
-.video-placeholder {
-  aspect-ratio: 16 / 9;
-  background-color: var(--color-slate-100);
+.door-card-primary .door-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: rgba(255, 255, 255, 0.18);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  text-align: center;
+  flex-shrink: 0;
 }
 
-.faq-section {
+/* Secondary Door: Help Me Decide */
+.door-card-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-strong);
+  padding: var(--space-5) var(--space-5);
+  border-radius: var(--radius-xl);
+  min-height: 88px;
+  box-shadow: var(--shadow-subtle);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.door-card-secondary:hover {
+  border-color: var(--brand-plum);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.door-card-secondary .door-content h2 {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-1);
+  color: var(--text-primary);
+}
+
+.door-card-secondary .door-content p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.door-card-secondary .door-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+/* Deduplicated Reassurance Line on Landing */
+.landing-reassurance-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.landing-reassurance-row a {
+  color: var(--brand-plum);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.landing-reassurance-row a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   EMERGENCY MODE: DECIDE SCREEN (/decide)
+   ============================================================ */
+
+.decide-screen {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-6);
 }
 
-.faq-section h2, .sources-list h2 {
-  font-family: var(--font-family-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-}
-
-.faq-item {
-  background: white;
-  border: 1px solid var(--color-slate-200);
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
+.decide-top-nav {
   display: flex;
-  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.faq-icon {
-  color: var(--color-primary);
-  flex-shrink: 0;
-  margin-top: 0.15rem;
-}
-
-.faq-item h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-  margin-bottom: 0.25rem;
-}
-
-.faq-item p {
-  font-size: 0.875rem;
-  color: var(--color-slate-600);
-}
-
-.notice-box {
-  background: var(--color-amber-bg);
-  border: 1px solid #fde68a;
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
-  display: flex;
-  gap: 0.75rem;
-  color: #92400e;
-  font-size: 0.875rem;
-}
-
-.source-card {
-  background: white;
-  border: 1px solid var(--color-slate-200);
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
-}
-
-.source-details h3 {
-  font-size: 1rem;
-  color: var(--color-slate-900);
-  margin-bottom: 0.2rem;
-}
-
-.source-details p {
-  font-size: 0.875rem;
-  color: var(--color-slate-600);
-  margin-bottom: 0.5rem;
-}
-
-.source-link {
+.btn-back-clean {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-  color: var(--color-primary);
+  gap: var(--space-2);
+  background: none;
+  border: none;
+  font-size: var(--text-sm);
   font-weight: 600;
-  font-size: 0.8125rem;
-  text-decoration: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: var(--space-2) var(--space-1);
 }
 
-/* Footer */
-.web-footer {
-  background: white;
-  border-top: 1px solid var(--color-slate-200);
-  padding: 2.5rem 1rem 1.5rem 1rem;
+.btn-back-clean:hover {
+  color: var(--text-primary);
+}
+
+.step-indicator-pill {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  background-color: var(--bg-subtle);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+/* Question Presentation */
+.question-presentation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.question-text-giant {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.question-hint-box {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* Big Option Buttons (min 56px touch target) */
+.options-vertical-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.btn-option-giant {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  width: 100%;
+  min-height: var(--touch-min);
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+
+.btn-option-giant:hover {
+  border-color: var(--text-primary);
+  background-color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn-option-giant.opt-yes:hover {
+  border-color: var(--success-green);
+  background-color: var(--success-subtle);
+}
+
+.btn-option-giant.opt-no:hover {
+  border-color: var(--urgent-red);
+  background-color: var(--urgent-red-subtle);
+}
+
+.btn-option-giant.opt-unsure:hover {
+  border-color: var(--amber-warning);
+  background-color: var(--amber-subtle);
+}
+
+.opt-icon-wrapper {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.opt-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.opt-primary-title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.opt-secondary-desc {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+/* ============================================================
+   TRIAGE RESULT CARD HIERARCHY
+   ============================================================ */
+
+.result-card-hierarchy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6) var(--space-5);
+  box-shadow: var(--shadow-card);
+}
+
+/* 1. Condition Title & Badge */
+.result-condition-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--brand-plum);
+  background-color: var(--brand-plum-subtle);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+}
+
+.result-condition-title {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.result-condition-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* 2. "Do Now" Numbered Steps */
+.result-section-do {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.section-label-bold {
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.do-steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.do-step-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background-color: var(--bg-subtle);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  color: var(--text-primary);
+}
+
+.step-num-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+  color: white;
+  font-weight: 800;
+  font-size: var(--text-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* 3. "Don't" Compact Red-Tinted Warning Box */
+.result-section-dont {
+  background-color: var(--urgent-red-subtle);
+  border: 1px solid var(--urgent-red-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.dont-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--urgent-red-text);
+}
+
+.dont-items-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.dont-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--urgent-red-text);
+  line-height: 1.4;
+}
+
+.dont-cross {
+  font-weight: 800;
+  color: var(--urgent-red);
+}
+
+/* 4. Women-Specific / Pregnancy Expandable Disclosure */
+.result-disclosure-women {
+  background-color: var(--brand-plum-subtle);
+  border: 1px solid var(--brand-plum-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.result-disclosure-women summary {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--brand-plum);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.result-disclosure-women summary::-webkit-details-marker {
+  display: none;
+}
+
+.women-disclosure-content {
+  padding: 0 var(--space-4) var(--space-3) var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* 5. Sticky Bottom Action Bar */
+.decide-sticky-action-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 90;
+  background-color: rgba(250, 249, 246, 0.95);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--border-subtle);
+  padding: var(--space-3) var(--space-4);
   margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
-.footer-content {
-  max-width: 900px;
-  margin: 0 auto;
+.btn-sticky-cpr {
+  flex: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background-color: var(--urgent-red);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  min-height: 48px;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-sticky-cpr:hover {
+  background-color: var(--urgent-red-hover);
+}
+
+.btn-action-tool {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  background-color: var(--bg-surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-full);
+  min-height: 48px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-action-tool:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+/* ============================================================
+   EMERGENCY MODE: ORIGINAL CPR SCREEN (/cpr)
+   Unified 75% Stage + 25% Sidebar Layout with Full Telemetry
+   ============================================================ */
+
+.cpr-unified-page-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-5);
+  width: 100%;
 }
 
-@media (min-width: 640px) {
-  .footer-content {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-}
-
-.brand-statement {
-  font-size: 0.9375rem;
-  color: var(--color-slate-800);
-  margin-bottom: 0.25rem;
-}
-
-.footer-note {
-  font-size: 0.8125rem;
-  color: var(--color-slate-500);
-}
-
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.footer-links a {
-  font-size: 0.875rem;
-  color: var(--color-slate-600);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.footer-links a:hover {
-  color: var(--color-primary);
-}
-
-.footer-bottom {
-  max-width: 900px;
-  margin: 1.5rem auto 0 auto;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--color-slate-100);
-  text-align: center;
-  font-size: 0.75rem;
-  color: var(--color-slate-500);
-}
-
-/* Animations */
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.95); }
-}
-
-@keyframes shake {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-8deg); }
-  75% { transform: rotate(8deg); }
-}
-
-.animate-shake {
-  animation: shake 1.5s ease-in-out infinite;
-}
-
-/* ==========================================================================
-   ENHANCED STYLES FOR EQUALRESCUE 9-PHASE SPECIFICATION
-   ========================================================================== */
-
-.flex-between {
+/* Page Header Nav & Wake Lock Pill */
+.page-header-nav.flex-between {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  width: 100%;
+  margin-bottom: var(--space-1);
 }
 
-/* Wake Lock Pill */
 .wake-lock-status-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  background-color: var(--color-slate-100);
-  color: var(--color-slate-600);
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.3rem 0.65rem;
+  gap: 6px;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--color-slate-200);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-tertiary);
+  transition: all 0.2s ease;
 }
 
 .wake-lock-status-pill.active {
-  background-color: #ecfdf5;
-  color: #047857;
-  border-color: #a7f3d0;
+  background-color: var(--success-subtle);
+  border-color: var(--success-border);
+  color: var(--success-green);
 }
 
-/* Master Action Header in CPR */
-.master-action-banner {
-  width: 100%;
-}
-
-.btn-master-action {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  background: linear-gradient(135deg, #e11d48, #9f1239);
-  color: white;
-  border: none;
+/* Pre-Tutorial Mandatory Safety Notice */
+.pre-tutorial-notice-card {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--urgent-red-border);
   border-radius: var(--radius-lg);
-  padding: 1.15rem 1.5rem;
-  cursor: pointer;
-  box-shadow: 0 4px 18px rgba(159, 18, 57, 0.35);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  text-align: left;
-}
-
-.btn-master-action:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(159, 18, 57, 0.45);
-}
-
-.btn-master-action.is-active {
-  background: linear-gradient(135deg, #334155, #0f172a);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-master-text {
+  padding: var(--space-5);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
+  gap: var(--space-4);
 }
 
-.master-btn-main {
-  font-family: var(--font-family-display);
-  font-size: 1.125rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-}
-
-.master-btn-sub {
-  font-size: 0.8125rem;
-  opacity: 0.88;
-}
-
-/* AED Reminder Card */
-.aed-reminder-card {
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-  border: 2px solid #fde68a;
-  border-radius: var(--radius-lg);
-  padding: 1.125rem 1.25rem;
+.notice-banner-header {
   display: flex;
-  gap: 1rem;
-  box-shadow: var(--shadow-sm);
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  border-bottom: 1px solid #fee2e2;
+  padding-bottom: var(--space-3);
 }
 
-.aed-icon-col {
+.notice-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: var(--text-xs);
+  letter-spacing: 0.05em;
+  color: var(--urgent-red-text);
+}
+
+.emergency-quick-phone .btn-notice-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--urgent-red);
+  color: white;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  transition: background-color 0.15s ease;
+}
+
+.emergency-quick-phone .btn-notice-phone:hover {
+  background-color: var(--urgent-red-hover);
+}
+
+.notice-body-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.official-notice-quote {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--text-primary);
+  border-left: 3px solid var(--urgent-red);
+  margin: 0;
+  background-color: var(--urgent-red-subtle);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.notice-context-sub {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.notice-actions-group {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-notice-confirm {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--brand-plum);
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-notice-confirm:hover {
+  background-color: var(--brand-plum-hover);
+}
+
+/* Notice Acknowledged Sticky/Collapsible Chip */
+.notice-acknowledged-chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--success-subtle);
+  border: 1px solid var(--success-border);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  color: var(--text-primary);
+  gap: var(--space-3);
+}
+
+.notice-acknowledged-chip .chip-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-reopen-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--brand-plum);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
   flex-shrink: 0;
 }
 
-.aed-badge-icon {
+/* AED Reminder Alert Banner */
+.aed-reminder-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  background-color: #fffbeb;
+  border: 1.5px solid #fde68a;
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+}
+
+.aed-icon-col .aed-badge-icon {
   width: 44px;
   height: 44px;
-  background-color: white;
-  border-radius: var(--radius-md);
-  border: 1px solid #fde68a;
+  border-radius: 50%;
+  background-color: #fef3c7;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(217, 119, 6, 0.15);
+  flex-shrink: 0;
 }
 
 .aed-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   flex: 1;
 }
 
 .aed-title-row {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.25rem;
+  gap: var(--space-2);
   flex-wrap: wrap;
 }
 
 .aed-heading {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #78350f;
+  font-size: var(--text-base);
+  font-weight: 800;
+  color: #92400e;
 }
 
 .aed-tag {
-  font-size: 0.6875rem;
-  font-weight: 800;
-  text-transform: uppercase;
   background-color: #d97706;
   color: white;
-  padding: 0.15rem 0.5rem;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 2px 8px;
   border-radius: var(--radius-full);
 }
 
 .aed-body {
-  font-size: 0.875rem;
-  color: #92400e;
-  margin-bottom: 0.5rem;
+  font-size: var(--text-sm);
+  color: #78350f;
 }
 
 .aed-tip {
   display: flex;
-  align-items: flex-start;
-  gap: 0.4rem;
-  font-size: 0.8125rem;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-xs);
   color: #b45309;
-  background-color: rgba(255, 255, 255, 0.65);
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--radius-sm);
-  line-height: 1.4;
+  margin-top: 4px;
 }
 
-/* CPR Core Grid: Metronome & Stopwatch Side-by-Side on desktop */
-.cpr-core-grid {
+/* ============================================================
+   EXACT CPR 2-COLUMN LAYOUT: 75% MAIN STAGE + 25% SIDEBAR
+   ============================================================ */
+
+.cpr-unified-layout {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: var(--space-6);
+  width: 100%;
+  align-items: start;
 }
 
-@media (min-width: 768px) {
-  .cpr-core-grid {
-    grid-template-columns: 1.15fr 0.85fr;
+@media (max-width: 960px) {
+  .cpr-unified-layout {
+    grid-template-columns: 1fr;
   }
 }
 
-/* Metronome Card & Pulse Stage */
-.metronome-card {
-  background: white;
+.cpr-main-stage-col {
+  width: 100%;
+  min-width: 0;
+}
+
+.cpr-sidebar-col {
+  width: 100%;
+}
+
+/* ============================================================
+   MAIN CPR STAGE (<UnifiedCprStage />)
+   ============================================================ */
+
+.unified-cpr-stage {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  border: 1px solid var(--color-slate-200);
-  box-shadow: var(--shadow-sm);
-  padding: 1.5rem;
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
-  position: relative;
-  overflow: hidden;
+  gap: var(--space-5);
 }
 
-.metronome-top-bar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--color-slate-100);
-  padding-bottom: 0.75rem;
-}
-
-.metronome-title-group {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-slate-700);
-}
-
-.btn-mute-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.65rem;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 700;
-  cursor: pointer;
-  border: 1px solid var(--color-slate-200);
-  background: var(--color-slate-50);
-  color: var(--color-slate-700);
-  transition: all 0.15s;
-}
-
-.btn-mute-toggle.muted {
-  background-color: #fee2e2;
-  color: #b91c1c;
-  border-color: #fca5a5;
-}
-
-.pulse-visual-stage {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0.5rem 0;
-}
-
-.pulse-ring-outer,
-.pulse-ring-mid {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0;
-}
-
-.pulse-ring-outer {
-  width: 160px;
-  height: 160px;
-  border: 4px solid var(--color-primary-light);
-}
-
-.pulse-ring-mid {
-  width: 150px;
-  height: 150px;
-  border: 3px solid #fda4af;
-}
-
-.ring-radiate {
-  animation: radiateOuter 0.55s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-}
-
-.ring-radiate-delayed {
-  animation: radiateMid 0.45s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-}
-
-@keyframes radiateOuter {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1.45);
-    opacity: 0;
-  }
-}
-
-@keyframes radiateMid {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1.25);
-    opacity: 0;
-  }
-}
-
-.beat-center-circle {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: none;
-  background: linear-gradient(135deg, #e11d48 0%, #9f1239 100%);
-  color: white;
+.dynamic-heading-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 6px 20px rgba(159, 18, 57, 0.4);
-  transition: transform 0.08s ease, box-shadow 0.08s ease;
-  z-index: 2;
+  gap: var(--space-1);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-4);
 }
 
-.beat-center-circle:hover {
-  transform: scale(1.03);
-}
-
-.beat-center-circle.beat-flash {
-  transform: scale(1.08);
-  box-shadow: 0 0 35px rgba(225, 29, 72, 0.8);
-  background: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
-}
-
-.beat-center-circle.idle {
-  background: linear-gradient(135deg, #64748b 0%, #334155 100%);
-  box-shadow: 0 4px 14px rgba(51, 65, 85, 0.3);
-}
-
-.bpm-number {
-  font-family: var(--font-family-display);
-  font-size: 2.75rem;
+.dynamic-instruction-title {
+  font-size: var(--text-2xl);
   font-weight: 800;
-  line-height: 1;
+  color: var(--text-primary);
+  line-height: 1.25;
 }
 
-.bpm-sub {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  opacity: 0.9;
-  margin-top: 0.15rem;
-}
-
-.bpm-status-indicator {
-  margin-top: 0.35rem;
-}
-
-.live-beat-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  background: rgba(0, 0, 0, 0.3);
-  font-size: 0.6875rem;
-  font-weight: 800;
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-full);
-}
-
-.live-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #4ade80;
-  animation: pulse 0.5s infinite;
-}
-
-.tap-start-pill {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-full);
-}
-
-.tempo-controls-row {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.tempo-buttons {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.tempo-label {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-slate-600);
-  margin-right: 0.25rem;
-}
-
-.btn-tempo {
-  background: var(--color-slate-100);
-  border: 1px solid var(--color-slate-200);
-  color: var(--color-slate-700);
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.35rem 0.6rem;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.btn-tempo:hover {
-  background: var(--color-slate-200);
-}
-
-.btn-tempo.active {
-  background: var(--color-primary);
-  color: white;
-  border-color: var(--color-primary);
-}
-
-.compression-counter-pill {
-  font-size: 0.8125rem;
-  color: var(--color-slate-700);
-  background: var(--color-primary-soft);
-  padding: 0.3rem 0.7rem;
-  border-radius: var(--radius-full);
-}
-
-.compression-counter-pill strong {
-  color: var(--color-primary);
-}
-
-.metronome-action-bar {
-  width: 100%;
-}
-
-.btn-primary-rhythm {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 0.875rem 1.25rem;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  border: none;
-  transition: all 0.2s;
-}
-
-.btn-start-mode {
-  background-color: var(--color-primary);
-  color: white;
-  box-shadow: 0 4px 12px rgba(159, 18, 57, 0.3);
-}
-
-.btn-start-mode:hover {
-  background-color: var(--color-primary-light);
-}
-
-.btn-stop-mode {
-  background-color: var(--color-slate-800);
-  color: white;
-}
-
-.btn-stop-mode:hover {
-  background-color: var(--color-slate-900);
-}
-
-/* Elapsed Stopwatch Container */
-.elapsed-timer-container {
-  background: white;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-slate-200);
-  box-shadow: var(--shadow-sm);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1.25rem;
-}
-
-.timer-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.timer-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--color-slate-600);
-}
-
-.cycle-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #b45309;
-  background-color: #fef3c7;
-  padding: 0.2rem 0.5rem;
-  border-radius: var(--radius-full);
-}
-
-.timer-display-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 0;
-}
-
-.timer-digits-text {
-  font-family: var(--font-family-display);
-  font-size: 4rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--color-slate-900);
-  line-height: 1;
-}
-
-.timer-sublabel {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-slate-500);
-  margin-top: 0.35rem;
-}
-
-.switch-rescuer-alert {
-  background: #fef2f2;
-  border: 1px solid #fecdd3;
-  color: #9f1239;
-  font-size: 0.8125rem;
-  padding: 0.6rem 0.75rem;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  animation: pulse 1s infinite;
-}
-
-.timer-button-row {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 0.65rem;
-}
-
-.btn-timer-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background-color: var(--color-slate-900);
-  color: white;
-  border: none;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.btn-timer-toggle:hover {
-  background-color: var(--color-slate-800);
-}
-
-.btn-timer-toggle.is-active {
-  background-color: #d97706;
-}
-
-.btn-timer-reset {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  background-color: var(--color-slate-100);
-  border: 1px solid var(--color-slate-200);
-  color: var(--color-slate-700);
-  font-size: 0.875rem;
-  font-weight: 600;
-  padding: 0.75rem;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.btn-timer-reset:hover {
-  background-color: var(--color-slate-200);
-}
-
-/* Hands-Only CPR Instructions Card */
-.cpr-instructions-section {
-  background: white;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-slate-200);
-  box-shadow: var(--shadow-sm);
-  padding: 1.5rem;
-}
-
-.instructions-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  user-select: none;
-}
-
-.instructions-title-row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.instructions-heading {
-  font-family: var(--font-family-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-}
-
-.btn-toggle-instructions {
-  background: none;
-  border: none;
-  color: var(--color-slate-500);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.instructions-body {
-  margin-top: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.step-tabs-row {
-  display: flex;
-  gap: 0.5rem;
-  border-bottom: 2px solid var(--color-slate-100);
-  padding-bottom: 0.5rem;
-}
-
-.step-tab-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: none;
-  border: none;
-  padding: 0.5rem 0.85rem;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-slate-600);
-  transition: all 0.15s;
-}
-
-.step-tab-btn.active {
-  background-color: var(--color-primary-bg);
-  color: var(--color-primary);
-}
-
-.step-num-circle {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background-color: var(--color-slate-200);
-  color: var(--color-slate-800);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 800;
-}
-
-.step-tab-btn.active .step-num-circle {
-  background-color: var(--color-primary);
-  color: white;
-}
-
-.active-step-card {
-  background-color: var(--color-slate-50);
-  border-radius: var(--radius-lg);
-  padding: 1.25rem;
-  border: 1px solid var(--color-slate-200);
-}
-
-.step-card-header {
-  margin-bottom: 1rem;
-}
-
-.step-badge-pill {
-  font-size: 0.6875rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  margin-bottom: 0.25rem;
-}
-
-.step-card-title {
-  font-family: var(--font-family-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-  margin-bottom: 0.5rem;
-}
-
-.key-action-banner {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background-color: var(--color-primary-soft);
-  color: var(--color-primary);
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.875rem;
-}
-
-.step-diagram-box {
-  background-color: white;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-slate-200);
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
-}
-
-.cpr-svg-diagram {
-  max-width: 320px;
-  width: 100%;
-  height: auto;
-}
-
-.step-main-desc {
-  font-size: 0.9375rem;
-  color: var(--color-slate-700);
-  line-height: 1.5;
-  margin-bottom: 1rem;
-}
-
-.step-points-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.step-point-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--color-slate-600);
-}
-
-.women-reassurance-box {
-  background: #fff1f2;
-  border: 1px solid #ffe4e6;
-  border-radius: var(--radius-md);
-  padding: 1rem;
-  display: flex;
-  gap: 0.75rem;
-  font-size: 0.8125rem;
-  color: #9f1239;
+.dynamic-instruction-sub {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
   line-height: 1.45;
 }
 
-/* Bottom Emergency Helper Card */
-.cpr-emergency-footer-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-slate-200);
-  padding: 1rem 1.25rem;
+.main-animation-viewport {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+/* Hand Placement Stage Controls & Visuals */
+.placement-stage-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.placement-angle-selector {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-2);
   flex-wrap: wrap;
 }
 
-.footer-call-prompt {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.footer-call-prompt strong {
-  display: block;
-  font-size: 0.9375rem;
-  color: var(--color-slate-900);
-}
-
-.footer-call-prompt p {
-  font-size: 0.8125rem;
-  color: var(--color-slate-600);
-}
-
-.btn-cpr-footer {
-  font-size: 0.875rem;
-  padding: 0.5rem 1rem;
-}
-
-/* ==========================================================================
-   DECISION TREE ENGINE & QUESTION CARD
-   ========================================================================== */
-
-.decision-progress-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.decision-nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-step-back,
-.btn-step-restart {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: white;
-  border: 1px solid var(--color-slate-200);
-  color: var(--color-slate-700);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  padding: 0.35rem 0.65rem;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.btn-step-back:hover,
-.btn-step-restart:hover {
-  background: var(--color-slate-100);
-  color: var(--color-slate-900);
-}
-
-.progress-indicator-pill {
-  background: var(--color-primary-soft);
-  color: var(--color-primary);
-  font-size: 0.75rem;
+.selector-label {
+  font-size: var(--text-xs);
   font-weight: 700;
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-full);
-}
-
-.step-badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 800;
+  color: var(--text-tertiary);
   text-transform: uppercase;
-  color: var(--color-primary);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.4rem;
 }
 
-.hint-icon {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 0.35rem;
-  color: var(--color-slate-400);
-}
-
-/* Option Buttons in Decision Tree - Min height 60px requirement */
-.option-button {
-  min-height: 64px;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.25rem;
-  border-radius: var(--radius-lg);
-  border: 2px solid var(--color-slate-200);
-  background: white;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  width: 100%;
-}
-
-.option-icon-box {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.option-text-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.option-primary-label {
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-}
-
-.option-sub-desc {
-  font-size: 0.8125rem;
-  color: var(--color-slate-600);
-  margin-top: 0.15rem;
-}
-
-.btn-option-yes:hover {
-  border-color: #059669;
-  background-color: #f0fdf4;
-}
-
-.btn-option-no:hover {
-  border-color: #dc2626;
-  background-color: #fef2f2;
-}
-
-.btn-option-unsure:hover {
-  border-color: #d97706;
-  background-color: #fef3c7;
-}
-
-/* Advice Box (Terminal State in /decide) */
-.advice-box {
-  border-left: 5px solid #059669;
-}
-
-.advice-badge {
+.btn-subview-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  background-color: #d1fae5;
-  color: #065f46;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  padding: 0.3rem 0.75rem;
+  gap: 6px;
+  padding: 6px 14px;
   border-radius: var(--radius-full);
-  margin-bottom: 0.75rem;
-}
-
-.advice-title {
-  font-family: var(--font-family-display);
-  font-size: 1.625rem;
-  font-weight: 800;
-  color: var(--color-slate-900);
-  margin-bottom: 0.5rem;
-}
-
-.advice-desc {
-  font-size: 1rem;
-  color: var(--color-slate-600);
-  margin-bottom: 1.5rem;
-}
-
-.advice-checklist {
-  background-color: var(--color-slate-50);
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
-  border: 1px solid var(--color-slate-200);
-  margin-bottom: 1.5rem;
-}
-
-.advice-checklist h3 {
-  font-size: 0.9375rem;
+  font-size: var(--text-xs);
   font-weight: 700;
-  color: var(--color-slate-900);
-  margin-bottom: 0.75rem;
-}
-
-.advice-checklist ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.advice-checklist li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--color-slate-700);
-}
-
-.advice-emergency-fallback {
-  border-top: 1px solid var(--color-slate-200);
-  padding-top: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.fallback-note {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  font-size: 0.8125rem;
-  color: #9f1239;
-  background-color: #fff1f2;
-  padding: 0.75rem;
-  border-radius: var(--radius-sm);
-}
-
-.fallback-actions {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.btn-advice-call {
-  font-size: 0.875rem;
-}
-
-.btn-secondary-cpr {
-  background: white;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  font-weight: 700;
-  font-size: 0.875rem;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.btn-secondary-cpr:hover {
-  background-color: var(--color-primary-bg);
-}
-
-/* Direct CPR escape hatch on /decide */
-.decision-direct-cpr-banner {
-  background: white;
-  border: 1px dashed var(--color-slate-300);
-  border-radius: var(--radius-md);
-  padding: 1rem 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.direct-cpr-info {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.direct-cpr-info strong {
-  display: block;
-  font-size: 0.875rem;
-  color: var(--color-slate-800);
-}
-
-.direct-cpr-info p {
-  font-size: 0.75rem;
-  color: var(--color-slate-500);
-}
-
-.btn-shortcut-cpr {
-  background: var(--color-slate-100);
-  border: 1px solid var(--color-slate-300);
-  color: var(--color-primary);
-  font-weight: 700;
-  font-size: 0.8125rem;
-  padding: 0.45rem 0.85rem;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.btn-shortcut-cpr:hover {
-  background: var(--color-primary-bg);
-  border-color: var(--color-primary);
-}
-
-.decision-reassurance-footer {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8125rem;
-  color: var(--color-slate-600);
-  text-align: center;
-  justify-content: center;
-}
-
-/* ==========================================================================
-   LANDING PAGE ENHANCEMENTS (TWO DOORS & AWARENESS STRIP)
-   ========================================================================== */
-
-.icon-decide {
-  background: #fef3c7;
-  color: #b45309;
-}
-
-.icon-cpr {
-  background: #ffe4e6;
-  color: #e11d48;
-}
-
-.tag-decide {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.link-decide {
-  color: #b45309;
-}
-
-.link-cpr {
-  color: var(--color-primary);
-}
-
-.action-card .arrow-icon {
-  transition: transform 0.2s ease;
-}
-
-.action-card:hover .arrow-icon {
-  transform: translateX(4px);
-}
-
-.reassurance-header-row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.5rem;
-}
-
-.reassurance-header-row h3 {
-  font-family: var(--font-family-display);
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-}
-
-.awareness-cards-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-}
-
-@media (min-width: 768px) {
-  .awareness-cards-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.reassurance-icon-box {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
-  background: var(--color-primary-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.landing-quick-links {
-  text-align: center;
-}
-
-.quick-learn-card {
-  display: inline-block;
-  text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-slate-600);
-  background: white;
-  border: 1px solid var(--color-slate-200);
-  padding: 0.65rem 1.25rem;
-  border-radius: var(--radius-full);
-  transition: all 0.15s;
-}
-
-.quick-learn-card:hover {
-  color: var(--color-primary);
-  border-color: var(--color-primary-light);
-  box-shadow: var(--shadow-sm);
-}
-
-/* ==========================================================================
-   LEARN PAGE ENHANCEMENTS (VIDEO & MYTH BUSTERS)
-   ========================================================================== */
-
-.video-section-card {
-  background: white;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-slate-200);
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-}
-
-.video-card-header {
-  padding: 1.125rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--color-slate-100);
-}
-
-.video-label-group {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.video-card-title {
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-}
-
-.duration-tag {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  background-color: var(--color-primary-soft);
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-full);
-}
-
-.video-frame-wrapper {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  width: 100%;
-  background-color: var(--color-slate-900);
-}
-
-.cpr-video-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.video-offline-fallback {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  text-align: center;
-  background-color: var(--color-slate-100);
-}
-
-.video-caption-bar {
-  padding: 0.875rem 1.25rem;
-  background-color: var(--color-slate-50);
-  border-top: 1px solid var(--color-slate-200);
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.8125rem;
-  color: var(--color-slate-700);
-}
-
-.guide-steps-card {
-  background: white;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-slate-200);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.section-subheading {
-  font-family: var(--font-family-display);
-  font-size: 1.375rem;
-  font-weight: 800;
-  color: var(--color-slate-900);
-  margin-bottom: 1rem;
-}
-
-.guide-steps-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-}
-
-@media (min-width: 768px) {
-  .guide-steps-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.guide-step-col {
-  position: relative;
-  padding-left: 2.75rem;
-}
-
-.step-counter {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 32px;
-  height: 32px;
-  background-color: var(--color-primary);
-  color: white;
-  font-weight: 800;
-  font-size: 1rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.guide-step-col h3 {
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-  margin-bottom: 0.25rem;
-}
-
-.guide-step-col p {
-  font-size: 0.875rem;
-  color: var(--color-slate-600);
-  line-height: 1.45;
-}
-
-.myths-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.myths-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.myths-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-}
-
-@media (min-width: 768px) {
-  .myths-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.myth-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-slate-200);
-  padding: 1.35rem;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.myth-tag-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.myth-badge {
-  font-size: 0.6875rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #dc2626;
-  background-color: #fee2e2;
-  padding: 0.2rem 0.5rem;
-  border-radius: var(--radius-full);
-}
-
-.category-tag {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: var(--color-slate-500);
-}
-
-.myth-statement {
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-  line-height: 1.35;
-}
-
-.fact-statement {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  background-color: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  padding: 0.6rem 0.75rem;
-  border-radius: var(--radius-md);
-  font-size: 0.875rem;
-  color: #166534;
-}
-
-.fact-explanation {
-  font-size: 0.8125rem;
-  color: var(--color-slate-600);
-  line-height: 1.45;
-}
-
-.practice-cta-card {
-  background: linear-gradient(135deg, var(--color-slate-900), #1e293b);
-  color: white;
-  border-radius: var(--radius-xl);
-  padding: 1.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.practice-cta-card h3 {
-  font-family: var(--font-family-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-}
-
-.practice-cta-card p {
-  font-size: 0.875rem;
-  color: var(--color-slate-300);
-}
-
-/* ==========================================================================
-   SOURCES PAGE ENHANCEMENTS (TABLE, DISCLAIMERS, LEDGER)
-   ========================================================================== */
-
-.medical-disclaimer-card {
-  display: flex;
-  gap: 1rem;
-}
-
-.disclaimer-text {
-  flex: 1;
-}
-
-.disclaimer-title {
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: #78350f;
-  margin-bottom: 0.5rem;
-}
-
-.disclaimer-bullets {
-  padding-left: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  font-size: 0.8125rem;
-  color: #92400e;
-}
-
-.sources-table-container {
-  overflow-x: auto;
-  background: white;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-slate-200);
-  box-shadow: var(--shadow-sm);
-}
-
-.sources-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 0.875rem;
-}
-
-.sources-table th {
-  background-color: var(--color-slate-50);
-  color: var(--color-slate-700);
-  font-weight: 700;
-  padding: 0.875rem 1rem;
-  border-bottom: 2px solid var(--color-slate-200);
-  white-space: nowrap;
-}
-
-.sources-table td {
-  padding: 1rem;
-  border-bottom: 1px solid var(--color-slate-100);
-  vertical-align: top;
-}
-
-.source-org-cell {
-  width: 22%;
-}
-
-.source-org-cell strong {
-  display: block;
-  color: var(--color-slate-900);
-}
-
-.source-year {
-  font-size: 0.75rem;
-  color: var(--color-slate-500);
-}
-
-.source-title-cell {
-  width: 38%;
-}
-
-.table-paper-title {
-  font-weight: 600;
-  color: var(--color-slate-900);
-  margin-bottom: 0.2rem;
-}
-
-.table-paper-pub {
-  font-size: 0.75rem;
-  color: var(--color-slate-500);
-  font-style: italic;
-}
-
-.source-summary-cell {
-  width: 28%;
-  font-size: 0.8125rem;
-  color: var(--color-slate-600);
-  line-height: 1.4;
-}
-
-.source-link-cell {
-  width: 12%;
-  white-space: nowrap;
-}
-
-.table-external-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  color: var(--color-primary);
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 0.8125rem;
-}
-
-.table-external-link:hover {
-  text-decoration: underline;
-}
-
-/* Changelog & Review Ledger */
-.changelog-ledger-section {
-  background: white;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-slate-200);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.ledger-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.ledger-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 1rem;
-  position: relative;
-  padding-left: 2rem;
-}
-
-.ledger-timeline::before {
-  content: '';
-  position: absolute;
-  left: 8px;
-  top: 8px;
-  bottom: 8px;
-  width: 2px;
-  background-color: var(--color-slate-200);
-}
-
-.ledger-entry {
-  position: relative;
-}
-
-.ledger-marker {
-  position: absolute;
-  left: -2rem;
-  top: 2px;
-  background-color: white;
-  border-radius: 50%;
-}
-
-.ledger-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.25rem;
-  flex-wrap: wrap;
-}
-
-.version-tag {
-  font-family: var(--font-family-display);
-  font-weight: 800;
-  font-size: 0.875rem;
-  color: var(--color-slate-900);
-}
-
-.ledger-date {
-  font-size: 0.75rem;
-  color: var(--color-slate-500);
-}
-
-.status-badge {
-  font-size: 0.6875rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-full);
-}
-
-.status-approved {
-  background-color: #dcfce7;
-  color: #15803d;
-}
-
-.status-archived {
-  background-color: var(--color-slate-100);
-  color: var(--color-slate-600);
-}
-
-.ledger-content h4 {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--color-slate-800);
-  margin-bottom: 0.25rem;
-}
-
-.ledger-content p {
-  font-size: 0.8125rem;
-  color: var(--color-slate-600);
-  line-height: 1.45;
-}
-
-/* ==========================================================================
-   WOMEN-FOCUSED CPR AWARENESS & INSTRUCTIONAL EXPERIENCE
-   ========================================================================== */
-
-/* 1. Pre-Tutorial Safety Notice */
-.pre-tutorial-notice-card {
-  background: #ffffff;
-  border: 2px solid #f43f5e;
-  border-radius: var(--radius-xl);
-  padding: 1.5rem;
-  box-shadow: 0 4px 16px -2px rgba(225, 29, 72, 0.12), 0 2px 6px -1px rgba(0, 0, 0, 0.05);
-  margin-bottom: 1.25rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.pre-tutorial-notice-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 100%;
-  background: linear-gradient(180deg, #e11d48, #be123c);
-}
-
-.notice-banner-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.notice-tag-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #ffe4e6;
-  color: #9f1239;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-full);
-}
-
-.btn-notice-phone {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background-color: #dc2626;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.8125rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-full);
-  text-decoration: none;
-  transition: background-color 0.15s ease;
-}
-
-.btn-notice-phone:hover {
-  background-color: #b91c1c;
-}
-
-.official-notice-quote {
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  color: #0f172a;
-  background-color: #fff1f2;
-  border-radius: var(--radius-lg);
-  padding: 1.25rem 1.5rem;
-  margin: 0 0 1rem 0;
-  border: 1px solid #fecdd3;
-  font-weight: 500;
-}
-
-.official-notice-quote strong {
-  color: #9f1239;
-  font-weight: 800;
-}
-
-.notice-context-sub {
-  font-size: 0.875rem;
-  color: #475569;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
-}
-
-.notice-actions-group {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.btn-notice-confirm {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  background-color: #059669;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 1rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-lg);
-  border: none;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
-  min-height: 48px;
-}
-
-.btn-notice-confirm:hover {
-  background-color: #047857;
-  transform: translateY(-1px);
-}
-
-.btn-notice-bypass {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background-color: #f1f5f9;
-  color: #334155;
-  font-weight: 600;
-  font-size: 0.875rem;
-  padding: 0.65rem 1rem;
-  border-radius: var(--radius-md);
-  border: 1px solid #cbd5e1;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
-.btn-notice-bypass:hover {
-  background-color: #e2e8f0;
-  color: #0f172a;
+.btn-subview-toggle.active {
+  background-color: var(--brand-plum);
+  border-color: var(--brand-plum);
+  color: white;
 }
 
-.notice-acknowledged-chip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  background-color: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  border-radius: var(--radius-md);
-  padding: 0.65rem 1rem;
-  font-size: 0.8125rem;
-  color: #166534;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.notice-acknowledged-chip .chip-left {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-reopen-notice {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: white;
-  border: 1px solid #bbf7d0;
-  color: #166534;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-}
-
-.btn-reopen-notice:hover {
-  background-color: #dcfce7;
-}
-
-/* 2. Woman-Centred Anatomical CPR Visual */
-.cpr-visual-showcase-card {
-  background: #ffffff;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-slate-200);
-  box-shadow: var(--shadow-sm);
+.animation-graphic-wrapper {
+  width: 100%;
+  background-color: #0f172a;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  margin-bottom: 1.5rem;
-}
-
-.visual-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.125rem 1.5rem;
-  background-color: #f8fafc;
-  border-bottom: 1px solid var(--color-slate-200);
-  flex-wrap: wrap;
-}
-
-.visual-title-badge {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.visual-title {
-  font-size: 1.0625rem;
-  font-weight: 800;
-  color: var(--color-slate-900);
-  margin: 0;
-}
-
-.view-angle-toggle-group {
-  display: flex;
-  align-items: center;
-  background-color: #e2e8f0;
-  padding: 3px;
-  border-radius: var(--radius-md);
-  gap: 2px;
-}
-
-.btn-angle-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.85rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #475569;
-  background: transparent;
-  border: none;
-  border-radius: calc(var(--radius-md) - 2px);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-angle-toggle.active {
-  background-color: #ffffff;
-  color: #0f172a;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.visual-stage-container {
-  padding: 1.25rem;
   display: flex;
   justify-content: center;
-  background: #f8fafc;
-}
-
-.svg-stage-wrapper {
-  width: 100%;
-  max-width: 760px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  align-items: center;
+  padding: var(--space-2) 0;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .cpr-anatomical-svg {
   width: 100%;
   height: auto;
-  border-radius: var(--radius-lg);
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+  max-height: 290px;
+  display: block;
 }
 
-/* Real CPR Biomechanics Animation: Rescuer kneeling/sitting on heels, pivots from hips, hands anchored on sternum */
-.cpr-anatomical-svg.compressing .cpr-rescuer-thrust-group {
+/* Anatomical Motion Keyframes on Compress */
+.cpr-chest-compression-group {
+  transform-origin: 225px 174px;
+  transition: transform 0.05s ease;
+}
+
+.cpr-rescuer-thrust-group {
   transform-origin: 288px 172px;
-  animation: rescuer-compression-hinge 0.545s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  transition: transform 0.05s ease;
 }
 
-.cpr-anatomical-svg.compressing .cpr-chest-compression-group {
-  transform-origin: 225px 173px;
-  animation: chest-deflection-recoil 0.545s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+.cpr-anatomical-svg.beat-strike .cpr-chest-compression-group {
+  transform: translateY(6px);
 }
 
-.cpr-anatomical-svg.compressing .depth-gauge-needle {
-  animation: depth-gauge-stroke 0.545s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+.cpr-anatomical-svg.beat-strike .cpr-rescuer-thrust-group {
+  transform: translateY(5px);
 }
 
-@keyframes rescuer-compression-hinge {
-  0% { transform: rotate(0deg); }
-  35% { transform: rotate(3.2deg); }
-  45% { transform: rotate(3.2deg); }
-  85% { transform: rotate(0deg); }
-  100% { transform: rotate(0deg); }
+.depth-gauge-needle {
+  transition: transform 0.25s ease-in;
 }
 
-@keyframes chest-deflection-recoil {
-  0% { transform: translateY(0); }
-  35% { transform: translateY(9px); }
-  45% { transform: translateY(9px); }
-  85% { transform: translateY(0); }
-  100% { transform: translateY(0); }
+.cpr-anatomical-svg.beat-strike .depth-gauge-needle {
+  transform: translate(110px, 0);
+  transition: transform 0.05s ease-out;
 }
 
-@keyframes depth-gauge-stroke {
-  0% { transform: translate(15px, 0); }
-  35% { transform: translate(95px, 0); }
-  45% { transform: translate(95px, 0); }
-  85% { transform: translate(15px, 0); }
-  100% { transform: translate(15px, 0); }
-}
-
-.beat-strike {
-  filter: drop-shadow(0 0 6px rgba(225, 29, 72, 0.35));
-}
-
-.view-highlights-grid {
+/* Horizontal Responsive Instruction Cards */
+.horizontal-instructions-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-2);
 }
 
-@media (min-width: 768px) {
-  .view-highlights-grid {
-    grid-template-columns: repeat(3, 1fr);
+@media (max-width: 640px) {
+  .horizontal-instructions-grid {
+    grid-template-columns: 1fr;
   }
 }
 
-.highlight-pill {
+.instruction-card-horizontal {
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
-  padding: 0.65rem 0.85rem;
+  gap: var(--space-3);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  font-size: 0.8125rem;
+  padding: var(--space-3);
+}
+
+.instruction-card-horizontal.card-span-full {
+  grid-column: 1 / -1;
+}
+
+.step-num-bubble {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--brand-plum);
+  color: white;
+  font-size: var(--text-xs);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.instruction-text {
+  font-size: var(--text-xs);
+  color: var(--text-primary);
   line-height: 1.4;
 }
 
-.highlight-green {
-  background-color: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  color: #166534;
+/* Compact Sternum Warning Banner */
+.compact-sternum-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background-color: var(--amber-subtle);
+  border: 1px solid var(--amber-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-xs);
+  color: #78350f;
 }
 
-.highlight-red {
-  background-color: #fef2f2;
-  border: 1px solid #fecdd3;
-  color: #991b1b;
+/* Placement Action Row */
+.placement-action-row {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--space-2);
 }
 
-.highlight-blue {
+.btn-begin-cpr-primary {
+  width: 100%;
+  max-width: 440px;
+  min-height: 56px;
+  border-radius: var(--radius-full);
+  background-color: var(--urgent-red);
+  color: white;
+  font-size: var(--text-base);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-urgent);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-begin-cpr-primary:hover {
+  background-color: var(--urgent-red-hover);
+  transform: translateY(-1px);
+}
+
+/* Rhythm Pulse Strip & Active CPR Stage */
+.rhythm-pulse-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  background-color: #0f172a;
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  color: white;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-top: var(--space-2);
+}
+
+.visual-pulse-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #64748b;
+  transition: all 0.05s ease;
+}
+
+.visual-pulse-dot.pulse-hit {
+  background-color: var(--urgent-red);
+  box-shadow: 0 0 16px var(--urgent-red);
+  transform: scale(1.4);
+}
+
+.active-cpr-tips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+  margin-top: var(--space-3);
+}
+
+.cpr-tip-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--success-subtle);
+  border: 1px solid var(--success-border);
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--success-green);
+}
+
+/* Rescue Breaths Stage */
+.breaths-stage-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.breaths-graphic-box {
+  width: 100%;
+  background-color: #0f172a;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.breaths-progress-strip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
   background-color: #f0f9ff;
   border: 1px solid #bae6fd;
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.breath-step-badge-group {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.breath-pill {
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 800;
+  border: 1.5px solid transparent;
+}
+
+.breath-pill.active {
+  background-color: #0284c7;
+  color: white;
+  border-color: #0284c7;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+}
+
+.breath-pill.completed {
+  background-color: var(--success-subtle);
+  color: var(--success-green);
+  border-color: var(--success-border);
+}
+
+.breath-pill.pending {
+  background-color: var(--bg-subtle);
+  color: var(--text-tertiary);
+  border-color: var(--border-subtle);
+}
+
+.breath-status-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-xs);
+  font-weight: 600;
   color: #0369a1;
 }
 
+/* Disclaimer Strip */
 .visual-disclaimer-strip {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  background-color: #fffbeb;
-  border-top: 1px solid #fef3c7;
-  padding: 0.85rem 1.25rem;
+  gap: 8px;
+  background-color: var(--amber-subtle);
+  border: 1px solid var(--amber-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
 }
 
 .disclaimer-note-text {
-  font-size: 0.8125rem;
-  color: #92400e;
-  line-height: 1.45;
+  font-size: var(--text-xs);
+  color: #78350f;
+  line-height: 1.4;
   margin: 0;
 }
 
-/* 3. Address Common Hesitations Panel */
-.hesitations-panel-card {
-  background: #ffffff;
+/* ============================================================
+   CPR SIDEBAR (<CprSidebar />)
+   ============================================================ */
+
+.cpr-sidebar-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.sidebar-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.sidebar-card .card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-label-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metric-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.metric-cycle-tag {
+  margin-left: 6px;
+  background-color: var(--bg-subtle);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.sidebar-card .status-dot {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.sidebar-card .status-dot.running {
+  background-color: var(--urgent-red-subtle);
+  color: var(--urgent-red);
+}
+
+.sidebar-card .status-dot.idle {
+  background-color: var(--bg-subtle);
+  color: var(--text-tertiary);
+}
+
+/* Elapsed Timer Display */
+.big-time-display {
+  font-family: var(--font-mono);
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: var(--space-1) 0;
+}
+
+.time-sub-note {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+/* Compression & Breath Dynamic Counter */
+.counter-display-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) 0;
+}
+
+.counter-word-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.counter-num-large {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--urgent-red);
+  line-height: 1;
+  margin-top: 4px;
+  letter-spacing: -0.04em;
+}
+
+.sidebar-cycle-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.cycle-progress-track {
+  height: 8px;
+  background-color: var(--bg-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.cycle-progress-fill {
+  height: 100%;
+  background-color: var(--urgent-red);
+  border-radius: var(--radius-full);
+  transition: width 0.1s linear;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+
+.sidebar-breath-step-indicators {
+  display: flex;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.breath-indicator-step {
+  flex: 1;
+  text-align: center;
+  padding: 6px;
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  background-color: var(--bg-subtle);
+  color: var(--text-secondary);
+}
+
+.breath-indicator-step.active {
+  background-color: #0284c7;
+  color: white;
+}
+
+.breath-indicator-step.completed {
+  background-color: var(--success-subtle);
+  color: var(--success-green);
+}
+
+/* Rate & Sound Card */
+.rate-selector-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rate-buttons-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.btn-rate-choice {
+  padding: 8px 0;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-rate-choice.active {
+  background-color: var(--brand-plum);
+  border-color: var(--brand-plum);
+  color: white;
+}
+
+.rate-recommendation-text {
+  font-size: 10.5px;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+.sound-toggle-row {
+  width: 100%;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-3);
+}
+
+.btn-sound-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--border-strong);
+  transition: all 0.15s ease;
+}
+
+.btn-sound-toggle.unmuted {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.btn-sound-toggle.muted {
+  background-color: var(--bg-subtle);
+  color: var(--text-tertiary);
+}
+
+/* Sidebar Controls Section */
+.sidebar-controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.btn-sidebar-primary {
+  width: 100%;
+  min-height: 52px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-base);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.btn-start-theme {
+  background-color: var(--urgent-red);
+  color: white;
+  box-shadow: var(--shadow-urgent);
+}
+
+.btn-pause-theme {
+  background-color: #d97706;
+  color: white;
+}
+
+.btn-resume-theme {
+  background-color: var(--urgent-red);
+  color: white;
+}
+
+.running-controls-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.btn-sidebar-secondary {
+  width: 100%;
+  min-height: 44px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  border: 1px solid var(--border-strong);
+  background-color: var(--bg-surface);
+  color: var(--text-secondary);
+  transition: all 0.15s ease;
+}
+
+.btn-sidebar-secondary:hover {
+  border-color: var(--urgent-red);
+  color: var(--urgent-red);
+}
+
+/* Sidebar 112 Emergency Box */
+.sidebar-emergency-box {
+  background-color: var(--urgent-red-subtle);
+  border: 1.5px solid var(--urgent-red-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.emergency-header-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--urgent-red-text);
+  font-size: var(--text-xs);
+}
+
+.emergency-sub-text {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.btn-sidebar-call-112 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--urgent-red);
+  color: white;
+  padding: 10px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-size: var(--text-xs);
+  font-weight: 800;
+  transition: background-color 0.15s ease;
+}
+
+.btn-sidebar-call-112:hover {
+  background-color: var(--urgent-red-hover);
+}
+
+/* ============================================================
+   STOP CPR CONFIRMATION MODAL DIALOG
+   ============================================================ */
+
+.cpr-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  z-index: 200;
+  backdrop-filter: blur(4px);
+}
+
+.cpr-modal-card {
+  background-color: white;
   border-radius: var(--radius-xl);
-  border: 1px solid var(--color-slate-200);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 1.5rem;
+  max-width: 440px;
+  width: 100%;
+  padding: var(--space-6);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+}
+
+.modal-icon-header {
+  margin-bottom: var(--space-1);
+}
+
+.modal-title {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.modal-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.modal-actions-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+.btn-modal-confirm-stop {
+  width: 100%;
+  min-height: 48px;
+  border-radius: var(--radius-full);
+  background-color: var(--urgent-red);
+  color: white;
+  border: none;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-modal-confirm-stop:hover {
+  background-color: var(--urgent-red-hover);
+}
+
+.btn-modal-cancel {
+  width: 100%;
+  min-height: 44px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-subtle);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+/* ============================================================
+   SUPPORTING GUIDANCE SECTION (Hesitations & Instructions)
+   ============================================================ */
+
+.supporting-cpr-guidance-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+  margin-top: var(--space-4);
+}
+
+/* Hesitations Panel Card */
+.hesitations-panel-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
 .hesitations-panel-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
+  align-items: center;
   flex-wrap: wrap;
+  gap: var(--space-2);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-3);
 }
 
 .panel-title-group {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 8px;
 }
 
 .panel-title {
-  font-family: var(--font-family-display);
-  font-size: 1.25rem;
+  font-size: var(--text-lg);
   font-weight: 800;
-  color: var(--color-slate-900);
-  margin: 0;
+  color: var(--text-primary);
 }
 
 .badge-clinical-reassurance {
-  font-size: 0.75rem;
+  background-color: var(--brand-plum-subtle);
+  color: var(--brand-plum);
+  border: 1px solid var(--brand-plum-border);
+  font-size: 11px;
   font-weight: 700;
-  color: #059669;
-  background-color: #d1fae5;
-  padding: 0.25rem 0.65rem;
+  padding: 2px 10px;
   border-radius: var(--radius-full);
 }
 
 .hesitations-lead {
-  font-size: 0.9375rem;
-  color: #475569;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
   line-height: 1.5;
-  margin-bottom: 1.25rem;
 }
 
 .hesitations-points-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.85rem;
-}
-
-@media (max-width: 768px) {
-  .hesitations-points-list {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
 }
 
 .hesitation-point-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.85rem;
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
+  gap: var(--space-3);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 0.9rem 1.1rem;
-  transition: border-color 0.15s ease;
-}
-
-.hesitation-point-item:hover {
-  border-color: #cbd5e1;
+  padding: var(--space-4);
 }
 
 .point-icon-box {
   width: 36px;
   height: 36px;
-  border-radius: var(--radius-md);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3003,13 +1978,13 @@ body {
 }
 
 .point-icon-green {
-  background-color: #dcfce7;
-  color: #15803d;
+  background-color: var(--success-subtle);
+  color: var(--success-green);
 }
 
 .point-icon-rose {
-  background-color: #ffe4e6;
-  color: #e11d48;
+  background-color: var(--urgent-red-subtle);
+  color: var(--urgent-red);
 }
 
 .point-icon-blue {
@@ -3027,2122 +2002,542 @@ body {
   color: #7e22ce;
 }
 
+.point-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .point-heading {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0 0 0.15rem 0;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--text-primary);
 }
 
 .point-description {
-  font-size: 0.875rem;
-  color: #334155;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
   line-height: 1.45;
-  margin: 0;
 }
 
-/* 4. Tutorial Mode Tabs & 30:2 Cycle Elements in Metronome */
-.tutorial-mode-tabs {
-  display: flex;
-  background-color: #f1f5f9;
-  border-radius: var(--radius-lg);
-  padding: 4px;
-  gap: 4px;
-  margin-bottom: 1rem;
-  border: 1px solid #e2e8f0;
-}
-
-.mode-tab-btn {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  padding: 0.6rem 0.85rem;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: #64748b;
-  background: transparent;
-  border: none;
-  border-radius: calc(var(--radius-lg) - 4px);
-  cursor: pointer;
-  transition: all 0.15s ease;
-  min-height: 42px;
-}
-
-.mode-tab-btn.active {
-  background-color: #ffffff;
-  color: #0f172a;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-
-.mode-tab-btn:hover:not(.active) {
-  color: #334155;
-}
-
-/* Breath Prompt Banner (30:2 Cycle) */
-.breath-prompt-banner {
-  background: linear-gradient(135deg, #0369a1, #0284c7);
-  color: #ffffff;
-  border-radius: var(--radius-lg);
-  padding: 1.15rem 1.25rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
-}
-
-.breath-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.breath-title {
-  font-size: 1.125rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  margin: 0 0 0.25rem 0;
-}
-
-.breath-desc {
-  font-size: 0.875rem;
-  color: #e0f2fe;
-  line-height: 1.4;
-  margin: 0;
-}
-
-.breath-countdown-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.breath-timer-pill {
-  font-size: 0.8125rem;
-  background: rgba(255, 255, 255, 0.18);
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-full);
-}
-
-.btn-resume-compressions {
-  background-color: #ffffff;
-  color: #0369a1;
-  font-weight: 800;
-  font-size: 0.8125rem;
-  padding: 0.45rem 0.95rem;
-  border-radius: var(--radius-full);
-  border: none;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-resume-compressions:hover {
-  background-color: #f0f9ff;
-  transform: translateY(-1px);
-}
-
-/* 30:2 Progress Strip */
-.cycle-progress-strip {
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: var(--radius-md);
-  padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
-}
-
-.cycle-meta-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.8125rem;
-  margin-bottom: 0.4rem;
-}
-
-.cycle-num-tag {
-  font-weight: 800;
-  color: #0369a1;
-  background-color: #e0f2fe;
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-full);
-}
-
-.cycle-count-tag {
-  color: #475569;
-}
-
-.progress-track {
-  width: 100%;
-  height: 8px;
-  background-color: #e2e8f0;
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #e11d48, #059669);
-  transition: width 0.1s linear;
-}
-
-/* ==========================================================================
-   UNIFIED CPR EXPERIENCE (75% MAIN STAGE : 25% SIDEBAR)
-   ========================================================================== */
-
-.cpr-unified-page-container {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 1rem 1.5rem 3rem 1.5rem;
-}
-
-/* 75% : 25% Layout Grid */
-.cpr-unified-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 3.1fr) minmax(290px, 1fr);
-  gap: 1.75rem;
-  align-items: start;
-  margin-bottom: 2rem;
-}
-
-@media (max-width: 992px) {
-  .cpr-unified-layout {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-}
-
-/* ================= MAIN AREA (~75% WIDTH) ================= */
-.unified-cpr-stage {
-  background: #ffffff;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-slate-200);
-  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
-  overflow: hidden;
-}
-
-/* Dynamic Instruction Heading */
-.dynamic-heading-container {
-  padding: 1.5rem 1.75rem 1.25rem 1.75rem;
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-  border-bottom: 1px solid var(--color-slate-100);
-}
-
-.phase-pill-indicator {
-  margin-bottom: 0.6rem;
-}
-
-.pill-placement {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background-color: #fef3c7;
-  color: #b45309;
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-full);
-}
-
-.pill-compressions {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background-color: #fee2e2;
-  color: #dc2626;
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-full);
-}
-
-.pill-breaths {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background-color: #e0f2fe;
-  color: #0369a1;
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-full);
-}
-
-.dynamic-instruction-title {
-  font-family: var(--font-family-display);
-  font-size: 1.875rem;
-  font-weight: 800;
-  color: var(--color-slate-900);
-  line-height: 1.25;
-  margin: 0 0 0.4rem 0;
-}
-
-@media (max-width: 768px) {
-  .dynamic-instruction-title {
-    font-size: 1.5rem;
-  }
-}
-
-.dynamic-instruction-sub {
-  font-size: 1rem;
-  color: #475569;
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* Large Animation Viewport */
-.main-animation-viewport {
-  padding: 1.5rem 1.75rem;
-  background-color: #f8fafc;
-}
-
-.placement-angle-selector {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.selector-label {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: #64748b;
-}
-
-.btn-subview-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #475569;
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-subview-toggle.active {
-  background: #0f172a;
-  color: #ffffff;
-  border-color: #0f172a;
-}
-
-.animation-graphic-wrapper {
-  background: #ffffff;
-  border-radius: var(--radius-lg);
-  border: 1px solid #e2e8f0;
-  padding: 0.5rem;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
-  margin-bottom: 1.25rem;
-}
-
-/* 1. Horizontal Responsive Hand-Placement Instruction Boxes (Wider & Shorter) */
-.horizontal-instructions-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.85rem;
-  margin-bottom: 1.15rem;
-}
-
-@media (max-width: 640px) {
-  .horizontal-instructions-grid {
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
-  }
-}
-
-.instruction-card-horizontal {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.95rem;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: var(--radius-lg);
-  padding: 0.85rem 1.25rem;
-  min-height: 58px;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-  transition: all 0.15s ease;
-}
-
-.instruction-card-horizontal:hover {
-  border-color: #cbd5e1;
-  background: #f8fafc;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
-}
-
-.instruction-card-horizontal.card-span-full {
-  grid-column: 1 / -1;
-}
-
-.instruction-card-horizontal .step-num-bubble {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #e11d48;
-  color: #ffffff;
-  font-size: 0.875rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 2px 4px rgba(225, 29, 72, 0.2);
-}
-
-.instruction-card-horizontal .instruction-text {
-  font-size: 0.9rem;
-  line-height: 1.45;
-  color: #334155;
-  flex: 1;
-}
-
-.instruction-card-horizontal .instruction-text strong {
-  color: #0f172a;
-  font-weight: 700;
-}
-
-/* Compact Sternum Reminder Banner */
-.compact-sternum-banner {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  background-color: #fffbeb;
-  border: 1px solid #fde68a;
-  border-radius: var(--radius-md);
-  padding: 0.65rem 1rem;
-  color: #92400e;
-  font-size: 0.875rem;
-  line-height: 1.4;
-  margin-bottom: 1.25rem;
-}
-
-.compact-sternum-banner strong {
-  color: #78350f;
-}
-
-/* Rescue Breaths Progress Strip (1/2 and 2/2) */
-.breaths-progress-strip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  background: #ffffff;
-  border: 1px solid #bae6fd;
-  border-radius: var(--radius-lg);
-  padding: 0.85rem 1.25rem;
-  margin-top: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.breath-step-badge-group {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.breath-pill {
-  font-size: 0.8125rem;
-  font-weight: 800;
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-full);
-}
-
-.breath-pill.active {
-  background-color: #0284c7;
-  color: #ffffff;
-  box-shadow: 0 0 8px rgba(2, 132, 199, 0.4);
-}
-
-.breath-pill.completed {
-  background-color: #dcfce7;
-  color: #15803d;
-}
-
-.breath-pill.pending {
-  background-color: #f1f5f9;
-  color: #94a3b8;
-}
-
-.breath-status-note {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #0369a1;
-}
-
-/* Sidebar Breath Step Indicators */
-.sidebar-breath-step-indicators {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.6rem;
-}
-
-.breath-indicator-step {
-  flex: 1;
-  text-align: center;
-  padding: 0.4rem;
-  border-radius: var(--radius-md);
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-
-.breath-indicator-step.active {
-  background-color: #e0f2fe;
-  color: #0369a1;
-  border: 1px solid #7dd3fc;
-}
-
-.breath-indicator-step.completed {
-  background-color: #dcfce7;
-  color: #15803d;
-  border: 1px solid #86efac;
-}
-
-.breath-indicator-step.pending {
-  background-color: #f1f5f9;
-  color: #94a3b8;
-  border: 1px solid #e2e8f0;
-}
-
-/* Main Begin CPR Action Button */
-.placement-action-row {
-  display: flex;
-  justify-content: center;
-}
-
-.btn-begin-cpr-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  color: #ffffff;
-  font-family: var(--font-family-display);
-  font-size: 1.1875rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  padding: 1rem 2.5rem;
-  border-radius: var(--radius-full);
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
-  transition: all 0.2s ease;
-  min-height: 56px;
-  width: 100%;
-  max-width: 420px;
-}
-
-.btn-begin-cpr-primary:hover {
-  background: linear-gradient(135deg, #047857 0%, #065f46 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.45);
-}
-
-/* Active Compressions Rhythm Strip */
-.rhythm-pulse-strip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: var(--radius-md);
-  padding: 0.75rem 1rem;
-  margin-top: 0.75rem;
-}
-
-.visual-pulse-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: #cbd5e1;
-  transition: all 0.08s ease-out;
-}
-
-.visual-pulse-dot.pulse-hit {
-  background-color: #e11d48;
-  transform: scale(1.6);
-  box-shadow: 0 0 12px rgba(225, 29, 72, 0.6);
-}
-
-.rhythm-status-text {
-  font-size: 0.875rem;
-  font-weight: 800;
-  color: #0f172a;
-  letter-spacing: 0.04em;
-}
-
-.active-cpr-tips-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
-}
-
-.cpr-tip-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: #ffffff;
-  border: 1px solid #bbf7d0;
-  border-radius: var(--radius-full);
-  padding: 0.35rem 0.85rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #166534;
-}
-
-/* Breaths Stage in 30:2 */
-.breaths-countdown-control-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-  color: #ffffff;
-  border-radius: var(--radius-lg);
-  padding: 1.15rem 1.5rem;
-  margin-top: 1rem;
-  box-shadow: 0 4px 14px rgba(3, 105, 161, 0.25);
-  flex-wrap: wrap;
-}
-
-.countdown-info-group {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.countdown-info-group strong {
-  display: block;
-  font-size: 1rem;
-}
-
-.countdown-info-group p {
-  font-size: 0.875rem;
-  color: #e0f2fe;
-  margin: 0;
-}
-
-.btn-resume-breaths-now {
-  background-color: #ffffff;
-  color: #0369a1;
-  font-family: var(--font-family-display);
-  font-weight: 800;
-  font-size: 0.875rem;
-  padding: 0.6rem 1.25rem;
-  border-radius: var(--radius-full);
-  border: none;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-resume-breaths-now:hover {
-  background-color: #f0f9ff;
-  transform: translateY(-1px);
-}
-
-/* ================= RIGHT SIDEBAR (~25% WIDTH) ================= */
-.cpr-sidebar-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  position: sticky;
-  top: 1rem;
-}
-
-.sidebar-card {
-  background: #ffffff;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-slate-200);
-  padding: 1.25rem;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
-  min-width: 0;           /* crucial: lets the card shrink inside flex/grid */
-  overflow: hidden;       /* clips anything that still escapes */
-}
-
-.card-top-row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.35rem;
-  margin-bottom: 0.4rem;
-  flex-wrap: wrap;        /* status badge drops below on narrow cards */
-  min-width: 0;
-}
-
-.metric-label-group {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  min-width: 0;
-}
-
-/* Counter card: icon + label stacked vertically to avoid overflow */
-.counter-label-group {
-  flex-direction: row;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-}
-
-.metric-label {
-  font-size: 0.6875rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #64748b;
-  min-width: 0;
-}
-
-/* Variant that wraps onto two lines (word + cycle pill) */
-.metric-label-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  line-height: 1.2;
-  white-space: normal;
-}
-
-.metric-cycle-tag {
-  font-size: 0.6rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #94a3b8;
-  white-space: nowrap;
-}
-
-.status-dot {
-  font-size: 0.6875rem;
-  font-weight: 800;
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-full);
-}
-
-.status-dot.running {
-  background: #dcfce7;
-  color: #15803d;
-}
-
-.status-dot.idle {
-  background: #f1f5f9;
-  color: #64748b;
-}
-
-/* Big Telemetry Numbers */
-.big-time-display {
-  font-size: 2.75rem;
-  font-weight: 800;
-  color: #0f172a;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.big-counter-display {
-  font-size: 2.75rem;
-  font-weight: 800;
-  color: #e11d48;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-/* ==========================================================================
-   COUNTER DISPLAY BLOCK — splits word label + large numeric count
-   Prevents long compound strings ("Compressions done 07/30") from
-   overflowing the narrow 25% sidebar.
-   ========================================================================== */
-
-.counter-display-block {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-  margin-top: 0.15rem;
-  min-width: 0;
-  width: 100%;
-}
-
-/* Descriptive word above the number ("Compressions done", "Rescue breaths") */
-.counter-word-label {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: #475569;
-  line-height: 1.3;
-  white-space: normal;        /* allow wrapping on narrow screens */
-  word-break: break-word;
-  letter-spacing: 0.01em;
-}
-
-/* Large numeric part only ("07/30", "1/2") */
-.counter-num-large {
-  font-size: clamp(2rem, 4.5vw, 2.75rem);
-  font-weight: 800;
-  color: #e11d48;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  white-space: nowrap;        /* numbers never wrap */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.time-sub-note {
-  font-size: 0.75rem;
-  color: #64748b;
-  margin-top: 0.35rem;
-}
-
-.sidebar-cycle-progress {
-  margin-top: 0.6rem;
-}
-
-.cycle-progress-track {
-  width: 100%;
-  height: 8px;
-  background: #f1f5f9;
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.cycle-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #e11d48, #059669);
-  transition: width 0.1s linear;
-}
-
-.progress-labels {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.6875rem;
-  color: #94a3b8;
-  margin-top: 0.25rem;
-}
-
-/* Phase Chip in Sidebar */
-.active-phase-badge {
-  margin-top: 0.4rem;
-}
-
-.phase-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.875rem;
-  font-weight: 700;
-  padding: 0.45rem 0.85rem;
-  border-radius: var(--radius-md);
-  width: 100%;
-  justify-content: center;
-}
-
-.phase-chip-placement {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.phase-chip-compressions {
-  background: #fee2e2;
-  color: #9f1239;
-}
-
-.phase-chip-breaths {
-  background: #e0f2fe;
-  color: #0369a1;
-}
-
-/* Target Rate & Sound */
-.rate-selector-group {
-  margin-bottom: 0.75rem;
-}
-
-.rate-buttons-row {
-  display: flex;
-  gap: 0.35rem;
-  margin-top: 0.4rem;
-}
-
-.btn-rate-choice {
-  flex: 1;
-  padding: 0.4rem 0.25rem;
-  background: #f8fafc;
-  border: 1px solid #cbd5e1;
-  border-radius: var(--radius-md);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #475569;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  text-align: center;
-}
-
-.btn-rate-choice.active {
-  background: #0f172a;
-  color: #ffffff;
-  border-color: #0f172a;
-}
-
-.rate-recommendation-text {
-  display: block;
-  font-size: 0.6875rem;
-  color: #64748b;
-  margin-top: 0.3rem;
-}
-
-.sound-toggle-row {
-  border-top: 1px solid #f1f5f9;
-  padding-top: 0.65rem;
-}
-
-.btn-sound-toggle {
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.6rem;
-  border-radius: var(--radius-md);
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #334155;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-sound-toggle.muted {
-  background: #fef2f2;
-  border-color: #fecdd3;
-  color: #991b1b;
-}
-
-/* Mode Switcher in Sidebar */
-.sidebar-mode-toggle-group {
-  display: flex;
-  gap: 0.35rem;
-  margin-top: 0.3rem;
-}
-
-.btn-sidebar-mode {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  padding: 0.5rem 0.65rem;
-  border-radius: var(--radius-md);
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #475569;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-sidebar-mode.active {
-  background: #0284c7;
-  color: #ffffff;
-  border-color: #0284c7;
-}
-
-/* Controls Stack in Sidebar */
-.sidebar-controls-section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.running-controls-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.btn-sidebar-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  min-height: 48px;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-lg);
-  font-family: var(--font-family-display);
-  font-size: 1rem;
-  font-weight: 800;
-  border: none;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-start-theme {
-  background: #059669;
-  color: #ffffff;
-  box-shadow: 0 4px 10px rgba(5, 150, 105, 0.25);
-}
-
-.btn-start-theme:hover {
-  background: #047857;
-}
-
-.btn-pause-theme {
-  background: #f59e0b;
-  color: #ffffff;
-  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.25);
-}
-
-.btn-pause-theme:hover {
-  background: #d97706;
-}
-
-.btn-resume-theme {
-  background: #059669;
-  color: #ffffff;
-  box-shadow: 0 4px 10px rgba(5, 150, 105, 0.25);
-}
-
-.btn-resume-theme:hover {
-  background: #047857;
-}
-
-.btn-sidebar-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  width: 100%;
-  min-height: 42px;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-md);
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: #475569;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-stop-theme:hover {
-  background: #fef2f2;
-  border-color: #fecdd3;
-  color: #dc2626;
-}
-
-/* Sidebar 112 & AED Emergency Box */
-.sidebar-emergency-box {
-  background: #fff1f2;
-  border: 1px solid #fecdd3;
-  border-radius: var(--radius-lg);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.emergency-header-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #9f1239;
-  font-size: 0.875rem;
-}
-
-.emergency-sub-text {
-  font-size: 0.75rem;
-  color: #881337;
-  line-height: 1.4;
-  margin: 0;
-}
-
-.btn-sidebar-call-112 {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  background-color: #dc2626;
-  color: #ffffff;
-  font-weight: 800;
-  font-size: 0.875rem;
-  padding: 0.55rem 1rem;
-  border-radius: var(--radius-full);
-  text-decoration: none;
-  transition: background-color 0.15s ease;
-  min-height: 38px;
-}
-
-.btn-sidebar-call-112:hover {
-  background-color: #b91c1c;
-}
-
-/* ================= STOP CPR CONFIRMATION MODAL ================= */
-.cpr-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 1rem;
-}
-
-.cpr-modal-card {
-  background: #ffffff;
-  border-radius: var(--radius-2xl);
-  padding: 2rem;
-  max-width: 440px;
-  width: 100%;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);
-  text-align: center;
-}
-
-.modal-icon-header {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #fef3c7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem auto;
-}
-
-.modal-title {
-  font-family: var(--font-family-display);
-  font-size: 1.375rem;
-  font-weight: 800;
-  color: #0f172a;
-  margin: 0 0 0.5rem 0;
-}
-
-.modal-desc {
-  font-size: 0.875rem;
-  color: #475569;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-}
-
-.modal-actions-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.btn-modal-confirm-stop {
-  background-color: #dc2626;
-  color: #ffffff;
-  font-family: var(--font-family-display);
-  font-size: 0.9375rem;
-  font-weight: 800;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--radius-lg);
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.15s ease;
-}
-
-.btn-modal-confirm-stop:hover {
-  background-color: #b91c1c;
-}
-
-.btn-modal-cancel {
-  background-color: #f1f5f9;
-  color: #334155;
-  font-weight: 700;
-  font-size: 0.875rem;
-  padding: 0.65rem 1.25rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid #cbd5e1;
-  cursor: pointer;
-}
-
-.btn-modal-cancel:hover {
-  background-color: #e2e8f0;
-}
-
-.supporting-cpr-guidance-section {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* ==========================================================================
-   CPR PAGE HEADER NAVIGATION
-   ========================================================================== */
-
-.page-header-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.75rem 0;
-  margin-bottom: 0.25rem;
-  flex-wrap: wrap;
-}
-
-.flex-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--color-slate-600);
-  padding: 0.35rem 0.7rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-slate-200);
-  background: white;
-  transition: all 0.15s ease;
-}
-
-.back-link:hover {
-  color: var(--color-primary);
-  border-color: var(--color-primary-soft);
-  background: var(--color-primary-bg);
-}
-
-.wake-lock-status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.3rem 0.7rem;
-  border-radius: var(--radius-full);
-  background: #f1f5f9;
-  color: #64748b;
-  border: 1px solid #e2e8f0;
-  transition: all 0.2s ease;
-}
-
-.wake-lock-status-pill.active {
-  background: #dcfce7;
-  color: #15803d;
-  border-color: #86efac;
-}
-
-/* CPR Main Stage and Sidebar columns (semantic names from CprScreen) */
-.cpr-main-stage-col {
-  min-width: 0;
-}
-
-.cpr-sidebar-col {
-  min-width: 0;
-}
-
-/* ==========================================================================
-   AED REMINDER BANNER
-   ========================================================================== */
-
-.aed-reminder-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  background: linear-gradient(135deg, #fffbeb 0%, #fef9c3 100%);
-  border: 1px solid #fde68a;
-  border-radius: var(--radius-lg);
-  padding: 1rem 1.25rem;
-  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.08);
-}
-
-.aed-icon-col {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  padding-top: 0.1rem;
-}
-
-.aed-badge-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-md);
-  background: #fef3c7;
-  border: 1px solid #fde68a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.aed-text-col {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.aed-title-row {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  flex-wrap: wrap;
-}
-
-.aed-heading {
-  font-size: 0.9375rem;
-  font-weight: 800;
-  color: #78350f;
-}
-
-.aed-tag {
-  font-size: 0.6875rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #b45309;
-  background: #fef3c7;
-  border: 1px solid #fde68a;
-  padding: 0.1rem 0.5rem;
-  border-radius: var(--radius-full);
-}
-
-.aed-body {
-  font-size: 0.875rem;
-  color: #92400e;
-  line-height: 1.45;
-  margin: 0;
-}
-
-.aed-tip {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.4rem;
-  font-size: 0.8125rem;
-  color: #a16207;
-  line-height: 1.4;
-}
-
-/* ==========================================================================
-   ANIMATE-SHAKE KEYFRAME
-   ========================================================================== */
-
-@keyframes shake {
-  0%, 100% { transform: rotate(0deg); }
-  10%, 50%, 90% { transform: rotate(-8deg); }
-  30%, 70% { transform: rotate(8deg); }
-}
-
-.animate-shake {
-  animation: shake 1.4s ease-in-out infinite;
-}
-
-/* ==========================================================================
-   MISSING RADIUS TOKEN
-   ========================================================================== */
-
-.cpr-modal-card {
-  border-radius: var(--radius-xl);
-}
-
-/* ==========================================================================
-   INSTRUCTION STEP CARD (Hands-Only CPR Steps)
-   ========================================================================== */
-
+/* Hands-Only CPR Steps (<InstructionStepCard />) */
 .cpr-instructions-section {
-  background: #ffffff;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  border: 1px solid var(--color-slate-200);
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
 .instructions-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1.125rem 1.5rem;
-  background-color: #f8fafc;
-  border-bottom: 1px solid var(--color-slate-100);
+  align-items: center;
   cursor: pointer;
   user-select: none;
-  transition: background-color 0.15s ease;
-}
-
-.instructions-header:hover {
-  background-color: #f1f5f9;
 }
 
 .instructions-title-row {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 8px;
 }
 
 .instructions-heading {
-  font-family: var(--font-family-display);
-  font-size: 1.0625rem;
+  font-size: var(--text-lg);
   font-weight: 800;
-  color: var(--color-slate-900);
-  margin: 0;
+  color: var(--text-primary);
 }
 
 .btn-toggle-instructions {
   background: none;
   border: none;
-  color: #64748b;
+  color: var(--text-secondary);
   cursor: pointer;
-  padding: 0.25rem;
-  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
-  transition: color 0.15s ease;
-}
-
-.btn-toggle-instructions:hover {
-  color: var(--color-slate-900);
+  justify-content: center;
 }
 
 .instructions-body {
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-2);
 }
 
-/* Step Selector Tabs */
 .step-tabs-row {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.25rem;
-  flex-wrap: wrap;
+  gap: var(--space-2);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-2);
 }
 
 .step-tab-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
   font-weight: 700;
-  color: #64748b;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-subtle);
+  color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .step-tab-btn.active {
-  background: var(--color-primary);
-  color: #ffffff;
-  border-color: var(--color-primary);
-  box-shadow: 0 2px 8px rgba(159, 18, 57, 0.25);
-}
-
-.step-tab-btn:hover:not(.active) {
-  background: #f1f5f9;
-  border-color: #cbd5e1;
-  color: var(--color-slate-800);
+  background-color: var(--brand-plum);
+  border-color: var(--brand-plum);
+  color: white;
 }
 
 .step-num-circle {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: currentColor;
-  color: inherit;
-  display: flex;
+  background-color: rgba(0, 0, 0, 0.08);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 900;
-  opacity: 0.9;
-  flex-shrink: 0;
+  font-size: 11px;
 }
 
 .step-tab-btn.active .step-num-circle {
-  background: rgba(255, 255, 255, 0.3);
-  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.25);
+  color: white;
 }
 
-.step-tab-btn:not(.active) .step-num-circle {
-  background: var(--color-primary-soft);
-  color: var(--color-primary);
-}
-
-.step-tab-text {
-  font-size: 0.8125rem;
-}
-
-/* Active Step Detail Card */
 .active-step-card {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  overflow: hidden;
-  margin-bottom: 1.25rem;
+  padding: var(--space-5);
 }
 
 .step-card-header {
-  padding: 1.25rem 1.5rem 1rem 1.5rem;
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .step-badge-pill {
-  display: inline-block;
-  font-size: 0.6875rem;
+  align-self: flex-start;
+  background-color: var(--brand-plum-subtle);
+  border: 1px solid var(--brand-plum-border);
+  color: var(--brand-plum);
+  font-size: 11px;
   font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background: var(--color-primary-soft);
-  color: var(--color-primary);
-  padding: 0.15rem 0.5rem;
+  padding: 2px 10px;
   border-radius: var(--radius-full);
-  margin-bottom: 0.4rem;
 }
 
 .step-card-title {
-  font-family: var(--font-family-display);
-  font-size: 1.25rem;
+  font-size: var(--text-xl);
   font-weight: 800;
-  color: var(--color-slate-900);
-  margin: 0 0 0.65rem 0;
-  line-height: 1.2;
+  color: var(--text-primary);
 }
 
 .key-action-banner {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: var(--color-primary-bg);
-  border: 1px solid var(--color-primary-soft);
+  gap: 8px;
+  font-size: var(--text-xs);
+  color: var(--urgent-red-text);
+  background-color: var(--urgent-red-subtle);
+  border: 1px solid var(--urgent-red-border);
+  padding: 8px 12px;
   border-radius: var(--radius-md);
-  padding: 0.6rem 0.875rem;
-  font-size: 0.9rem;
-  color: var(--color-primary);
-  line-height: 1.4;
 }
 
-/* Step SVG Diagram Box & Horizontal Layout */
 .step-content-horizontal {
   display: grid;
-  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.4fr);
-  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: var(--space-4);
   align-items: center;
-  padding: 1.25rem 1.5rem;
-  background: #ffffff;
 }
 
-@media (max-width: 820px) {
+@media (max-width: 640px) {
   .step-content-horizontal {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
   }
 }
 
-.step-details-col {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
 .step-diagram-box {
-  padding: 0.5rem;
-  background: #f8fafc;
+  background-color: white;
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  border: 1px solid #e2e8f0;
-}
-
-.diagram-illustration {
+  padding: var(--space-3);
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
 .cpr-svg-diagram {
   width: 100%;
-  max-width: 380px;
+  max-height: 180px;
   height: auto;
-  border-radius: var(--radius-md);
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
 }
 
-/* Step Description & Points */
+.step-details-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
 .step-main-desc {
-  padding: 1rem 1.5rem 0.5rem;
-  font-size: 0.9375rem;
-  color: #334155;
-  line-height: 1.55;
-  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
 .step-points-list {
-  padding: 0.5rem 1.5rem 1.25rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 8px;
 }
 
 .step-point-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.6rem;
-  font-size: 0.875rem;
-  color: #334155;
-  line-height: 1.45;
+  gap: 8px;
+  font-size: var(--text-xs);
+  color: var(--text-primary);
+  line-height: 1.4;
 }
 
-/* Women-Centered Reassurance Callout */
 .women-reassurance-box {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
-  border: 1px solid #fecdd3;
+  gap: var(--space-3);
+  background-color: var(--brand-plum-subtle);
+  border: 1px solid var(--brand-plum-border);
   border-radius: var(--radius-lg);
-  padding: 1.1rem 1.25rem;
-  font-size: 0.875rem;
-  color: #881337;
+  padding: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--text-primary);
   line-height: 1.5;
-}
-
-.women-reassurance-box strong {
-  color: #9f1239;
-  display: block;
-  margin-bottom: 0.3rem;
-}
-
-.women-reassurance-box p {
-  margin: 0;
-  color: #881337;
-}
-
-.women-reassurance-box p strong {
-  display: inline;
-  color: #9f1239;
-}
-
-/* mt-0.5 utility used in InstructionStepCard */
-.mt-0\.5 {
-  margin-top: 0.125rem;
-}
-
-/* compression-live-wrapper */
-.compression-live-wrapper {
-  position: relative;
-}
-
-/* Breaths graphic box */
-.breaths-graphic-box {
-  margin-bottom: 0.75rem;
-}
-
-/* Stage content wrappers */
-.stage-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.placement-stage-content {
-  gap: 0;
-}
-
-.compressions-stage-content {
-  gap: 0;
-}
-
-.breaths-stage-content {
-  gap: 0;
 }
 
 /* ============================================================
-   DECISION FLOW & TRIAGE ADVICE STYLES
+   CALM MODE: LEARN HUB (/learn)
    ============================================================ */
-.decision-flow-page {
-  max-width: 760px;
-  margin: 0 auto;
-  gap: 1.5rem;
-}
 
-.page-header-nav.flex-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.decision-main-area {
-  width: 100%;
-}
-
-.question-box, .advice-box {
-  background: white;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-slate-200);
-  padding: 2rem;
-  box-shadow: var(--shadow-md);
+.learn-hub-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-6);
 }
 
-.question-meta-row, .advice-meta-row {
+.learn-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
-.step-badge {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-primary);
-  background: var(--color-primary-bg);
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-full);
-}
-
-.btn-tts-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: var(--color-slate-100);
-  border: 1px solid var(--color-slate-200);
-  color: var(--color-slate-700);
-  padding: 0.3rem 0.75rem;
-  border-radius: var(--radius-full);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-tts-toggle:hover {
-  background: var(--color-primary-bg);
-  border-color: var(--color-primary-soft);
-  color: var(--color-primary);
-}
-
-.question-title {
-  font-family: var(--font-family-display);
-  font-size: 1.625rem;
+.learn-title {
+  font-size: var(--text-3xl);
   font-weight: 800;
-  color: var(--color-slate-900);
-  line-height: 1.25;
-  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
-.question-hint {
+.learn-lead {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+}
+
+/* Segmented Control for Watch vs Myths */
+.segmented-control {
   display: flex;
-  align-items: flex-start;
-  gap: 0.4rem;
-  font-size: 0.9375rem;
-  color: var(--color-slate-600);
-  line-height: 1.45;
-}
-
-.hint-icon {
-  color: var(--color-slate-500);
-  flex-shrink: 0;
-  margin-top: 0.15rem;
-}
-
-/* Options Stack */
-.options-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-}
-
-.option-button {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1.125rem 1.25rem;
-  background: white;
-  border: 2px solid var(--color-slate-200);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 4px;
+  gap: 4px;
 }
 
-.option-button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-option-yes:hover {
-  border-color: #10b981;
-  background: #ecfdf5;
-}
-
-.btn-option-no:hover {
-  border-color: #f43f5e;
-  background: #fff1f2;
-}
-
-.btn-option-unsure:hover {
-  border-color: #f59e0b;
-  background: #fef3c7;
-}
-
-.option-icon-box {
-  flex-shrink: 0;
-  margin-top: 0.15rem;
-}
-
-.option-text-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.option-primary-label {
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-}
-
-.option-sub-desc {
-  font-size: 0.875rem;
-  color: var(--color-slate-600);
-  line-height: 1.4;
-}
-
-/* Advice Box Styles */
-.advice-box {
-  border-left: 6px solid var(--color-primary);
-}
-
-.advice-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--color-primary-bg);
-  color: var(--color-primary);
-  font-weight: 700;
-  font-size: 0.875rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-full);
-}
-
-.advice-title {
-  font-family: var(--font-family-display);
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--color-slate-900);
-  line-height: 1.2;
-  margin: 0.5rem 0 0.35rem 0;
-}
-
-.advice-desc {
-  font-size: 1rem;
-  color: var(--color-slate-600);
-  line-height: 1.5;
-}
-
-/* Steps Checklist */
-.advice-checklist {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.advice-checklist h3 {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--color-slate-900);
-}
-
-.advice-steps-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.advice-step-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  background: var(--color-slate-50);
-  border: 1px solid var(--color-slate-200);
-  padding: 0.85rem 1rem;
-  border-radius: var(--radius-md);
-  font-size: 0.9375rem;
-  color: var(--color-slate-800);
-  line-height: 1.45;
-}
-
-.step-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  color: white;
-  font-weight: 800;
-  font-size: 0.75rem;
-  flex-shrink: 0;
-  margin-top: 0.1rem;
-}
-
-/* Don'ts Box */
-.advice-donts-box {
-  background: #fef2f2;
-  border: 1px solid #fecdd3;
-  border-radius: var(--radius-lg);
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.advice-donts-box h4 {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: #9f1239;
-}
-
-.donts-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.dont-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: #881337;
-  line-height: 1.4;
-}
-
-.bullet-dont {
-  color: #e11d48;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-
-/* Dispatcher Script */
-.dispatcher-script-card {
-  background: #f8fafc;
-  border: 1px solid #cbd5e1;
-  border-radius: var(--radius-lg);
-  padding: 1rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.dispatcher-script-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.btn-copy-script {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: white;
-  border: 1px solid #94a3b8;
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-slate-700);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-copy-script:hover {
-  background: var(--color-slate-100);
-  border-color: var(--color-slate-900);
-  color: var(--color-slate-900);
-}
-
-.script-text {
-  font-family: monospace;
-  font-size: 0.875rem;
-  color: #1e293b;
-  background: white;
-  padding: 0.75rem;
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--color-emergency);
-  line-height: 1.4;
-}
-
-/* Advice Emergency Fallback Buttons */
-.advice-emergency-fallback {
-  margin-top: 0.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--color-slate-200);
-}
-
-.fallback-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-@media (min-width: 600px) {
-  .fallback-actions {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-
-.btn-advice-call {
+.segment-btn {
   flex: 1;
-  justify-content: center;
-  padding: 0.85rem 1.25rem;
-  font-size: 1rem;
-}
-
-.btn-pulse-cpr {
-  flex: 1.2;
-  justify-content: center;
-}
-
-.btn-secondary-cpr {
-  flex: 1.2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-slate-100);
-  border: 1px solid var(--color-slate-300);
-  color: var(--color-slate-700);
-  padding: 0.85rem 1.25rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-secondary-cpr:hover {
-  background: var(--color-slate-200);
-  color: var(--color-slate-900);
-}
-
-.decision-direct-cpr-banner {
-  background: #fff1f2;
-  border: 1px solid #fecdd3;
-  border-radius: var(--radius-lg);
-  padding: 1rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-@media (min-width: 600px) {
-  .decision-direct-cpr-banner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-
-.direct-cpr-info {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-
-.direct-cpr-info strong {
-  display: block;
-  font-size: 0.9375rem;
-  color: var(--color-slate-900);
-}
-
-.direct-cpr-info p {
-  font-size: 0.8125rem;
-  color: var(--color-slate-600);
-}
-
-.btn-shortcut-cpr {
-  background: white;
-  border: 1.5px solid var(--color-primary);
-  color: var(--color-primary);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-full);
+  min-height: 44px;
+  border: none;
+  background: none;
+  font-size: var(--text-sm);
   font-weight: 700;
-  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  white-space: nowrap;
   transition: all 0.15s ease;
 }
 
-.btn-shortcut-cpr:hover {
-  background: var(--color-primary);
-  color: white;
+.segment-btn.active {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-subtle);
 }
 
-.decision-reassurance-footer {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8125rem;
-  color: var(--color-slate-500);
-  justify-content: center;
-  text-align: center;
+/* Video Frame Card */
+.learn-video-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
-/* Women-Centred Insight Card */
-.advice-women-note-box {
-  background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
-  border: 1px solid #fecdd3;
-  border-left: 5px solid var(--color-primary);
-  border-radius: var(--radius-lg);
-  padding: 1.125rem 1.25rem;
+.video-ratio-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+}
+
+.video-ratio-box iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-caption-bar {
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* Offline 3-Step Guide */
+.offline-steps-group {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: var(--space-3);
 }
 
-.women-note-header {
+.offline-step-card {
   display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  gap: var(--space-4);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
 }
 
-.women-note-title {
-  font-size: 0.875rem;
+.offline-step-card h4 {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.offline-step-card p {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* Myth Accordion Cards */
+.myths-accordion-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.myth-card-clean {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.myth-category-pill {
+  font-size: var(--text-xs);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--color-primary);
+  color: var(--brand-plum);
 }
 
-.women-note-text {
-  font-size: 0.9375rem;
-  color: #881337;
+.myth-quote {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.myth-truth {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--success-green);
+}
+
+.myth-explanation {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
   line-height: 1.45;
-  font-weight: 500;
 }
 
+/* ============================================================
+   CALM MODE: SOURCES & SAFETY (/sources)
+   ============================================================ */
+
+.sources-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.sources-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sources-title {
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.sources-sub {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+}
+
+.sources-safety-card {
+  background-color: var(--amber-subtle);
+  border: 1px solid var(--amber-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+}
+
+.sources-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.sources-group-title {
+  font-size: var(--text-sm);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.citation-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.citation-card h4 {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.citation-card p {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.citation-link {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--brand-plum);
+  text-decoration: none;
+  margin-top: var(--space-1);
+}
+
+.citation-link:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   CALM MODE FOOTER
+   ============================================================ */
+
+.site-footer-calm {
+  border-top: 1px solid var(--border-subtle);
+  padding: var(--space-8) var(--space-4);
+  background-color: var(--bg-calm);
+  margin-top: auto;
+}
+
+.footer-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.footer-meta-text {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.footer-nav-row {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.footer-nav-row a {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-nav-row a:hover {
+  color: var(--brand-plum);
+}
+
+/* ============================================================
+   ANIMATIONS & REDUCED MOTION
+   ============================================================ */
+
+@keyframes pulse-ring-glow {
+  0% { transform: scale(0.96); opacity: 0.6; }
+  50% { transform: scale(1.04); opacity: 0.9; }
+  100% { transform: scale(0.96); opacity: 0.6; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+
+.animate-shake {
+  animation: shake 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

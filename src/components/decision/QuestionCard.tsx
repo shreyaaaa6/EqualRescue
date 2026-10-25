@@ -9,16 +9,15 @@ import {
   Heart,
   Volume2,
   VolumeX,
-  XCircle,
   Copy,
   Check,
   Activity,
   Zap,
   Wind,
   Brain,
-  MessageSquare,
   AlertTriangle,
-  Sparkles
+  Sparkles,
+  ChevronDown
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -76,222 +75,207 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   const getConditionIcon = (type?: string) => {
     switch (type) {
       case 'cardiac':
-        return <Activity size={24} className="text-rose-600" />;
+        return <Activity size={18} strokeWidth={2.5} />;
       case 'seizure':
-        return <Zap size={24} className="text-amber-600" />;
+        return <Zap size={18} strokeWidth={2.5} />;
       case 'choking':
-        return <Wind size={24} className="text-cyan-600" />;
+        return <Wind size={18} strokeWidth={2.5} />;
       case 'stroke':
-        return <Brain size={24} className="text-purple-600" />;
+        return <Brain size={18} strokeWidth={2.5} />;
       case 'heart_attack':
-        return <Heart size={24} className="text-rose-600" />;
+        return <Heart size={18} strokeWidth={2.5} />;
       case 'fainting':
-        return <HelpCircle size={24} className="text-emerald-600" />;
+        return <HelpCircle size={18} strokeWidth={2.5} />;
       case 'allergy':
-        return <AlertTriangle size={24} className="text-orange-600" />;
+        return <AlertTriangle size={18} strokeWidth={2.5} />;
       default:
-        return <ShieldCheck size={24} className="text-emerald-600" />;
+        return <ShieldCheck size={18} strokeWidth={2.5} />;
     }
   };
 
   // -------------------------------------------------------------
-  // If an option with advice is active, show the rich condition card
+  // If an option with advice is active, show the Result Hierarchy
   // -------------------------------------------------------------
   if (selectedOption?.advice) {
     const { advice } = selectedOption;
-    const spokenContent = `${advice.title}. ${advice.description}. First: ${advice.points.slice(0, 3).join('. ')}`;
+    const spokenContent = `${advice.title}. ${advice.description}. Do now: ${advice.points.join('. ')}`;
 
     return (
-      <div className="card-box advice-box" role="region" aria-live="polite">
-        {/* Advice Header */}
-        <div className="advice-header">
-          <div className="advice-meta-row">
-            <div className="advice-badge">
+      <div className="result-container" role="region" aria-live="polite">
+        <div className="result-card-hierarchy">
+          {/* (1) Condition Title with Icon */}
+          <header className="result-condition-header">
+            <div className="result-badge">
               {getConditionIcon(advice.conditionType)}
-              <span>{advice.actionBadge || 'Emergency Guidance'}</span>
+              <span>{advice.actionBadge || 'First-Aid Guidance'}</span>
             </div>
+            <h1 className="result-condition-title">{advice.title}</h1>
+            <p className="result-condition-desc">{advice.description}</p>
+          </header>
 
-            <button
-              type="button"
-              onClick={() => handleSpeak(spokenContent)}
-              className="btn-tts-toggle"
-              title={isSpeaking ? 'Stop voice reading' : 'Read guidance aloud'}
-              aria-label="Read guidance aloud"
-            >
-              {isSpeaking ? <VolumeX size={16} /> : <Volume2 size={16} />}
-              <span>{isSpeaking ? 'Mute' : 'Listen'}</span>
-            </button>
-          </div>
-
-          <h2 className="advice-title">{advice.title}</h2>
-          <p className="advice-desc">{advice.description}</p>
-        </div>
-
-        {/* Women-Centred Clinical & Legal Insight Card */}
-        {advice.womenSpecificNote && (
-          <aside className="advice-women-note-box" aria-label="Women's Health Insight">
-            <div className="women-note-header">
-              <Sparkles size={16} className="text-rose-600 flex-shrink-0" />
-              <span className="women-note-title">Women's Health & Bystander Insight</span>
-            </div>
-            <p className="women-note-text">{advice.womenSpecificNote}</p>
-          </aside>
-        )}
-
-        {/* Action Steps & Do's */}
-        <div className="advice-checklist">
-          <h3>
-            <CheckCircle2 size={18} className="text-emerald-600" />
-            <span>Immediate Actions to Take:</span>
-          </h3>
-          <ul className="advice-steps-list">
-            {advice.points.map((pt, idx) => (
-              <li key={idx} className="advice-step-item">
-                <span className="step-num">{idx + 1}</span>
-                <span>{pt}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Warning / Don'ts Column */}
-        {advice.donts && advice.donts.length > 0 && (
-          <div className="advice-donts-box">
-            <h4>
-              <XCircle size={18} className="text-rose-600" />
-              <span>Critical Warnings (What NOT to Do):</span>
-            </h4>
-            <ul className="donts-list">
-              {advice.donts.map((dont, idx) => (
-                <li key={idx} className="dont-item">
-                  <span className="bullet-dont">✕</span>
-                  <span>{dont}</span>
+          {/* (2) "Do now": Numbered Large Steps */}
+          <section className="result-section-do" aria-label="Immediate Actions">
+            <h2 className="section-label-bold">Do now</h2>
+            <ol className="do-steps-list">
+              {advice.points.map((pt, idx) => (
+                <li key={idx} className="do-step-row">
+                  <span className="step-num-badge">{idx + 1}</span>
+                  <span>{pt}</span>
                 </li>
               ))}
-            </ul>
-          </div>
-        )}
+            </ol>
+          </section>
 
-        {/* 112 Dispatcher Script Helper */}
-        {advice.dispatcherScript && (
-          <div className="dispatcher-script-card">
-            <div className="dispatcher-script-header">
-              <div className="flex-row items-center gap-2">
-                <MessageSquare size={16} className="text-rose-600" />
-                <span className="font-semibold text-slate-800 text-sm">What to Tell the 112 Dispatcher:</span>
+          {/* (3) "Don't": Compact Red-Tinted Box */}
+          {advice.donts && advice.donts.length > 0 && (
+            <section className="result-section-dont" aria-label="Critical Warnings">
+              <div className="dont-header">
+                <AlertOctagon size={16} strokeWidth={2.5} />
+                <span>Don't</span>
               </div>
-              <button
-                type="button"
-                onClick={() => handleCopyScript(advice.dispatcherScript!)}
-                className="btn-copy-script"
-              >
-                {scriptCopied ? <Check size={14} /> : <Copy size={14} />}
-                <span>{scriptCopied ? 'Copied' : 'Copy Script'}</span>
-              </button>
-            </div>
-            <p className="script-text">"{advice.dispatcherScript}"</p>
-          </div>
-        )}
+              <ul className="dont-items-list">
+                {advice.donts.map((dont, idx) => (
+                  <li key={idx} className="dont-item-row">
+                    <span className="dont-cross">✕</span>
+                    <span>{dont}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
-        {/* Bottom Actions */}
-        <div className="advice-emergency-fallback">
-          <div className="fallback-actions">
-            <a href="tel:112" className="btn-call-112 btn-advice-call">
-              <PhoneCall size={18} />
-              <span>Call 112 Dispatcher</span>
+          {/* (4) Women-specific / Pregnancy Note (Expandable Disclosure) */}
+          {advice.womenSpecificNote && (
+            <details className="result-disclosure-women">
+              <summary>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Sparkles size={16} strokeWidth={2} />
+                  Women & Pregnancy Considerations
+                </span>
+                <ChevronDown size={16} strokeWidth={2} />
+              </summary>
+              <div className="women-disclosure-content">
+                {advice.womenSpecificNote}
+              </div>
+            </details>
+          )}
+        </div>
+
+        {/* (5) Sticky Bottom Action Bar */}
+        <div className="decide-sticky-action-bar" role="toolbar" aria-label="Action controls">
+          {advice.requiresCprRedirect ? (
+            <button
+              type="button"
+              onClick={() => {
+                triggerHaptic();
+                navigate('/cpr');
+              }}
+              className="btn-sticky-cpr"
+            >
+              <Activity size={18} strokeWidth={2.5} />
+              <span>Start CPR Now</span>
+            </button>
+          ) : (
+            <a href="tel:112" className="btn-sticky-cpr" style={{ textDecoration: 'none' }}>
+              <PhoneCall size={18} strokeWidth={2.5} />
+              <span>Call 112</span>
             </a>
+          )}
 
-            {advice.requiresCprRedirect ? (
-              <button
-                type="button"
-                onClick={() => {
-                  triggerHaptic();
-                  navigate('/cpr');
-                }}
-                className="btn-primary-action btn-pulse-cpr"
-              >
-                <Activity size={18} />
-                <span>Open CPR Metronome & Guide &rarr;</span>
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => {
-                  triggerHaptic();
-                  navigate('/cpr');
-                }}
-                className="btn-secondary-cpr"
-              >
-                Go to CPR Metronome If Condition Deteriorates
-              </button>
-            )}
-          </div>
+          {advice.dispatcherScript && (
+            <button
+              type="button"
+              onClick={() => handleCopyScript(advice.dispatcherScript!)}
+              className="btn-action-tool"
+              title={advice.dispatcherScript}
+            >
+              {scriptCopied ? <Check size={16} strokeWidth={2} /> : <Copy size={16} strokeWidth={2} />}
+              <span>{scriptCopied ? 'Copied' : 'Dispatcher Script'}</span>
+            </button>
+          )}
+
+          <button
+            type="button"
+            onClick={() => handleSpeak(spokenContent)}
+            className="btn-action-tool"
+            aria-label={isSpeaking ? 'Mute guidance' : 'Listen to guidance'}
+          >
+            {isSpeaking ? <VolumeX size={16} strokeWidth={2} /> : <Volume2 size={16} strokeWidth={2} />}
+            <span>{isSpeaking ? 'Mute' : 'Listen'}</span>
+          </button>
         </div>
       </div>
     );
   }
 
   // -------------------------------------------------------------
-  // Question Node render (Assessment)
+  // Question Assessment View (One question per full screen)
   // -------------------------------------------------------------
   const questionSpeech = `${node.question}. ${node.hint}`;
 
   return (
-    <div className="card-box question-box">
-      <div className="question-header">
-        <div className="question-meta-row">
-          <span className="step-badge">Assessment {node.stepNumber} of {node.totalSteps}</span>
-
-          <button
-            type="button"
-            onClick={() => handleSpeak(questionSpeech)}
-            className="btn-tts-toggle"
-            title={isSpeaking ? 'Stop voice reading' : 'Read question aloud'}
-            aria-label="Read question aloud"
-          >
-            {isSpeaking ? <VolumeX size={16} /> : <Volume2 size={16} />}
-            <span>{isSpeaking ? 'Mute' : 'Listen'}</span>
-          </button>
-        </div>
-
-        <h1 className="question-title">{node.question}</h1>
-        <p className="question-hint">
-          <HelpCircle size={16} className="hint-icon" />
-          <span>{node.hint}</span>
-        </p>
+    <div className="question-presentation">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px' }}>
+        <h1 className="question-text-giant">{node.question}</h1>
+        <button
+          type="button"
+          onClick={() => handleSpeak(questionSpeech)}
+          className="btn-action-tool"
+          style={{ minHeight: '36px', height: '36px', padding: '0 12px', flexShrink: 0 }}
+          aria-label={isSpeaking ? 'Stop voice reading' : 'Read question aloud'}
+        >
+          {isSpeaking ? <VolumeX size={15} strokeWidth={2} /> : <Volume2 size={15} strokeWidth={2} />}
+          <span>{isSpeaking ? 'Mute' : 'Listen'}</span>
+        </button>
       </div>
 
-      <div className="options-stack" role="group" aria-label={node.question}>
+      {node.hint && (
+        <div className="question-hint-box">
+          <HelpCircle size={18} strokeWidth={2} className="flex-shrink-0" style={{ marginTop: '2px', color: 'var(--brand-plum)' }} />
+          <span>{node.hint}</span>
+        </div>
+      )}
+
+      {/* Big Option Buttons */}
+      <div className="options-vertical-group" role="group" aria-label={node.question}>
         {node.options.map((option) => {
-          let btnClass = 'option-button';
-          let icon = <CheckCircle2 size={24} className="opt-icon" />;
+          let variantClass = '';
+          let icon = <CheckCircle2 size={24} strokeWidth={2} style={{ color: 'var(--success-green)' }} />;
 
           if (option.id === 'opt_conscious' || option.id.includes('normal')) {
-            btnClass += ' btn-option-yes';
-            icon = <CheckCircle2 size={24} className="opt-icon text-emerald-600" />;
-          } else if (option.id === 'opt_unsure_conscious' || option.id.includes('unsure') || option.id.includes('diabetic') || option.id.includes('heat') || option.id.includes('head') || option.id.includes('intoxication') || option.id.includes('post_seizure')) {
-            btnClass += ' btn-option-unsure';
-            icon = <HelpCircle size={24} className="opt-icon text-amber-600" />;
+            variantClass = 'opt-yes';
+            icon = <CheckCircle2 size={24} strokeWidth={2} style={{ color: 'var(--success-green)' }} />;
+          } else if (
+            option.id === 'opt_unsure_conscious' ||
+            option.id.includes('unsure') ||
+            option.id.includes('diabetic') ||
+            option.id.includes('heat') ||
+            option.id.includes('head') ||
+            option.id.includes('intoxication') ||
+            option.id.includes('post_seizure')
+          ) {
+            variantClass = 'opt-unsure';
+            icon = <HelpCircle size={24} strokeWidth={2} style={{ color: 'var(--amber-warning)' }} />;
           } else {
-            btnClass += ' btn-option-no';
-            icon = <AlertOctagon size={24} className="opt-icon text-rose-600" />;
+            variantClass = 'opt-no';
+            icon = <AlertOctagon size={24} strokeWidth={2} style={{ color: 'var(--urgent-red)' }} />;
           }
 
           return (
             <button
               key={option.id}
               type="button"
-              className={btnClass}
+              className={`btn-option-giant ${variantClass}`}
               onClick={() => {
                 triggerHaptic();
                 onSelectOption(option);
               }}
             >
-              <div className="option-icon-box">{icon}</div>
-              <div className="option-text-group">
-                <span className="option-primary-label">{option.label}</span>
+              <div className="opt-icon-wrapper">{icon}</div>
+              <div className="opt-text-block">
+                <span className="opt-primary-title">{option.label}</span>
                 {option.description && (
-                  <span className="option-sub-desc">{option.description}</span>
+                  <span className="opt-secondary-desc">{option.description}</span>
                 )}
               </div>
             </button>
@@ -301,3 +285,4 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
     </div>
   );
 };
+

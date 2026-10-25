@@ -8,8 +8,8 @@ interface UnifiedCprStageProps {
   isPaused: boolean;
   pulseActive: boolean;
   bpm: number;
-  compressionCount: number;
-  breathStep: 1 | 2;
+  compressionCount?: number;
+  breathStep?: 1 | 2;
   cycleNumber: number;
   onBeginCpr: () => void;
 }
@@ -20,26 +20,22 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
   isPaused,
   pulseActive,
   bpm,
-  compressionCount,
-  breathStep,
   cycleNumber,
   onBeginCpr,
 }) => {
   const [placementAngle, setPlacementAngle] = useState<'overhead' | 'side'>('overhead');
 
-  // Exact dynamic instruction heading per requirements
+  // Dynamic instruction heading
   let dynamicHeading = 'First, position your hands correctly';
   let dynamicSubheading = 'Kneel beside the chest and locate the lower half of the breastbone over ordinary clothing before pushing.';
 
   if (phase === 'compressions') {
-    dynamicHeading = 'Perform 30 chest compressions';
+    dynamicHeading = 'Perform chest compressions';
     dynamicSubheading = `Cycle #${cycleNumber} — Push hard and fast (5–6 cm deep) at ${bpm} BPM in the centre of the breastbone. Allow full recoil.`;
   } else if (phase === 'breaths') {
-    dynamicHeading = 'Now give 2 rescue breaths';
-    dynamicSubheading = '30 compressions complete. Tilt head back, lift chin, pinch nose, and deliver 2 gentle breaths (1 sec each).';
+    dynamicHeading = 'Now give rescue breaths';
+    dynamicSubheading = 'Compressions complete. Tilt head back, lift chin, pinch nose, and deliver 2 gentle breaths (1 sec each).';
   }
-
-  const countDisplay = `${String(compressionCount).padStart(2, '0')}/30`;
 
   return (
     <div className="unified-cpr-stage">
@@ -350,7 +346,7 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
               <svg
                 viewBox="0 0 640 280"
                 className={`cpr-anatomical-svg ${isRunning ? 'compressing' : 'at-rest'} ${pulseActive && isRunning ? 'beat-strike' : ''}`}
-                aria-label={`Realistic chest compression demonstration. Current compression ${compressionCount} of 30.`}
+                aria-label="Realistic chest compression demonstration on firm floor."
               >
                 <defs>
                   <linearGradient id="floorGradActive" x1="0" y1="0" x2="0" y2="1">
@@ -427,54 +423,6 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
                     <text x="225" y="176" textAnchor="middle" fill="#78350f" fontSize="7.5" fontWeight="800">HEEL</text>
                   </g>
                 </g>
-
-                {/* Clinical CPR Telemetry Box on Right */}
-                <g transform="translate(450, 18)">
-                  <rect x="0" y="0" width="175" height="185" rx="10" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.2" />
-                  
-                  {/* Header */}
-                  <rect x="0" y="0" width="175" height="32" rx="10" fill="#0f172a" />
-                  <text x="87" y="21" textAnchor="middle" fill="#ffffff" fontSize="11" fontWeight="800" letterSpacing="0.04em">
-                    CPR DEPTH & RECOIL
-                  </text>
-
-                  {/* Big compression count */}
-                  <text x="87" y="58" textAnchor="middle" fill="#e11d48" fontSize="22" fontWeight="800" fontFamily="monospace">
-                    {countDisplay}
-                  </text>
-                  <text x="87" y="74" textAnchor="middle" fill="#64748b" fontSize="9.5" fontWeight="700">
-                    COMPRESSIONS IN CYCLE
-                  </text>
-
-                  {/* Depth Target Visual Gauge */}
-                  <g transform="translate(18, 88)">
-                    {/* Gauge track */}
-                    <rect x="0" y="0" width="138" height="34" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
-                    {/* Target 5-6 cm green bar */}
-                    <rect x="85" y="4" width="48" height="26" rx="4" fill="#dcfce7" stroke="#86efac" />
-                    <text x="109" y="16" textAnchor="middle" fill="#15803d" fontSize="7.5" fontWeight="800">TARGET</text>
-                    <text x="109" y="25" textAnchor="middle" fill="#166534" fontSize="7.5" fontWeight="700">5–6 cm</text>
-
-                    {/* Dynamic Moving Needle / Plunger Indicator */}
-                    <g className="depth-gauge-needle" transform="translate(15, 0)">
-                      <circle cx="0" cy="17" r="8" fill="#e11d48" />
-                      <line x1="0" y1="4" x2="0" y2="30" stroke="#ffffff" strokeWidth="2" />
-                    </g>
-                  </g>
-
-                  {/* Recoil status */}
-                  <g transform="translate(18, 132)">
-                    <rect x="0" y="0" width="138" height="20" rx="4" fill="#f0fdf4" stroke="#bbf7d0" />
-                    <text x="69" y="14" textAnchor="middle" fill="#166534" fontSize="8.5" fontWeight="700">
-                      ✓ 100% Full Recoil Each Beat
-                    </text>
-                  </g>
-
-                  {/* BPM badge */}
-                  <text x="87" y="172" textAnchor="middle" fill="#0284c7" fontSize="10" fontWeight="800">
-                    Target: {bpm} BPM (100–120)
-                  </text>
-                </g>
               </svg>
 
               {/* Rhythmic Visual Beat Pulse Indicator */}
@@ -483,7 +431,7 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
                 <span className="rhythm-status-text">
                   {isPaused
                     ? 'CPR PAUSED — TAP RESUME TO CONTINUE'
-                    : `PUSH ON EACH BEAT (${compressionCount}/30 COMPLETED)`}
+                    : 'PUSH ON EACH BEAT IN SYNC WITH THE METRONOME'}
                 </span>
               </div>
             </div>
@@ -513,13 +461,13 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
               <svg
                 viewBox="0 0 640 280"
                 className="cpr-anatomical-svg"
-                aria-label={`Rescue breath animation. Currently showing rescue breath ${breathStep} of 2.`}
+                aria-label="Rescue breath demonstration showing head tilt, chin lift, and chest rising."
               >
                 {/* Surface */}
                 <rect x="0" y="240" width="640" height="40" fill="#334155" />
 
                 {/* Head Tilt & Chin Lift demonstration */}
-                <g transform="translate(160, 40)">
+                <g transform="translate(180, 40)">
                   <circle cx="80" cy="80" r="42" fill="#fbcfe8" stroke="#f472b6" strokeWidth="2" />
                   {/* Airway open passage */}
                   <path d="M 60 90 Q 90 70 115 85" fill="none" stroke="#0284c7" strokeWidth="6" strokeLinecap="round" />
@@ -529,12 +477,12 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
                 </g>
 
                 {/* Animated Chest Rise on Active Breath */}
-                <g transform="translate(290, 85)">
+                <g transform="translate(360, 80)">
                   <ellipse
                     cx="45"
                     cy="40"
-                    rx={breathStep === 1 || breathStep === 2 ? 38 : 30}
-                    ry={breathStep === 1 || breathStep === 2 ? 24 : 16}
+                    rx={38}
+                    ry={24}
                     fill="#e0f2fe"
                     stroke="#0284c7"
                     strokeWidth="2"
@@ -544,49 +492,15 @@ export const UnifiedCprStage: React.FC<UnifiedCprStageProps> = ({
                     Chest Rising
                   </text>
                 </g>
-
-                {/* Current Breath Step Indicator Box */}
-                <g transform="translate(420, 45)">
-                  <rect x="0" y="0" width="195" height="150" rx="10" fill="#f0f9ff" stroke="#0284c7" strokeWidth="2" />
-                  <rect x="0" y="0" width="195" height="34" rx="10" fill="#0284c7" />
-                  <text x="97" y="22" textAnchor="middle" fill="#ffffff" fontSize="13" fontWeight="800">
-                    RESCUE BREATHS {breathStep}/2
-                  </text>
-                  <text x="97" y="58" textAnchor="middle" fill="#0369a1" fontSize="13" fontWeight="800">
-                    {breathStep === 1 ? 'Delivering Breath 1 of 2' : 'Delivering Breath 2 of 2'}
-                  </text>
-                  <text x="97" y="82" textAnchor="middle" fill="#0f172a" fontSize="11">
-                    1. Pinch nose shut
-                  </text>
-                  <text x="97" y="100" textAnchor="middle" fill="#0f172a" fontSize="11">
-                    2. Seal mouth over hers
-                  </text>
-                  <text x="97" y="118" textAnchor="middle" fill="#0f172a" fontSize="11">
-                    3. Blow 1 sec until chest rises
-                  </text>
-                  <text x="97" y="136" textAnchor="middle" fill="#059669" fontSize="10" fontWeight="bold">
-                    {breathStep === 1 ? 'Preparing breath 2...' : 'Returning to compressions...'}
-                  </text>
-                </g>
               </svg>
             </div>
 
-            {/* Clear 1/2 and 2/2 Progress Banner */}
+            {/* Rescue Breaths Guidance Strip */}
             <div className="breaths-progress-strip">
-              <div className="breath-step-badge-group">
-                <span className={`breath-pill ${breathStep === 1 ? 'active' : 'completed'}`}>
-                  {breathStep === 2 ? '✓' : '1'} Breath 1 of 2
-                </span>
-                <span className={`breath-pill ${breathStep === 2 ? 'active' : 'pending'}`}>
-                  2 Breath 2 of 2
-                </span>
-              </div>
               <div className="breath-status-note">
                 <Wind size={18} className="text-sky-600 animate-pulse" />
                 <span>
-                  {breathStep === 1
-                    ? 'Giving first rescue breath (1 second). Watch chest rise.'
-                    : 'Giving second rescue breath. Compressions will resume immediately.'}
+                  Tilt head back, lift chin, pinch nose shut, and deliver gentle 1-second breath. Watch chest rise.
                 </span>
               </div>
             </div>

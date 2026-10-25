@@ -17,33 +17,29 @@ export const DecisionProgress: React.FC<DecisionProgressProps> = ({
   onStartOver,
 }) => {
   return (
-    <div className="decision-progress-bar">
-      <div className="decision-nav-actions">
-        {canGoBack && (
-          <button 
-            type="button" 
-            onClick={onBack} 
-            className="btn-step-back"
-            aria-label="Previous check"
-          >
-            <ArrowLeft size={16} />
-            <span>Previous Check</span>
-          </button>
-        )}
-        <button
-          type="button"
-          onClick={onStartOver}
-          className="btn-step-restart"
-          title="Restart from beginning"
-        >
-          <RotateCcw size={14} />
-          <span>Start Over</span>
-        </button>
-      </div>
+    <div className="decide-top-nav" role="navigation" aria-label="Assessment Navigation">
+      <button 
+        type="button" 
+        onClick={onBack} 
+        className="btn-back-clean"
+        aria-label={canGoBack ? "Previous check" : "Exit to home"}
+      >
+        <ArrowLeft size={16} strokeWidth={2} />
+        <span>{canGoBack ? 'Previous check' : 'Exit to home'}</span>
+      </button>
 
-      <div className="progress-indicator-pill">
-        <span>Step {stepNumber} of {totalSteps}</span>
-      </div>
+      <span className="step-indicator-pill">Step {stepNumber} of {totalSteps}</span>
+
+      <button
+        type="button"
+        onClick={onStartOver}
+        className="btn-back-clean"
+        title="Restart assessment"
+      >
+        <RotateCcw size={14} strokeWidth={2} />
+        <span>Restart</span>
+      </button>
     </div>
   );
 };
+

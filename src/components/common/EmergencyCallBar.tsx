@@ -18,23 +18,24 @@ export const EmergencyCallBar: React.FC = () => {
     <aside className="emergency-call-bar" aria-label="EqualRescue Header">
       <div className="emergency-call-content">
         <Link to="/" className="emergency-call-brand" title="EqualRescue Home">
-          <div className="logo-icon-sm">
-            <HeartPulse size={18} className="text-white" />
+          <div className="logo-badge">
+            <HeartPulse size={18} strokeWidth={2.5} />
           </div>
-          <span className="brand-name-top">Equal<span>Rescue</span></span>
+          <span className="brand-text">Equal<span>Rescue</span></span>
         </Link>
 
         <div className="emergency-call-actions">
-          <a href="tel:112" className="btn-call-112" id="call-112-btn">
-            <PhoneCall size={18} className="animate-shake" />
+          <a href="tel:112" className="btn-call-112-urgent" id="call-112-btn">
+            <PhoneCall size={16} strokeWidth={2.5} />
             <span>Call 112</span>
           </a>
 
           <button 
             type="button" 
             onClick={handleCopyNumber} 
-            className="btn-copy-number"
+            className="btn-copy-112"
             title="Copy emergency number (112)"
+            aria-label="Copy emergency number 112"
           >
             {copied ? <Check size={14} /> : <Copy size={14} />}
             <span>{copied ? 'Copied' : '112'}</span>
