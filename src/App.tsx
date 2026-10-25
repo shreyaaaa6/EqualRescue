@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { WebNavbar } from './components/common/WebNavbar';
 import { EmergencyCallBar } from './components/common/EmergencyCallBar';
 import { SafetyBanner } from './components/common/SafetyBanner';
 import { WebFooter } from './components/common/WebFooter';
@@ -14,11 +13,8 @@ export const App: React.FC = () => {
   return (
     <BrowserRouter>
       <div className="app-shell">
-        {/* Pinned Call 112 Bar at the very top */}
+        {/* Pinned Top Bar with Brand & Call 112 */}
         <EmergencyCallBar />
-
-        {/* Global Navigation */}
-        <WebNavbar />
 
         {/* Safety Disclaimer Banner */}
         <SafetyBanner />
