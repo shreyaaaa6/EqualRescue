@@ -144,9 +144,13 @@ button, a, input {
   margin: 0 auto;
 }
 
-/* Expansive layout for CPR 2-column tutorial */
+/* Expansive layout for CPR 2-column tutorial & Landing */
 .main-content:has(.cpr-unified-page-container) {
   max-width: 1200px;
+}
+
+.main-content:has(.landing-container) {
+  max-width: 980px;
 }
 
 /* ============================================================
@@ -442,6 +446,93 @@ button, a, input {
   justify-content: center;
   color: var(--text-secondary);
   flex-shrink: 0;
+}
+
+/* Why Bystander CPR is Delayed for Women Section */
+.bystander-delay-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-top: var(--space-2);
+}
+
+.bystander-delay-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.bystander-scale-icon {
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.bystander-delay-title {
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.bystander-reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .bystander-reasons-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bystander-reason-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.bystander-reason-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-subtle);
+}
+
+.reason-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: #fff1f2;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-2);
+}
+
+.reason-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.reason-card-desc {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
 }
 
 /* Deduplicated Reassurance Line on Landing */

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Scale, HandHeart, Zap } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
   return (
@@ -38,6 +38,51 @@ export const LandingPage: React.FC = () => {
             <ArrowRight size={20} strokeWidth={2} />
           </div>
         </Link>
+      </section>
+
+      {/* Why Bystander CPR is Delayed for Women Card Section */}
+      <section className="bystander-delay-card" aria-label="Why Bystander CPR is Delayed for Women">
+        <div className="bystander-delay-header">
+          <Scale size={22} className="bystander-scale-icon" />
+          <h2 className="bystander-delay-title">
+            Why Bystander CPR is Delayed for Women — And Why You Should Act
+          </h2>
+        </div>
+
+        <div className="bystander-reasons-grid">
+          {/* Card 1: Fear of Touching Chest */}
+          <div className="bystander-reason-card">
+            <div className="reason-icon-wrapper">
+              <HandHeart size={20} />
+            </div>
+            <h3 className="reason-card-title">Fear of Touching Chest</h3>
+            <p className="reason-card-desc">
+              Bystanders often hesitate due to modesty or fear of touching a woman's chest. Hand placement is on the center of the breastbone—the same as for men.
+            </p>
+          </div>
+
+          {/* Card 2: Fear of Causing Physical Harm */}
+          <div className="bystander-reason-card">
+            <div className="reason-icon-wrapper">
+              <Zap size={20} />
+            </div>
+            <h3 className="reason-card-title">Fear of Causing Physical Harm</h3>
+            <p className="reason-card-desc">
+              Cardiac arrest is always fatal without intervention. Broken ribs can heal, but lack of oxygen causes permanent brain death within 4 minutes.
+            </p>
+          </div>
+
+          {/* Card 3: Good Samaritan Legal Protection */}
+          <div className="bystander-reason-card">
+            <div className="reason-icon-wrapper">
+              <ShieldCheck size={20} />
+            </div>
+            <h3 className="reason-card-title">Good Samaritan Legal Protection</h3>
+            <p className="reason-card-desc">
+              In India and internationally, Good Samaritan laws grant full civil and criminal legal protection to anyone providing emergency life-saving CPR in good faith.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* One single line of reassurance and quiet link to Learn */}
